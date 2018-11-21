@@ -1,17 +1,35 @@
-\documentclass[11pt]{report}
+\documentclass[11pt]{scrreprt}
+
+\KOMAoption{chapterprefix}{true}
+
+\KOMAoptions{
+paper=a4,
+fontsize=11pt,
+parskip=half-,
+BCOR=.5cm,
+pagesize=auto,
+pagesize=pdftex,
+headinclude=false,
+footinclude=false,
+DIV=12
+}
+
+\setkomafont{disposition}{\rmfamily\scshape\bfseries}
+
 
  \input{Init}
 
 \makeindex
-
-\begin{document}
-
 \title{Quantum Field Theory}
+\subtitle{PHYS11065}
 \author{L. Del Debbio (University of Edinburgh)\\
   Version 0.1}
 
+\begin{document}
+
+
 \pagenumbering{roman}
-\maketitle
+\include{Includes/titlepage}
 \clearemptydoublepage
 \tableofcontents
 \clearemptydoublepage
