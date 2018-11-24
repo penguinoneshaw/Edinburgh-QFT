@@ -1,22 +1,26 @@
 \makeatletter
 \begin{titlepage}
-\begin{minipage}[b]{0.8\textwidth}
-\usekomafont{disposition}
-        {\Huge School of Physics\\ and Astronomy\\}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{40mm}
-        \includegraphics[width=40mm]{Includes/crest.eps}
-\end{minipage}
+\ifdefined\@school
+        \begin{minipage}{0.6\textwidth}
+        \begin{flushleft}
+                {\usekomafont{disposition} \Huge  \linespread{1.15} \@school \par}
+        \end{flushleft}
+        \end{minipage}\hfill
+        \begin{minipage}{0.3\textwidth}
+                \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}
+        \end{minipage}
+\else
+{\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+\fi
 \vspace*{4cm}
 
 {\centering
-\ifdefined\@subtitle
-{\LARGE\rmfamily\scshape \@subtitle\\}
+\ifdefined\@coursecode
+{\LARGE\rmfamily\scshape \@coursecode\\}
 \fi
 {\Huge\usekomafont{title} \@title\\}
 \vspace{\fill}
-{\Large \@author \\[1cm] \LARGE\bfseries \@date\\}
+{\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version \\[2ex] \large Version \@version\fi\\}
 }
 \end{titlepage}
 \makeatother
