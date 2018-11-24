@@ -489,11 +489,11 @@ with indices $i$ and $j$ at its ends:
     \begin{feynman}[inline=(a)]
       \vertex (a);
       \vertex (b);
+      \vertex [below=0.2em of a] {\({}_{i}\)};  
+      \vertex [below=0.2em of b] {\({}_{j}\)};  
       \diagram {
         a -- b,
       };
-      \vertex [below=0.2em of a] {\(_{i}\)};  
-      \vertex [below=0.2em of b] {\(_{j}\)};  
     \end{feynman}
   \end{tikzpicture}\, .
 \end{equation}
