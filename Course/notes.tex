@@ -16,14 +16,24 @@ DIV=12
 
 \setkomafont{disposition}{\rmfamily\scshape\bfseries}
 
+\makeatletter
+\newcommand{\school}[1]{\def\@school{#1}}
+\newcommand{\version}[1]{\def\@version{#1}}
+\newcommand{\coursecode}[1]{\def\@coursecode{#1}}
+
+\makeatother
 
  \input{Init}
 
 \makeindex
 \title{Quantum Field Theory}
-\subtitle{PHYS11065}
-\author{L. Del Debbio (University of Edinburgh)\\
-  Version 0.1}
+\coursecode{PHYS11065}
+\author{L. Del Debbio}
+\version{0.2}
+\school{
+  School of Physics and Astronomy
+}
+\date{November 2018}
 
 \begin{document}
 
