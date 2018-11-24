@@ -1,21 +1,11 @@
-\documentclass[12pt,a4paper]{article}
-%
-\setlength{\oddsidemargin}{  0mm}
-\setlength{\topmargin}    { -12mm}
-\setlength{\textheight}   { 246mm}
-\setlength{\textwidth}    { 165mm}
-\setlength{\parindent}    {  0   pt}  % not actually required but they
+\documentclass{tutorial}
 
-\setlength{\parskip}      {  6   pt}  % make paragraphs look less ugly
-
-%
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{slashed}
-\pagestyle{empty}
-
-\input{Init}
+\subject{Quantum Field Theory}
+\subtitle{Problem Sheet 8}
+\title{Renormalization}
+\author{Luigi Del Debbio}
+\date{November 2018}
+% \input{Init}
 
 \newcommand{\tphi}{\tilde{\phi}}
 \newcommand{\tj}{\tilde{J}}
@@ -25,22 +15,17 @@
 \newcommand{\munu}{{\mu\nu}}
 
 \begin{document}
-\begin{center}
-\textbf{ Quantum Field Theory}\\[\baselineskip]
-\end{center}
-\textbf{ Problem Sheet 8}
+\maketitle
 
 \begin{enumerate}
-\item \emph{ One-loop vertex} \\
+\item \emph{ One-loop vertex}
 
   Write the one-loop contribution to the three-point function for the
   $\phi^3$ theory in $D$ dimensions using the Feynman rules for
   correlators. Check the computation of the diagram discussed in the
   lectures. 
   
-  \bigskip
-  
-\item \emph{ $\phi^4$ theory}\\
+\item \emph{ $\phi^4$ theory}
 
   The $\phi^4$ theory is defined by the interaction term
   \[
@@ -54,22 +39,16 @@
   Write the renormalization conditions for the field and the mass in
   the on-shell renormalization scheme, and determine the corresponding
   counter terms at $O(\lambda)$.
-  
-  \bigskip
 
-\item \emph{ Superficial degree of  divergence}\\
+\item \emph{ Superficial degree of divergence}
 
   Find the superficial degree of divergence of a diagram with $E$
   external legs in $D$ dimensions for a scalar $\phi^n$ theory, and for
   the Yukawa theory discussed in PS6.
-
-  \bigskip 
   
-\item \emph{ Four-point 1PI vertex}\\
+\item \emph{ Four-point 1PI vertex}
   
   Check the computation of $V^{(4)}$ in $\phi^3$ in $D=6$.
-  
-  \bigskip
   
 \item \emph{ Renormalizable interactions in $D=4$}
   
@@ -83,8 +62,6 @@
   List the renormalizable interactions for $D=4$. Do they look
   familiar? 
 
-  \bigskip
-
 \item \emph{ Two-particle amplitude at one-loop}
 
   Using the skeleton expansion compute the one-loop contribution to
@@ -97,7 +74,4 @@
   four-point vertex $V^{(4)}$ has been discussed in lectures.
   
 \end{enumerate}
-
-\vfill
-\hspace*{\fill}\tiny L Del Debbio, November 2018.
 \end{document}
