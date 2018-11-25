@@ -24,6 +24,7 @@
 \RequirePackage{cancel}
 \RequirePackage{slashed}
 \RequirePackage[sorting=none,bibencoding=utf8,giveninits,uniquename=init]{biblatex}
+\RequirePackage{enumitem}
 
 \KOMAoptions{
 paper=a4,

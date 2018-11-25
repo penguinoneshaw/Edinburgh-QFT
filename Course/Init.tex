@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage[UKenglish]{babel}
+\usepackage{csquotes,xpatch}
 \usepackage[UKenglish]{isodate}
 \addto\captionsUKenglish{\renewcommand{\chaptername}{Lecture}}
 
@@ -32,9 +33,11 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[arrowdel]{physics}
 \usepackage{setspace}
+\usepackage[sorting=ynt,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers]{biblatex}
 
 
 \tikzfeynmanset{compat=1.0.0}  
+\tikzfeynmanset{warn luatex=false}
 
 \newcommand{\tick}{\ding{52}}
 \newcommand{\notick}{\ding{56}}
