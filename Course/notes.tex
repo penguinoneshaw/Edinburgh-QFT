@@ -1,4 +1,5 @@
-\documentclass[11pt]{scrreprt}
+\documentclass[bibliography=totoc,titlepage=firstiscover]{scrreprt}
+\input{Init}
 
 \KOMAoption{chapterprefix}{true}
 
@@ -14,21 +15,22 @@ footinclude=false,
 DIV=12
 }
 
+\usepackage{subfiles}
 \setkomafont{disposition}{\rmfamily\scshape\bfseries}
 
 \makeatletter
 \newcommand{\school}[1]{\def\@school{#1}}
 \newcommand{\version}[1]{\def\@version{#1}}
 \newcommand{\coursecode}[1]{\def\@coursecode{#1}}
-
 \makeatother
 
- \input{Init}
+\addbibresource{QFT.bib}
+
 
 \makeindex
 \title{Quantum Field Theory}
 \coursecode{PHYS11065}
-\author{L. Del Debbio}
+\author{L.~Del Debbio}
 \version{0.2}
 \school{
   School of Physics and Astronomy
@@ -36,50 +38,35 @@ DIV=12
 \date{November 2018}
 
 \begin{document}
-
-
 \include{Includes/titlepage}
 \pagenumbering{roman}
-\clearemptydoublepage
 \tableofcontents
-\clearemptydoublepage
 
+\vspace{\fill}
+
+This document and its source code are licensed under a \href{https://www.gnu.org/licenses/gpl-3.0.en.html}{GNU GPLv3} License.
+
+% The maker of Tikz-Feynman asks that you reference his paper when you use it.
+The Feynman diagrams are generated using \texttt{tikz-feynman}\supercite{ELLIS2017103}.
+
+\nocite{*}
+\printbibliography[keyword=recommended,title={Recommended Textbooks},omitnumbers=true]
 \pagenumbering{arabic}
 
-\chapter*{Introductory Thoughts}
-\label{chap:intro}
-\input{Sections/intro}
+\subfile{intro}
+\subfile{lecture0}
+\subfile{lecture1}
+\subfile{lecture2}
+%\input{Sections/ScalarPI}
 
-\chapter{Gaussian Integrals}
-\label{chap:lec0}
-\input{Sections/lecture0}
-
-\chapter{Path Integrals in QM}
-\label{chap:lec1}
-\input{Sections/lecture1}
-
-\chapter{Path Integrals for Scalar Fields}
-\label{cha:path-integr-scal}
-\input{Sections/lecture2}
-\input{Sections/ScalarPI}
-
-\chapter{Path Integrals for Fermion Fields}
-\label{cha:path-integr-ferm}
-\input{Sections/lecture3}
-
-\chapter{Path Integrals for Gauge Fields}
-\label{cha:path-integrals-gauge}
-\input{Sections/lecture4}
-
-
-\chapter{Divergences I --- the Scalar Propagator}
-\label{cha:divergences-i-scalar}
-\input{Sections/lecture5}
+\subfile{lecture3}
+\subfile{lecture4}
+\subfile{lecture5}
+\subfile{lecture6}
 
 
 \chapter{Divergences II --- the Vertex Function}
 \label{cha:diverg-ii-vert}
-\input{Sections/lecture6}
 
 
 \chapter{Renormalization}
@@ -94,6 +81,8 @@ DIV=12
 \label{cha:scales-decoupling}
 
 \printindex
+\printbibliography[notkeyword=recommended]
+
 \end{document}
 
 %%% Local Variables:

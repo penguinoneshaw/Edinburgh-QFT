@@ -26,7 +26,7 @@
 %\usepackage{showlabels}
 \usepackage{makeidx}
 \usepackage{simplewick}
-\usepackage{tikz-feynman}
+\usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{slashed}
 \usepackage{appendix}
 \usepackage[hidelinks]{hyperref}
@@ -39,7 +39,6 @@
 \newcommand{\tick}{\ding{52}}
 \newcommand{\notick}{\ding{56}}
 \newcommand{\D}{\displaystyle}
-\renewcommand{\chaptername}{Lecture}
 
 \def\bfx{{\mathbf x}}
 \def\bfxp{{\mathbf x^\prime}}
@@ -86,6 +85,7 @@
 \def\kjm{|j,m\rangle}
 \def\tr{\mathrm{Tr}}
 \def\id{\mathds{1}}
+
 {\theoremstyle{plain} \theorembodyfont{\rmfamily} \newframedtheorem{Ex}{Exercise}[section]}
 {\theoremstyle{plain} \theorembodyfont{\rmfamily} \newtheorem{Def}{Definition}[section]}
 {\theoremstyle{plain} \theorembodyfont{\rmfamily} \newtheorem{Thm}{Theorem}[section]}
@@ -114,3 +114,6 @@
 \newcommand{\tDelta}{\tilde{\Delta}}
 \newcommand{\SProp}[1]{\frac{1}{#1^2-m^2+i\epsilon}}
 \newcommand{\ESProp}[2]{\frac{1}{\left(#1^2+m^2\right)^#2}}
+\newcommand{\tphi}{\tilde{\phi}}
+\newcommand{\tj}{\tilde{J}}
+\newcommand{\tchi}{\tilde{\chi}}
