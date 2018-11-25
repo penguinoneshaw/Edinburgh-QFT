@@ -1,44 +1,26 @@
-\documentclass[bibliography=totoc,titlepage=firstiscover]{scrreprt}
-\input{Init}
+\documentclass[bibliography=totoc]{notes}
 
-\KOMAoption{chapterprefix}{true}
-
+\addto\captionsUKenglish{\renewcommand{\chaptername}{Lecture}}
 \KOMAoptions{
-paper=a4,
-fontsize=11pt,
-parskip=half-,
-BCOR=.5cm,
-pagesize=auto,
-pagesize=pdftex,
-headinclude=false,
-footinclude=false,
-DIV=12
+  twoside=true,
+  titlepage=firstiscover
 }
-
-\usepackage{subfiles}
-\setkomafont{disposition}{\rmfamily\scshape\bfseries}
-
-\makeatletter
-\newcommand{\school}[1]{\def\@school{#1}}
-\newcommand{\version}[1]{\def\@version{#1}}
-\newcommand{\coursecode}[1]{\def\@coursecode{#1}}
-\makeatother
-
 \addbibresource{QFT.bib}
 
-
-\makeindex
 \title{Quantum Field Theory}
 \coursecode{PHYS11065}
 \author{L.~Del Debbio}
 \version{0.2}
 \school{
   School of Physics and Astronomy
-}
-\date{November 2018}
+  }
+  \date{November 2018}
+  
+  \makeindex
 
 \begin{document}
-\include{Includes/titlepage}
+%\include{Includes/titlepage}
+\maketitle
 \pagenumbering{roman}
 \tableofcontents
 

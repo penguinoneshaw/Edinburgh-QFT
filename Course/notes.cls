@@ -1,0 +1,222 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesClass{notes}
+
+\LoadClass{scrreprt}
+
+% LaTeX required packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+\RequirePackage[UKenglish]{babel}
+\RequirePackage[UKenglish]{isodate}
+\RequirePackage{csquotes,xpatch}
+\RequirePackage{graphicx}
+\RequirePackage{subfiles}
+\RequirePackage[hidelinks, pdfusetitle]{hyperref}
+\RequirePackage[sorting=ynt,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
+\RequirePackage{appendix}
+\RequirePackage{makeidx}
+
+
+% Maths Packages
+\RequirePackage[arrowdel]{physics}
+\RequirePackage{nicefrac}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bbm}
+\RequirePackage{cancel}
+\RequirePackage{slashed}
+\RequirePackage{dsfont}
+\RequirePackage{pifont}
+\RequirePackage[framed]{ntheorem}
+\RequirePackage{simplewick}
+\RequirePackage[compat=1.1.0]{tikz-feynman}
+
+% Formatting Packages
+\RequirePackage{relsize}
+\RequirePackage{booktabs}
+\RequirePackage{framed}
+
+\KOMAoption{chapterprefix}{true}
+
+\KOMAoptions{
+paper=a4,
+fontsize=11pt,
+parskip=half-,
+BCOR=.5cm,
+pagesize=auto,
+pagesize=pdftex,
+headinclude=false,
+footinclude=false,
+DIV=12
+}
+
+
+\renewcommand*\raggedchapter{\centering}
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=1\baselineskip]{chapter}
+\setkomafont{chapterprefix}{\normalsize\mdseries}
+
+\renewcommand*{\chapterformat}{%
+  \chapappifchapterprefix{\nobreakspace}\thechapter\autodot%
+  \IfUsePrefixLine{%
+    \par\nobreak\vspace{-\parskip}\vspace{-.6\baselineskip}%
+    \rule{0.9\textwidth}{.2pt}%
+  }{}%
+}
+
+
+\RequirePackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\RequirePackage{mathrsfs}
+\newcommand{\fourier}[1]{\ensuremath{\mathlarger{\mathcal{F}}\!\!\left[#1 \right]}}
+\newcommand{\inversefourier}[1]{\ensuremath{\mathlarger{\mathcal{F}^{-1}}\!\!\left[#1 \right]}}
+\newcommand{\laplace}[1]{\ensuremath{\mathlarger{L}\!\!\left[#1 \right]}}
+\DeclareMathOperator{\erfc}{erfc}
+
+\setkomafont{disposition}{\rmfamily\scshape\bfseries}
+
+
+\RequirePackage[largesc]{newpxtext}
+\RequirePackage{newpxmath}
+\setkomafont{descriptionlabel}{\rmfamily\bfseries}
+\linespread{1.05}
+
+\RequirePackage[tikz]{mdframed}
+\newmdenv[frametitle=Example,roundcorner=5pt]{example}
+\newmdenv[frametitle=Note,roundcorner=5pt]{note}
+\renewcommand\hbar\hslash
+\newcommand{\DD}[1]{\ensuremath{\mathcal{D} #1\,}}
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+%\renewcommand{\vec}{\vb*}
+\setcounter{tocdepth}{2}
+
+%\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10]{microtype}
+\RequirePackage[activate={true,nocompatibility},kerning=true,spacing=true,final]{microtype}
+\microtypecontext{spacing=nonfrench}
+
+\RequirePackage[headsepline]{scrlayer-scrpage}
+\clearscrheadfoot
+
+\automark{section}
+
+\ohead{\headmark}
+\ofoot{\thepage}
+\ihead{\@title}
+
+\newcommand{\school}[1]{\def\@school{#1}}
+\newcommand{\version}[1]{\def\@version{#1}}
+\newcommand{\coursecode}[1]{\def\@coursecode{#1}}
+
+\tikzfeynmanset{warn luatex=false}
+
+\newcommand{\tick}{\ding{52}}
+\newcommand{\notick}{\ding{56}}
+\newcommand{\D}{\displaystyle}
+
+\def\bfx{{\mathbf x}}
+\def\bfxp{{\mathbf x^\prime}}
+\def\bfy{{\mathbf y}}
+\def\bfyp{{\mathbf y^\prime}}
+\def\bfp{{\mathbf p}}
+\def\bfpp{{\mathbf p^\prime}}
+\def\ddt{\frac{\mathrm{d}}{\mathrm{d}t}}
+\def\ddtt{\frac{d^2}{dt^2}}
+\def\ie{\emph{i.e.~}\ }
+\def\eg{\emph{e.g.~}\ }
+\def\viz{\emph{viz.~}\ }
+\def\matF{\mathcal F}
+\def\matE{\mathcal E}
+\def\GL{\mathrm{GL}}
+\def\kpsi{|\psi\rangle}
+\def\kpsione{|\psi_1\rangle}
+\def\kpsitwo{|\psi_2\rangle}
+\def\kpsionep{|\psi_1^\prime\rangle}
+\def\kpsitwop{|\psi_2^\prime\rangle}
+\def\kpsii{|\psi_i\rangle}
+\def\kpsin{|\psi_n\rangle}
+\def\kpsip{|\psi^\prime\rangle}
+\def\bpsi{\langle\psi |}
+\def\bpsione{\langle\psi_1 |}
+\def\bpsitwo{\langle\psi_2 |}
+\def\bpsii{\langle\psi_i |}
+\def\bpsip{\langle\psi^\prime |}
+\def\kphi{|\phi\rangle}
+\def\kphione{|\phi_1\rangle}
+\def\kphitwo{|\phi_2\rangle}
+\def\kphii{|\phi_i\rangle}
+\def\kphip{|\phi^\prime\rangle}
+\def\bphi{\langle\phi |}
+\def\bphione{\langle\phi_1 |}
+\def\bphitwo{\langle\phi_2 |}
+\def\bphii{\langle\phi_i |}
+\def\bphip{\langle\phi^\prime |}
+\def\bchi{\langle\chi |}
+\def\bchione{\langle\chi_1 |}
+\def\bchitwo{\langle\chi_2 |}
+\def\bchii{\langle\chi_i |}
+\def\bchip{\langle\chi^\prime |}
+\def\kjm{|j,m\rangle}
+\def\tr{\mathrm{Tr}}
+\def\id{\mathds{1}}
+
+{\theoremstyle{plain} \theorembodyfont{\rmfamily} \newframedtheorem{Ex}{Exercise}[section]}
+{\theoremstyle{plain} \theorembodyfont{\rmfamily} \newtheorem{Def}{Definition}[section]}
+{\theoremstyle{plain} \theorembodyfont{\rmfamily} \newtheorem{Thm}{Theorem}[section]}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\iu}{\underline{i}}
+\newcommand{\ju}{\underline{j}}
+\newcommand{\ku}{\underline{k}}
+\newcommand{\ru}{\underline{r}}
+\newcommand{\pu}{\underline{p}}
+\newcommand{\Lu}{\underline{L}}
+\newcommand{\Ju}{\underline{J}}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\ad}{\hat{a}}
+\newcommand{\ac}{\hat{a}^\dagger}
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\pref}[1]{(\ref{#1})}
+\newcommand{\Eqref}[1]{Eq.~(\ref{#1})}
+\newcommand{\del}{\v{\nabla}}				% Underlined del
+\def\plusheight{-\the\dimexpr\fontdimen22\textfont2\relax}
+\newcommand{\mphys}{m_\mathrm{phys}}
+\newcommand{\psibar}{\bar{\psi}}
+\newcommand{\etabar}{\bar{\eta}}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand{\tDelta}{\tilde{\Delta}}
+\newcommand{\SProp}[1]{\frac{1}{#1^2-m^2+i\epsilon}}
+\newcommand{\ESProp}[2]{\frac{1}{\left(#1^2+m^2\right)^#2}}
+\newcommand{\tphi}{\tilde{\phi}}
+\newcommand{\tj}{\tilde{J}}
+\newcommand{\tchi}{\tilde{\chi}}
+
+\def\@maketitle{
+    \ifdefined\@school
+            \begin{minipage}{0.6\textwidth}
+            \begin{flushleft}
+                    {\usekomafont{disposition} \Huge  \linespread{1.15} \@school \par}
+            \end{flushleft}
+            \end{minipage}\hfill
+            \begin{minipage}{0.3\textwidth}
+                    \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}
+            \end{minipage}
+    \else
+    {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+    \fi
+    \vspace*{\fill}
+    
+    {\centering
+    \ifdefined\@coursecode
+    {\LARGE\rmfamily\scshape \@coursecode\\}
+    \fi
+    {\Huge\usekomafont{title} \@title\\}
+    \vspace{\fill}
+    {\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version \\[2ex] \large Version \@version\fi\\}
+    }
+}

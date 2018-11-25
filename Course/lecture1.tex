@@ -24,7 +24,7 @@ $q$:
 The completeness condition for the states $\ket{q}$ is
 \begin{equation}
   \label{eq:qComplete}
-  \int dq\, \ket{q}\bra{q} = 1\, .
+  \int \dd{q}\ketbra{q}{q} = 1\, .
 \end{equation}
 The aim of this section is to find an expression for the quantum
 amplitude $\braket{q't'}{qt}$ for a system in state $\ket{q}$ at time
@@ -117,7 +117,7 @@ where $q_0 = q$, and $q_n = q'$. The limit above defines the {\em
   \label{eq:PathIntDefZero}
   \braket{q't'}{qt} = 
   \int \mathcal{D}q \mathcal{D}p \exp \left\{
-  i \int_t^{t'} d\tau\, \left[
+  i \int_t^{t'} \dd{\tau} \left[
   p \dot{q} - H(p,q)
   \right]
   \right\}\, .
@@ -159,7 +159,7 @@ path integral as an integral over the position of the system only:
   \label{eq:PathIntDef}
   \braket{q't'}{qt} = 
   \int_{q,q'} \mathcal{D}q \exp \left\{
-  i \int_t^{t'} d\tau\,  \mathcal{L}(q,\dot{q})
+  i \int_t^{t'} \dd{\tau}  \mathcal{L}(q,\dot{q})
   \right\}\, ,
 \end{align}
 where $\mathcal{L}$ is the lagrangian of the system. Note that the
@@ -216,13 +216,13 @@ limit above  is denoted
   \langle q't' | \hat{Q}(\bar{t}) | q t\rangle &= 
   \int \mathcal{D}q \mathcal{D}p \, q(\bar{t}) 
   \exp \left\{
-  i \int_t^{t'} d\tau\, \left[
+  i \int_t^{t'} \dd{\tau} \left[
   p \dot{q} - H(p,q)
   \right]
   \right\}\\
 &= \int_{qq'} \mathcal{D}q \, q(\bar{t}) 
   \exp \left\{
-  i \int_t^{t'} d\tau\, \mathcal{L}(q,\dot{q})
+  i \int_t^{t'} \dd{\tau} \mathcal{L}(q,\dot{q})
   \right\}\, .
 \end{align}
 
@@ -249,7 +249,7 @@ and $\ell$ factors of $\epsstep$. Proceeding exactly as above yields:
   \bra{q't'} \hat{Q}(\bar{t}_1) \hat{Q}(\bar{t}_2)\ket{qt} = 
   \int_{qq'} \mathcal{D}q\, q(\bar{t}_1) q(\bar{t}_2) 
   \exp \left\{
-  i \int_t^{t'} d\tau\, \mathcal{L}(q,\dot{q})
+  i \int_t^{t'} \dd{\tau} \mathcal{L}(q,\dot{q})
   \right\}\, .
 \end{align}
 
@@ -268,7 +268,7 @@ Both results can be summarised as
   \right)\ket{qt} = 
   \int_{qq'} \mathcal{D}q\, q(\bar{t}_1) q(\bar{t}_2) 
   \exp \left\{
-  i \int_t^{t'} d\tau\, \mathcal{L}(q,\dot{q})
+  i \int_t^{t'} \dd{\tau} \mathcal{L}(q,\dot{q})
   \right\}\, ,
 \end{align}
 where we have introduced the T-ordered product of operators: 
@@ -286,7 +286,7 @@ an arbitrary number of insertions of the operator $\hat{Q}$:
   \right)\ket{qt} = 
   \int_{qq'} \mathcal{D}q\, q(\bar{t}_1) \ldots q(\bar{t}_n) 
   \exp \left\{
-  i \int_t^{t'} d\tau\, \mathcal{L}(q,\dot{q})
+  i \int_t^{t'} \dd{\tau} \mathcal{L}(q,\dot{q})
   \right\}\, .
 \end{align}
 
@@ -425,7 +425,7 @@ and $t$, we can readily compute
 \begin{align}
   \braket{qt}{QT} &= \int \mathcal{D}q \mathcal{D}p \,
                     \exp\left\{
-                    i \int_T^t d\tau\, \left[
+                    i \int_T^t \dd{\tau} \left[
                     p \dot{q} - H(p,q)
                     \right]
                     \right\} \\
@@ -440,14 +440,14 @@ and consider the limit $T\to -\infty$:
 A similar result can be obtained for $\braket{Q'T'}{q't'}$. We can
 therefore write
 \begin{align}
-  \braket{Q'T'}{QT}_{f,h} = \int dq' dq\, \braket{Q'T'}{q't'} \braket{q't'}{qt}_{f,h}
+  \braket{Q'T'}{QT}_{f,h} = \int \dd{q'} \dd{q} \braket{Q'T'}{q't'} \braket{q't'}{qt}_{f,h}
   \braket{qt}{QT}\, .
 \end{align}
 And therefore
 \begin{align}
- \lim_{T'\to\infty,T\to -\infty} 
+ \lim_{\substack{T'\to\infty\\T\to -\infty}} 
 \frac{\braket{Q', (1-i\epsilon)T'}{Q, (1-i\epsilon)T}_{f,h}}{\phi_0(Q)^* \phi_0(Q')} = 
-  \int dq dq'\, \phi_0(q')^* \braket{q't'}{qt}_{f,h} \phi_0(q)\, .
+  \int \dd{q'}\dd{q} \phi_0(q')^* \braket{q't'}{qt}_{f,h} \phi_0(q)\, .
 \end{align}
 The expresson on the RHS is the vacuum-to-vacuum amplitude,
 $\braket{0,t'}{0,t}_{f,h}$, that we want to compute. The expression on
@@ -467,7 +467,7 @@ Taking the limit $T\to\infty$, $T'\to\infty$, we obtain the amplitude
   \label{eq:VacToVac}
   \braket{0}{0}_{f,h} = \int \mathcal{D}p \mathcal{D}q \, \exp
   \left\{
-    i \int_{-\infty}^\infty d\tau\, \Big[
+    i \int_{-\infty}^\infty \dd{\tau} \Big[
       p \dot{q} - (1-i\epsilon) H(p,q) + f q + h p 
       \Big]
   \right\}
