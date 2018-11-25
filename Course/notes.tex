@@ -2,7 +2,6 @@
 
 \addto\captionsUKenglish{\renewcommand{\chaptername}{Lecture}}
 \KOMAoptions{
-  twoside=true,
   titlepage=firstiscover
 }
 \addbibresource{QFT.bib}
@@ -22,6 +21,7 @@
 %\include{Includes/titlepage}
 \maketitle
 \pagenumbering{roman}
+\clearpage
 \tableofcontents
 
 \vspace{\fill}
@@ -45,7 +45,6 @@ The Feynman diagrams are generated using \texttt{tikz-feynman}\supercite{ELLIS20
 \subfile{lecture4}
 \subfile{lecture5}
 \subfile{lecture6}
-
 
 \chapter{Divergences II --- the Vertex Function}
 \label{cha:diverg-ii-vert}

@@ -45,7 +45,6 @@
 paper=a4,
 fontsize=11pt,
 parskip=half-,
-BCOR=.5cm,
 pagesize=auto,
 pagesize=pdftex,
 headinclude=false,
@@ -220,3 +219,184 @@ DIV=12
     {\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version \\[2ex] \large Version \@version\fi\\}
     }
 }
+
+\renewcommand*\maketitle[1][1]{%
+  \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
+  \else
+    \def\and{%
+      \end{tabular}%
+      \hskip 1em \@plus.17fil%
+      \begin{tabular}[t]{c}%
+    }%
+  \fi
+  \if@titlepage
+    \begin{titlepage}
+      \setcounter{page}{%
+        #1%
+      }%
+      \if@titlepageiscoverpage
+        \edef\titlepage@restore{%
+          \noexpand\endgroup
+          \noexpand\global\noexpand\@colht\the\@colht
+          \noexpand\global\noexpand\@colroom\the\@colroom
+          \noexpand\global\vsize\the\vsize
+          \noexpand\global\noexpand\@titlepageiscoverpagefalse
+          \noexpand\let\noexpand\titlepage@restore\noexpand\relax
+        }%
+        \begingroup
+        \topmargin=\dimexpr \coverpagetopmargin-1in\relax
+        \oddsidemargin=\dimexpr \coverpageleftmargin-1in\relax
+        \evensidemargin=\dimexpr \coverpageleftmargin-1in\relax
+        \textwidth=\dimexpr
+        \paperwidth-\coverpageleftmargin-\coverpagerightmargin\relax
+        \textheight=\dimexpr
+        \paperheight-\coverpagetopmargin-\coverpagebottommargin\relax
+        \headheight=0pt
+        \headsep=0pt
+        \footskip=\baselineskip
+        \@colht=\textheight
+        \@colroom=\textheight
+        \vsize=\textheight
+        \columnwidth=\textwidth
+        \hsize=\columnwidth
+        \linewidth=\hsize
+      \else
+      \let\titlepage@restore\relax
+      \fi
+      \let\footnotesize\small
+      \let\footnoterule\relax
+      \let\footnote\thanks
+      \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
+      \let\@oldmakefnmark\@makefnmark
+      \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
+      \ifx\@extratitle\@empty \else
+      \noindent\@extratitle\next@tdpage
+      \fi
+      \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
+      \vspace*{2ex}
+      \ifdefined\@school
+        \begin{minipage}{0.6\textwidth}
+        \begin{flushleft}
+                {\usekomafont{disposition} \Huge  \linespread{1.15} \@school \par}
+        \end{flushleft}
+        \end{minipage}\hfill
+        \begin{minipage}{0.3\textwidth}
+                \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\par
+        \end{minipage}\par
+        \else
+        \begin{minipage}{1\textwidth}
+          {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+        \end{minipage}
+        \fi
+        \vspace{\fill}
+        {\centering
+        \ifdefined\@coursecode
+        {\LARGE\rmfamily\scshape \@coursecode\\}
+        \fi
+        {\Huge\usekomafont{title} \@title\\}
+        \vspace{\fill}
+        {\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version \\[2ex] \large Version \@version\fi\\}
+        }
+      \par
+      \ifx\@thanks \@thanks\let\@thanks\@empty \else \@empty \fi
+      \vfill\null
+      \if@twoside
+        \@tempswatrue
+        \expandafter\ifnum \@nameuse{scr@v@3.12}>\scr@compatibility\relax
+        \else
+          \ifx\@uppertitleback\@empty\ifx\@lowertitleback\@empty
+            \@tempswafalse
+          \fi\fi
+        \fi
+        \if@tempswa
+          \next@tpage
+          \begin{minipage}[t]{\textwidth}
+            \@uppertitleback
+          \end{minipage}\par
+          \vfill
+          \begin{minipage}[b]{\textwidth}
+            \@lowertitleback
+          \end{minipage}\par
+          \@thanks\let\@thanks\@empty
+        \fi
+      \fi
+      \ifx\@dedication\@empty
+      \else
+        \next@tdpage\null\vfill
+        {\centering\usekomafont{dedication}{\@dedication \par}}%
+        \vskip \z@ \@plus3fill
+        \@thanks\let\@thanks\@empty
+        \cleardoubleemptypage
+      \fi
+      \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
+    \end{titlepage}
+  \else
+    \par
+    \@tempcnta=%
+    #1%
+    \relax\ifnum\@tempcnta=1\else
+      \ClassWarning{\KOMAClassName}{%
+        Optional argument of \string\maketitle\space ignored
+        at\MessageBreak
+        notitlepage-mode%
+      }%
+    \fi
+    \begingroup
+      \let\titlepage@restore\relax
+      \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
+      \let\@oldmakefnmark\@makefnmark
+      \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
+      \next@tdpage
+      \if@twocolumn
+        \ifnum \col@number=\@ne
+          \ifx\@extratitle\@empty\else
+            \@makeextratitle
+            \next@tdpage
+          \fi
+          \@maketitle
+        \else
+          \ifx\@extratitle\@empty\else
+            \twocolumn[\@makeextratitle]\next@tdpage
+          \fi
+          \twocolumn[\@maketitle]%
+        \fi
+      \else
+        \ifx\@extratitle\@empty\else
+          \@makeextratitle\next@tdpage
+        \fi
+        \@maketitle
+      \fi
+      \ifx\titlepagestyle\@empty\else\thispagestyle{\titlepagestyle}\fi
+      \@thanks
+    \endgroup
+  \fi
+  \setcounter{footnote}{0}%
+  \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
+    \let\thanks\relax
+    \let\maketitle\relax
+    \let\@maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\@subtitle\@empty
+    \global\let\@extratitle\@empty
+    \global\let\@titlehead\@empty
+    \global\let\@subject\@empty
+    \global\let\@publishers\@empty
+    \global\let\@uppertitleback\@empty
+    \global\let\@lowertitleback\@empty
+    \global\let\@dedication\@empty
+    \global\let\author\relax
+    \global\let\title\relax
+    \global\let\extratitle\relax
+    \global\let\titlehead\relax
+    \global\let\subject\relax
+    \global\let\publishers\relax
+    \global\let\uppertitleback\relax
+    \global\let\lowertitleback\relax
+    \global\let\dedication\relax
+    \global\let\date\relax
+  \fi
+  \global\let\and\relax
+}%
