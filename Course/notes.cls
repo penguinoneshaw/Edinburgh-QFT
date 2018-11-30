@@ -14,6 +14,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{subfiles}
 \RequirePackage[hidelinks, pdfusetitle]{hyperref}
+\urlstyle{same}
 \RequirePackage[sorting=ynt,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
 \RequirePackage{appendix}
 \RequirePackage{makeidx}
