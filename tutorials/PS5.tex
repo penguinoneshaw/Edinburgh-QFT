@@ -1,34 +1,13 @@
-\documentclass[12pt,a4paper]{article}
-%
-\setlength{\oddsidemargin}{  0mm}
-\setlength{\topmargin}    { -12mm}
-\setlength{\textheight}   { 246mm}
-\setlength{\textwidth}    { 165mm}
-\setlength{\parindent}    {  0   pt}  % not actually required but they
+\documentclass{tutorial}
 
-\setlength{\parskip}      {  6   pt}  % make paragraphs look less ugly
-
-%
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{slashed}
-\pagestyle{empty}
-
-\input{Init}
-
-\newcommand{\tphi}{\tilde{\phi}}
-\newcommand{\tj}{\tilde{J}}
-\newcommand{\tchi}{\tilde{\chi}}
-\newcommand{\psibar}{\bar{\psi}}
-\newcommand{\etabar}{\bar{\eta}}
-\newcommand{\munu}{{\mu\nu}}
+\subject{Quantum Field Theory}
+\subtitle{Problem Sheet 5}
+\title{Ward Identities and Fermions}
+\author{L.~Del Debbio}
+\date{October 2018}
 
 \begin{document}
-\begin{center}
-\textbf{ Quantum Field Theory}\\[\baselineskip]
-\end{center}
-\textbf{ Problem Sheet 5}
+\maketitle
 
 \begin{enumerate}
   \item \emph{ Translation Ward identity} \\
@@ -92,10 +71,10 @@
     This relation can be inverted, yielding:
     \begin{align}
 %      \label{eq:adag}
-      a^\dagger(\mathbf{p},s) = \int d^3x\, e^{-ip\cdot x}
+      a^\dagger(\mathbf{p},s) = \int \dd[3]{x}\, e^{-ip\cdot x}
       \bar{\psi}(x) \gamma^0 u(\mathbf{p},s) \, , \nonumber \\
 %      \label{eq:bdag}
-      b^\dagger(\mathbf{p},s) = \int d^3x\, e^{-ip\cdot x}
+      b^\dagger(\mathbf{p},s) = \int \dd[3]{x}\, e^{-ip\cdot x}
       \bar{v}(\mathbf{p},s) \gamma^0 \psi(x) \, . \nonumber 
     \end{align}
     Following the same reasoning that we used in the case of a scalar
@@ -152,6 +131,4 @@
 
 \end{enumerate}
 
-\vfill
-\hspace*{\fill}\tiny L Del Debbio, October 2018.
 \end{document}

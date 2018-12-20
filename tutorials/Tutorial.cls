@@ -76,9 +76,9 @@ DIV=12
 
 \automark{section}
 
-\ohead{\headmark\@subject}
+\ohead{\@subject}
 \ofoot{\thepage}
-\ihead{\@title}
+\ihead{\@subtitle: \@title}
 
 \usepackage[framed]{ntheorem}
 \usepackage{framed}
@@ -107,3 +107,11 @@ DIV=12
     {\usekomafont {publishers}{\@publishers \par }}
   \ifx \@dedication \@empty \else \vskip 2em {\usekomafont {dedication}{\@dedication \par }}\fi \end {center}\par \vskip 1ex
 }
+
+\newcommand{\tphi}{\tilde{\phi}}
+\newcommand{\tj}{\tilde{J}}
+\newcommand{\tchi}{\tilde{\chi}}
+\newcommand{\psibar}{\bar{\psi}}
+\newcommand{\etabar}{\bar{\eta}}
+\newcommand{\munu}{{\mu\nu}}
+\newcommand\ie{\textit{ i.e.}\ }

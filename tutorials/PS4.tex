@@ -1,26 +1,13 @@
-\documentclass[12pt,a4paper]{article}
-%
-\setlength{\oddsidemargin}{  0mm}
-\setlength{\topmargin}    { -12mm}
-\setlength{\textheight}   { 246mm}
-\setlength{\textwidth}    { 165mm}
-\setlength{\parindent}    {  0   pt}  % not actually required but they
+\documentclass{tutorial}
 
-\setlength{\parskip}      {  6   pt}  % make paragraphs look less ugly
-
-%
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\pagestyle{empty}
-
-\input{Init}
+\subject{Quantum Field Theory}
+\subtitle{Problem Sheet 4}
+\title{Scalar Correlators}
+\author{L.~Del Debbio}
+\date{October 2018}
 
 \begin{document}
-\begin{center}
-\textbf{ Quantum Field Theory}\\[\baselineskip]
-\end{center}
-\textbf{ Problem Sheet 4}
+\maketitle
 
 \begin{enumerate}
   \item \emph{ Feynman rules - 1}\\
@@ -48,7 +35,7 @@
     created in $D=4$ dimensions by the operator
     \begin{align}
       \label{eq:1}
-      a_1^\dagger &= \int d^3k  f_1(\mathbf{k}) a^\dagger(\mathbf{k})\, ,
+      a_1^\dagger &= \int \dd[3]{k}  f_1(\mathbf{k}) a^\dagger(\mathbf{k})\, ,
     \end{align}
     where $f$ is some function peaked at $\mathbf{k}_1$, and
     $a^\dagger(\mathbf{k})$ is the creation operator in the free
@@ -56,14 +43,14 @@
     time-dependent creation operator is defined as
     \begin{align}
       \label{eq:2}
-      a^\dagger(\mathbf{k},t) = -i \int d^3x\, e^{-ik\cdot x}
+      a^\dagger(\mathbf{k},t) = -i \int \dd[3]{x}\, e^{-ik\cdot x}
       \overleftrightarrow{\partial_0} \phi(x)\, .
     \end{align}
     Show that
     \begin{align}
       \label{eq:3}
       a_1^\dagger(+\infty) - a_1^\dagger(-\infty) = 
-      -i \int d^3k\, f_1(\mathbf{k}) \int d^4x\,
+      -i \int \dd[3]{k}\, f_1(\mathbf{k}) \int d^4x\,
       e^{-ik\cdot x} (\partial^2+m^2) \phi(x).
     \end{align}
  
@@ -88,9 +75,9 @@
       & \times \int d^4x_1'\, e^{i k_1'\cdot x_1'} \left(\partial_{1'}^2 + m^2\right)  
          \int d^4x_2'\, e^{i k_2'\cdot x_2'} \left(\partial_{2'}^2 +
         m^2\right) \nonumber \\
-      & \times \langle 0 | T\left(
+      & \times \expval{T\left(
         \phi(x_1) \phi(x_2) \phi(x_1') \phi(x_2')
-        \right) |0 \rangle\, .        
+        \right) }{0}.        
     \end{align}
 
 \item \emph{ Generalised LSZ}
@@ -99,7 +86,4 @@
   the initial and final state. 
 
 \end{enumerate}
-
-\vfill
-\hspace*{\fill}\tiny L Del Debbio, October 2018.
 \end{document}
