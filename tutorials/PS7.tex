@@ -1,34 +1,13 @@
-\documentclass[12pt,a4paper]{article}
-%
-\setlength{\oddsidemargin}{  0mm}
-\setlength{\topmargin}    { -12mm}
-\setlength{\textheight}   { 246mm}
-\setlength{\textwidth}    { 165mm}
-\setlength{\parindent}    {  0   pt}  % not actually required but they
+\documentclass{tutorial}
 
-\setlength{\parskip}      {  6   pt}  % make paragraphs look less ugly
-
-%
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{slashed}
-\pagestyle{empty}
-
-\input{Init}
-
-\newcommand{\tphi}{\tilde{\phi}}
-\newcommand{\tj}{\tilde{J}}
-\newcommand{\tchi}{\tilde{\chi}}
-\newcommand{\psibar}{\bar{\psi}}
-\newcommand{\etabar}{\bar{\eta}}
-\newcommand{\munu}{{\mu\nu}}
+\subject{Quantum Field Theory}
+\subtitle{Problem Sheet 7}
+\title{Loops}
+\author{L.~Del Debbio}
+\date{November 2018}
 
 \begin{document}
-\begin{center}
-\textbf{ Quantum Field Theory}\\[\baselineskip]
-\end{center}
-\textbf{ Problem Sheet 7}
+\maketitle
 
 \begin{enumerate}
 \item \emph{ Feynman parameters} \\
@@ -45,7 +24,7 @@
   \[
     \frac{1}{A_1^{\alpha_1} \ldots A_n^{\alpha_n}} =
     \frac{\Gamma(\alpha_1+\ldots+\alpha_n)}{\Gamma(\alpha_1) \ldots
-      \Gamma(\alpha_n)} \int_0^1dx_1 \ldots dx_n\,
+      \Gamma(\alpha_n)} \int_0^1\dd{x_1} \ldots \dd{x_n}\,
     \delta(1-x_1-\ldots -x_n)\,
     \frac{x_1^{\alpha_1-1} \ldots x_n^{\alpha_n-1}}{\left[x_1 A_1 +
         \ldots + x_n A_n\right]^{\alpha_1+\ldots +\alpha_n}}\, .
@@ -58,15 +37,15 @@
   Prove that the Feynman parametrization remains true if the
   integration
   \[
-    \int_0^1dx_1 \ldots dx_n\,
+    \int_0^1dx_1 \ldots \dd{x_n}\,
     \delta(1-x_1-\ldots -x_n)
   \]
   is replaced by
   \[
-    \int_0^1 \left(\prod_{l\in\nu} dx_l\right)
+    \int_0^1 \left(\prod_{l\in\nu} \dd{x_l}\right)
     \delta\left(1-\sum_{l\in\nu}x_l\right)
     \int_0^\infty \left(
-      \prod_{k\not\in\nu}dx_k\, .
+      \prod_{k\not\in\nu}\dd{x_k}\, .
     \right)
   \]
 
@@ -144,7 +123,4 @@
     regularization is used. 
     
 \end{enumerate}
-
-\vfill
-\hspace*{\fill}\tiny L Del Debbio, November 2018.
 \end{document}
