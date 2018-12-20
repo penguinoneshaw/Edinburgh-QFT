@@ -191,14 +191,14 @@ for the two-point function. After Wick rotation, we are interested in
 which is easily computed in spherical coordinates:
 \begin{align}
   I_D &= \int \frac{d\Omega_D}{(2\pi)^D}\,
-        \frac12 \int_0^\infty dq_E^2\, (q_E^2)^{D/2-1} \ESProp{q_E}{2}
+        \frac12 \int_0^\infty dq_E^2\, (q_E^2)^{\nicefrac{D}{2}-1} \ESProp{q_E}{2}
   \\
-      &= \frac{1}{(2\pi)^{D/2}} \frac{2\pi^D}{\Gamma(D/2)}\,
-        \frac12 \left(\frac{1}{M^2}\right)^{2-D/2} \int_0^1 d\xi \,
-        \xi^{1-D/2} (1-\xi)^{D/2-1} \\
+      &= \frac{1}{(2\pi)^{\nicefrac{D}{2}}} \frac{2\pi^D}{\Gamma(\nicefrac{D}{2})}\,
+        \frac12 \left(\frac{1}{M^2}\right)^{2-\nicefrac{D}{2}} \int_0^1 d\xi \,
+        \xi^{1-\nicefrac{D}{2}} (1-\xi)^{\nicefrac{D}{2}-1} \\
   \label{eq:IDResult}
-      &= \frac{1}{(4\pi)^{D/2}} \frac{\Gamma(2-D/2)}{\Gamma(2)}
-        \left(\frac{1}{M^2}\right)^{2-D/2}\, .
+      &= \frac{1}{(4\pi)^{\nicefrac{D}{2}}} \frac{\Gamma(2-\nicefrac{D}{2})}{\Gamma(2)}
+        \left(\frac{1}{M^2}\right)^{2-\nicefrac{D}{2}}\, .
 \end{align}
 
 \paragraph{Mathematical aside}
@@ -211,7 +211,7 @@ properties/tricks, which we summarise here.
   \begin{equation}
     \label{eq:SoliAngleDDim}
     \Omega_D = \int \frac{d\Omega_D} =
-    \frac{2\pi^{D/2}}{\Gamma(D/2)}\, .
+    \frac{2\pi^{\nicefrac{D}{2}}}{\Gamma(\nicefrac{D}{2})}\, .
   \end{equation}
 \item We made a change of integration variable:
   \begin{equation}
@@ -264,8 +264,8 @@ It is useful to generalise the result in Eq.~(\ref{eq:IDResult}):
   \boxed{
   \int \frac{d^Dq_E}{(2\pi)^D}\,
   \frac{\left(q_E^2\right)^a}{\left(q_E^2+M^2\right)^b}
-  = \frac{\Gamma(b-a-D/2) \Gamma(a+D/2)}{(4\pi)^{D/2} \Gamma(b)
-  \Gamma(D/2)} \left(M^2\right)^{-(b-a-D/2)}\, .}
+  = \frac{\Gamma(b-a-\nicefrac{D}{2}) \Gamma(a+\nicefrac{D}{2})}{(4\pi)^{\nicefrac{D}{2}} \Gamma(b)
+  \Gamma(\nicefrac{D}{2})} \left(M^2\right)^{-(b-a-\nicefrac{D}{2})}\, .}
 \end{equation}
 Manipulations similar to the ones above allow you to derive the
 general formula. 
