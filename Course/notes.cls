@@ -15,7 +15,7 @@
 \RequirePackage{subfiles}
 \RequirePackage[hidelinks, pdfusetitle]{hyperref}
 \urlstyle{same}
-\RequirePackage[sorting=ynt,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
+\RequirePackage[sorting=ynt,style=authoryear,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
 \RequirePackage{appendix}
 \RequirePackage{makeidx}
 
@@ -50,7 +50,8 @@ pagesize=auto,
 pagesize=pdftex,
 headinclude=false,
 footinclude=false,
-DIV=12
+DIV=12,
+captions=tableheading
 }
 
 
@@ -96,7 +97,7 @@ DIV=12
 \setcounter{tocdepth}{2}
 
 %\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10]{microtype}
-\RequirePackage[activate={true,nocompatibility},kerning=true,spacing=true,final]{microtype}
+\RequirePackage[activate={true,nocompatibility},kerning=true,spacing=true,final,babel=true]{microtype}
 \microtypecontext{spacing=nonfrench}
 
 \RequirePackage[headsepline]{scrlayer-scrpage}
