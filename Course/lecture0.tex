@@ -10,14 +10,14 @@
 Consider the $n$-dimensional integral
 \begin{equation}
   \label{eq:GaussIntOne}
-  Z_A = \int d^nx\, \exp\left(
+  Z_A = \int \dd[n]{x} \exp\left(
     -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
     \right)\, .
 \end{equation}
 If $A$ is a complex, symmetric $n\times n$ matrix such that
 \begin{align}
   & \re\ A \geq 0 \, ,\\
-  & a_i \neq 0\, , \quad a_i\ \text{e.vals of }\ A\, ,
+  & a_i \neq 0\, , \quad a_i\ \text{eigenvalues of }\ A\, ,
 \end{align}
 then 
 \begin{equation}
@@ -28,7 +28,7 @@ then
 \paragraph{General Gaussian Integral}
 
 \begin{align}
-  Z_A(b) &= \int d^nx\, \exp\left(
+  Z_A(b) &= \int \dd[n]{x} \exp\left(
   -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
   + \sum_{i=1}^n b_i x_i
   \right) \\
@@ -38,7 +38,7 @@ then
   \frac12 \sum_{i,j=1}^n b_i \Delta_{ij} b_j
   \right) \, ,
 \end{align}
-where $\Delta = A^{-1}$. The existence of $\Delta$ is guaranteed by the non-vanishing e.vals of $A$.
+where $\Delta = A^{-1}$. The existence of $\Delta$ is guaranteed by the non-vanishing eigenvalues of $A$.
 \begin{Ex}
   Check the result in Eq.~\ref{eq:GaussIntThree} by changing the integration variables in the integral:
   \[
@@ -53,7 +53,7 @@ Let $\mu$ be a measure in $\mathbb{R}^n$, we define the expectation value
 \begin{align}
   \label{eq:ExpValMu}
   \langle F \rangle_\mu &= \int d\mu(x)\, F(x) \\
-  &= \int d^nx\, \Omega(x)\, F(x)\, .
+  &= \int \dd[n]{x} \Omega(x)\, F(x)\, .
 \end{align}
 The measure is normalised so that
 \begin{equation}
@@ -118,7 +118,7 @@ which allows the correlators above to be written as
 Let us consider the Gaussian measure
 \begin{equation}
   \label{eq:GaussMeas}
-  d\mu_0(x) = d^nx\, \Omega_0(x) = d^nx\, \mathcal{N}_0 \exp\left(
+  d\mu_0(x) = \dd[n]{x} \Omega_0(x) = \dd[n]{x} \mathcal{N}_0 \exp\left(
     -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
     \right)\, ,
 \end{equation}
@@ -268,7 +268,7 @@ Starting from Eq.~\ref{eq:ToBeUsedBelow}, we can easily derive
 where again the simplification in the last line occurs because the vector $b$ is set to zero. We have obtained from the generating function a result that you may have seen already: 
 \begin{align}
   \langle x_k x_l \rangle_0 &= 
-  \mathcal{N}_0 \int d^nx\, \exp\left(
+  \mathcal{N}_0 \int \dd[n]{x} \exp\left(
     -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
     \right) x_k x_l \\
   &= A^{-1}_{kl}\, .
@@ -410,7 +410,7 @@ Let us consider now a more complicated measure,
 where the normalization is given as usual by
 \begin{align}
   \label{eq:PertGaussNorm}
-  Z(\lambda) = \int d^nx\, e^{-S(x,\lambda)}\, ,
+  Z(\lambda) = \int \dd[n]{x} e^{-S(x,\lambda)}\, ,
 \end{align}
 and 
 \begin{align}
@@ -427,7 +427,7 @@ $Z(\lambda)$ can be computed by expanding the exponential of the
 potential and using the results of the previous section.
 \begin{align}
   Z(\lambda) &= \sum_{k=0}^\infty \frac{(-\lambda)^k}{k!}\, 
-               \int d^nx\, V(x)^k  \exp\left(
+               \int \dd[n]{x} V(x)^k  \exp\left(
     -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
     \right) \\
   &= Z(0) \sum_{k=0}^\infty \frac{(-\lambda)^k}{k!}\,
@@ -644,7 +644,7 @@ moments of the distribution:
   \label{eq:lPointCorrPert}
   \langle x_{i_1} \ldots x_{i_\ell}\rangle =
   \frac{1}{Z(\lambda)} 
-  \int d^nx\, e^{-S(x;\lambda)} x_{i_1} \ldots x_{i_\ell}\, ,
+  \int \dd[n]{x} e^{-S(x;\lambda)} x_{i_1} \ldots x_{i_\ell}\, ,
 \end{equation}
 which often referred to as an $\ell$-point correlator/function. Let us start
 our discussion with a simple example. 
@@ -653,8 +653,8 @@ our discussion with a simple example.
 
 We need to evaluate
 \begin{align}
-  \int d^nx\, e^{-S(x;\lambda)} x_{i_1} x_{i_2} &= 
-  \int d^nx\, e^{-S_0(x;\lambda)}\, \left[\sum_{k=0}^\infty
+  \int \dd[n]{x} e^{-S(x;\lambda)} x_{i_1} x_{i_2} &= 
+  \int \dd[n]{x} e^{-S_0(x;\lambda)}\, \left[\sum_{k=0}^\infty
   \frac{(-)^k}{k!} \lambda^k V(x)^k \right]\, x_{i_1} x_{i_2} \\
   \label{eq:TwoPointCorrPert}
                                                &=Z(0) \sum_{k=0}^\infty
@@ -739,7 +739,7 @@ order in $\lambda$ up to order $\lambda^2$.
 \end{itemize}
 Collecting all contributions yields
 \begin{align}
-  \int d^nx\, e^{-S(x;\lambda)} 
+  \int \dd[n]{x} e^{-S(x;\lambda)} 
   x_{i_1} x_{i_2} = Z(0) & 
                            \left[
                            \Delta_{i_1 i_2} - \lambda \left(\Delta_{i_1 i_2}
@@ -852,7 +852,7 @@ $Z(0)/Z(\lambda)$ yields
   Show that all the vacuum contributions cancel when computing $\langle
   x_{i_1} x_{i_2}\rangle$. The final result is
   \begin{align}
-  \int d^nx\, e^{-S(x;\lambda)} 
+  \int \dd[n]{x} e^{-S(x;\lambda)} 
   x_{i_1} x_{i_2} = Z(0) & 
                            \left[
                            \Delta_{i_1 i_2} - \lambda  \frac12 \sum_{i=1}^n
@@ -887,7 +887,7 @@ We can now generalise the idea of a generating function to the case of
 a non Gaussian measure. Introducing
 \begin{equation}
   \label{eq:GenFunctPert}
-  Z(b;\lambda) = \int d^nx\, \exp\left[
+  Z(b;\lambda) = \int \dd[n]{x} \exp\left[
     -S(x;\lambda) + (b,x)
     \right]\, ,
 \end{equation}
