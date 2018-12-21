@@ -1,3 +1,5 @@
+% !TeX root = ./notes.tex
+
 \documentclass[notes.tex]{subfiles}
 
 \begin{document}
@@ -22,7 +24,7 @@ If $A$ is a complex, symmetric $n\times n$ matrix such that
 then 
 \begin{equation}
   \label{eq:GaussIntTwo}
-  Z_A = \left(2\pi\right)^{n/2} \left(\det A \right)^{-1/2}\, .
+  Z_A = \left(2\pi\right)^{\nicefrac{n}{2}} \left(\det A \right)^{-\nicefrac{1}{2}}\, .
 \end{equation}
 
 \paragraph{General Gaussian Integral}
@@ -33,7 +35,7 @@ then
   + \sum_{i=1}^n b_i x_i
   \right) \\
   \label{eq:GaussIntThree}
-  &=  \left(2\pi\right)^{n/2} \left(\det A \right)^{-1/2}
+  &=  \left(2\pi\right)^{\nicefrac{n}{2}} \left(\det A \right)^{-\nicefrac{1}{2}}
     \exp\left(
   \frac12 \sum_{i,j=1}^n b_i \Delta_{ij} b_j
   \right) \, ,
@@ -125,7 +127,7 @@ Let us consider the Gaussian measure
 where the normalization $\mathcal{N}_0$ is fixed by Eq.~\ref{eq:MeasureNorm}
 \begin{equation}
   \label{eq:GaussNorm}
-  \mathcal{N}_0 = \left(2\pi\right)^{-n/2}\, \left( \det A\right)^{1/2}\, .
+  \mathcal{N}_0 = \left(2\pi\right)^{-\nicefrac{n}{2}}\, \left( \det A\right)^{\nicefrac{1}{2}}\, .
 \end{equation}
 
 \begin{Ex}
@@ -467,7 +469,7 @@ This exercise is very important. Make sure you understand all the steps in full 
   Z(\lambda)/Z(0) &= 
                     1 - \frac{1}{4!} \lambda \sum_{i=1}^n \langle x_i^4\rangle_0 
                     + \frac{1}{2!} \frac{1}{(4!)^2} \lambda^2 \sum_{i,j=1}^n 
-                    \langle x_i^4 x_j^4\rangle_0 + O(\lambda^3) \\
+                    \langle x_i^4 x_j^4\rangle_0 + \mathcal{O}(\lambda^3) \\
                   &=
                     1 - \frac{\lambda}{8} \sum_{i=1}^n \Delta_{ii}^2 +
                     \nonumber\\
@@ -476,11 +478,11 @@ This exercise is very important. Make sure you understand all the steps in full 
                     \frac{1}{128} \sum_i \Delta_{ii}^2 \sum_j \Delta_{jj}^2 +
                     \frac{1}{16} \sum_{ij} \Delta_{ii} \Delta_{jj} \Delta_{ij}^2 +
                     \frac{1}{48} \sum_{ij} \Delta_{ij}^4
-                    \right] + O(\lambda^3)\, .
+                    \right] + \mathcal{O}(\lambda^3)\, .
 \end{align}
 You can check that for $n=1$ you recover the well-known result
 \begin{align}
-  Z(\lambda)/Z(0) = 1 - \frac{1}{8} \lambda + \frac{35}{184} \lambda^2 + O(\lambda^3)\, .
+  Z(\lambda)/Z(0) = 1 - \frac{1}{8} \lambda + \frac{35}{184} \lambda^2 + \mathcal{O}(\lambda^3)\, .
 \end{align}
 
 \paragraph{Diagrammatic representation}
@@ -623,7 +625,7 @@ we can compute
                     \frac{1}{48} \sum_{ij} \Delta_{ij}^4
                     \right] -  \nonumber \\
   &- \lambda^2 \frac{1}{2} \left( - \frac{1}{8}
-    \sum_{i=1}^n \Delta_{ii}^2\right)^2 +  O(\lambda^3)\, . 
+    \sum_{i=1}^n \Delta_{ii}^2\right)^2 +  \mathcal{O}(\lambda^3)\, . 
 \end{align}
 Eq.~\ref{eq:PhiFourPartitionFuncConnectOrderLambdaTwo} shows
 explicitly the cancellation at order $\lambda^2$ between the first
@@ -670,13 +672,13 @@ quartic potential:
 \end{equation}
 and compute all the terms in Eq.~\ref{eq:TwoPointCorrPert} order by
 order in $\lambda$ up to order $\lambda^2$.
-\begin{itemize}
-\item $O(\lambda^0)$ For $k=0$ we simply get the two-point Gaussian
+\begin{description}
+\item[$\mathcal{O}(\lambda^0)$] For $k=0$ we simply get the two-point Gaussian
   correlator: 
   \begin{align}
     \langle x_{i_1} x_{i_2} \rangle_0 = \Delta_{i_1 i_2}\, .
   \end{align}
-\item $O(\lambda^1)$ At first order in $\lambda$ we have one insertion
+\item[$\mathcal{O}(\lambda^1)$] At first order in $\lambda$ we have one insertion
   of $V$:
   \begin{align}
     \langle V(x) x_{i_1} x_{i_2} \rangle_0 = \frac{1}{4!} \sum_{i=1}^n
@@ -726,7 +728,7 @@ order in $\lambda$ up to order $\lambda^2$.
     + \frac{1}{4!} \times 4 \times 3 \sum_{i=1}^n \Delta_{i i_1}
     \Delta_{i i_2} \Delta_{i i} \, .
   \end{align}
-\item $O(\lambda^2)$ At this order we need to evaluate
+\item[$\mathcal{O}(\lambda^2)$] At this order we need to evaluate
   \begin{align}
     \frac{1}{2!} \langle V(x)^2 x_{i_1} x_{i_2} \rangle_0 = 
     \frac{1}{2!} \frac{1}{(4!)^2} \sum_{i,j=1}^n \langle x_i^4 x_j^4
@@ -736,7 +738,7 @@ order in $\lambda$ up to order $\lambda^2$.
   with a given multiplicity. We encourage the interested reader to
   compute those contributions, and check carefully that the correct
   multiplicities are recovered. 
-\end{itemize}
+\end{description}
 Collecting all contributions yields
 \begin{align}
   \int \dd[n]{x} e^{-S(x;\lambda)} 
@@ -822,7 +824,7 @@ Diagrammatically we have:
       \vertex [below=0.2em of i] {\(_{i}\)};  
     \end{feynman}
   \end{tikzpicture}
-  + O(\lambda^2)
+  + \mathcal{O}(\lambda^2)
   \Bigg]\, ,
 \end{align}
 where for simplicity we have omitted the contribution of order
@@ -845,7 +847,7 @@ $Z(0)/Z(\lambda)$ yields
                     - \frac{1}{2!} \frac{1}{(4!)^2} \lambda^2 \sum_{i,j=1}^n 
                     \langle x_i^4 x_j^4\rangle_0 
                    + \frac{1}{(4!)^2} \lambda^2 \left(\sum_{i=1}^n \langle x_i^4\rangle_0\right)^2
-                   + O(\lambda^3) 
+                   + \mathcal{O}(\lambda^3) 
 \end{align}
 
 \begin{Ex}
@@ -872,7 +874,7 @@ $Z(0)/Z(\lambda)$ yields
                            \right)
                            \right]\, .
 \end{align}
-Write a diagrammatic representation for the contributions $O(\lambda^2)$.
+Write a diagrammatic representation for the contributions $\mathcal{O}(\lambda^2)$.
 \end{Ex}
 This is a general property: when the integral is divided by the
 correct normalization factor $1/Z(\lambda)$, all vacuum contributions
