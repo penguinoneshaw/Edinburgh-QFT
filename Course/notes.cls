@@ -178,10 +178,10 @@ captions=tableheading
 \newcommand{\pu}{\underline{p}}
 \newcommand{\Lu}{\underline{L}}
 \newcommand{\Ju}{\underline{J}}
-\newcommand{\lap}{\nabla^2}
+\newcommand{\lap}{\laplacian}
 \newcommand{\ad}{\hat{a}}
 \newcommand{\ac}{\hat{a}^\dagger}
-\newcommand{\re}{\mathrm{Re}}
+\newcommand{\re}{\Re}
 \newcommand{\pref}[1]{(\ref{#1})}
 \newcommand{\Eqref}[1]{Eq.~(\ref{#1})}
 \newcommand{\del}{\v{\nabla}}				% Underlined del
