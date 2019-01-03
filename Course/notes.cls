@@ -13,7 +13,7 @@
 \RequirePackage{csquotes,xpatch}
 \RequirePackage{graphicx}
 \RequirePackage{subfiles}
-\RequirePackage[hidelinks, pdfusetitle]{hyperref}
+\RequirePackage[hidelinks, pdfusetitle, plainpages=false]{hyperref}
 \urlstyle{same}
 \RequirePackage[sorting=ynt,style=authoryear,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
 \RequirePackage{appendix}
