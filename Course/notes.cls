@@ -133,35 +133,35 @@ captions=tableheading
 \def\matF{\mathcal F}
 \def\matE{\mathcal E}
 \def\GL{\mathrm{GL}}
-\def\kpsi{|\psi\rangle}
-\def\kpsione{|\psi_1\rangle}
-\def\kpsitwo{|\psi_2\rangle}
-\def\kpsionep{|\psi_1^\prime\rangle}
-\def\kpsitwop{|\psi_2^\prime\rangle}
-\def\kpsii{|\psi_i\rangle}
-\def\kpsin{|\psi_n\rangle}
-\def\kpsip{|\psi^\prime\rangle}
-\def\bpsi{\langle\psi |}
-\def\bpsione{\langle\psi_1 |}
-\def\bpsitwo{\langle\psi_2 |}
-\def\bpsii{\langle\psi_i |}
-\def\bpsip{\langle\psi^\prime |}
-\def\kphi{|\phi\rangle}
-\def\kphione{|\phi_1\rangle}
-\def\kphitwo{|\phi_2\rangle}
-\def\kphii{|\phi_i\rangle}
-\def\kphip{|\phi^\prime\rangle}
-\def\bphi{\langle\phi |}
-\def\bphione{\langle\phi_1 |}
-\def\bphitwo{\langle\phi_2 |}
-\def\bphii{\langle\phi_i |}
-\def\bphip{\langle\phi^\prime |}
-\def\bchi{\langle\chi |}
-\def\bchione{\langle\chi_1 |}
-\def\bchitwo{\langle\chi_2 |}
-\def\bchii{\langle\chi_i |}
-\def\bchip{\langle\chi^\prime |}
-\def\kjm{|j,m\rangle}
+\def\kpsi{\ket{\psi}}
+\def\kpsione{\ket{\psi_1}}
+\def\kpsitwo{\ket{\psi_2}}
+\def\kpsionep{\ket{\psi_1^\prime}}
+\def\kpsitwop{\ket{\psi_2^\prime}}
+\def\kpsii{\ket{\psi_i}}
+\def\kpsin{\ket{\psi_n}}
+\def\kpsip{\ket{\psi^\prime}}
+\def\bpsi{\bra{\psi}}
+\def\bpsione{\bra{\psi_1}}
+\def\bpsitwo{\bra{\psi_2}}
+\def\bpsii{\bra{\psi_i}}
+\def\bpsip{\bra{\psi^\prime}}
+\def\kphi{\ket{\phi}}
+\def\kphione{\ket{\phi_1}}
+\def\kphitwo{\ket{\phi_2}}
+\def\kphii{\ket{\phi_i}}
+\def\kphip{\ket{\phi^\prime}}
+\def\bphi{\bra{\phi}}
+\def\bphione{\bra{\phi_1}}
+\def\bphitwo{\bra{\phi_2}}
+\def\bphii{\bra{\phi_i}}
+\def\bphip{\bra{\phi^\prime}}
+\def\bchi{\bra{\chi}}
+\def\bchione{\bra{\chi_1}}
+\def\bchitwo{\bra{\chi_2}}
+\def\bchii{\bra{\chi_i}}
+\def\bchip{\bra{\chi^\prime}}
+\def\kjm{\ket{j,m}}
 \def\tr{\mathrm{Tr}}
 \def\id{\mathds{1}}
 
