@@ -205,10 +205,10 @@ captions=tableheading
             \end{flushleft}
             \end{minipage}\hfill
             \begin{minipage}{0.3\textwidth}
-                    \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}
+                    \includegraphics[width=40mm,height=40mm]{images/crest.eps}
             \end{minipage}
     \else
-    {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+    {\centering \includegraphics[width=40mm,height=40mm]{images/crest.eps}\\}
     \fi
     \vspace*{\fill}
     
@@ -283,11 +283,11 @@ captions=tableheading
         \end{flushleft}
         \end{minipage}\hfill
         \begin{minipage}{0.3\textwidth}
-                \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\par
+                \includegraphics[width=40mm,height=40mm]{images/crest.eps}\par
         \end{minipage}\par
         \else
         \begin{minipage}{1\textwidth}
-          {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+          {\centering \includegraphics[width=40mm,height=40mm]{images/crest.eps}\\}
         \end{minipage}
         \fi
         \vspace{\fill}
