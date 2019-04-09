@@ -1,5 +1,3 @@
-include(../useLATEX.cmake)
-
 set(section_files "Sections/Renorm.tex"
 "Sections/ScalarPI.tex"
 "Sections/intro.tex"
