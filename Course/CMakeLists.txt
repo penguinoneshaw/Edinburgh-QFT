@@ -22,5 +22,15 @@ add_latex_document(
   BIBFILES QFT.bib
   USE_BIBLATEX
   CONFIGURE notes.tex
+  TARGET_NAME full_notes
 )
+
+foreach(lecture_file ${lecture_files})
+add_latex_document(
+  ${lecture_file}
+  IMAGE_DIRS images
+  BIBFILES QFT.bib
+  USE_BIBLATEX
+)
+endforeach(lecture_file ${lecture_files})
 

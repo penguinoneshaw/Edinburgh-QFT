@@ -283,11 +283,11 @@ captions=tableheading
         \end{flushleft}
         \end{minipage}\hfill
         \begin{minipage}{0.3\textwidth}
-                \includegraphics[width=40mm,height=40mm]{images/crest.eps}\par
+                \includegraphics[width=40mm,height=40mm]{images/crest}\par
         \end{minipage}\par
         \else
         \begin{minipage}{1\textwidth}
-          {\centering \includegraphics[width=40mm,height=40mm]{images/crest.eps}\\}
+          {\centering \includegraphics[width=40mm,height=40mm]{images/crest}\\}
         \end{minipage}
         \fi
         \vspace{\fill}
