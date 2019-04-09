@@ -9,9 +9,8 @@
 \begin{document}
 \maketitle
 
-\begin{enumerate}
 
-\item The general Gaussian integral can be readily evaluated:
+\section{Gaussian Integrals} The general Gaussian integral can be readily evaluated:
   \begin{align}
     Z_A(b) &= \int d^nx\, \exp\left(
              -\frac12 \sum_{i,j=1}^n x_i A_{ij} x_j
@@ -32,7 +31,7 @@
     x_i = y_i + \sum_{j=1}^n \Delta_{ij} b_j\, .
   \]
 
-\item Let $x$ and $y$ be stochastic variables such that:
+\section{Correlators} Let $x$ and $y$ be stochastic variables such that:
   \begin{align*}
     \langle x \rangle = \langle y \rangle =0\, ,
     \langle x^2 \rangle = 5\, ,
@@ -42,13 +41,13 @@
   compute $\langle x^4\rangle$, $\langle x^3 y \rangle$, $\langle x^2
   y^2\rangle$.  
 
-\item Compute the six-point function
+\section{Wick's Theorem} Compute the six-point function
   \[
     \langle x_{i_1} x_{i_2} x_{i_3} x_{i_4} x_{i_5} x_{i_6} \rangle    
   \]
   using Wick's theorem. 
 
-\item Consider 
+\section{Generating Function Correlators} Consider 
   \begin{align}
     \langle x_k F(x) \rangle_0 = 
     \int d\mu_0(x) x_k F(x) 
@@ -69,7 +68,7 @@
     \right)\, .
   \end{align}
 
-\item   Compute the ratio 
+\section{Normalised Four-Point Correlator} Compute the ratio 
 \begin{align}
   Z(\lambda)/Z(0)
 \end{align}
@@ -80,10 +79,10 @@ for the potential
 \end{equation}
 to second order in $\lambda$.
 
-\item Show that all the vacuum contributions cancel when computing
+\section{Vacuum Contributions} Show that all the vacuum contributions cancel when computing
   $\langle x_{i_1} x_{i_2}\rangle$. The final result is
   \begin{align}
-    \frac{1}{Z(\lambda)} \int d^nx\, e^{-S(x;\lambda)} 
+    \frac{1}{Z(\lambda)} \int \dd[n]{x}\, e^{-S(x;\lambda)} 
     x_{i_1} x_{i_2} = & 
                              \left[
                              \Delta_{i_1 i_2} - \lambda  \left(\frac12 \sum_{i=1}^n
@@ -105,5 +104,4 @@ to second order in $\lambda$.
   \end{align}
   Write a diagrammatic representation for the contributions $O(\lambda^2)$.
 
-\end{enumerate}
 \end{document}
