@@ -259,3 +259,6 @@ TSWLatexianTemp*
 *.sta
 
 build/**
+
+.DS_Store
+.vscode
