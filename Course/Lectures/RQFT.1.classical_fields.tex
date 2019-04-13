@@ -1,0 +1,108 @@
+% !TeX root = ../notes.tex
+
+\documentclass[notes.tex]{subfiles}
+
+\begin{document}
+\chapter{Classical Field Theory}
+\label{chap:rqft_cft}
+
+
+\section{Point Particles}
+\label{sec:rqft_cft_point-particles}
+To develop an idea of Quantum Field Theory, we can work from the classical equivalent. 
+This builds from the Lagrangian formulation of particle motion, so that is where we will start. 
+
+We define the Lagrangian, as always, as a map from a particle's position and velocity to a scalar energy quantity
+\begin{align*}
+  L(q, \dot{q}) &= T(\dot{q}) - V(\dot{q})
+\end{align*}
+where $T$ is the kinetic energy and $V$ is the potential. 
+We can then define a functional, the \emph{action} 
+\begin{align*}
+  S\qty[L(q, \dot{q})] &= \int_{t_1}^{t_2} L\qty(q(t), \dot{q}(t)) \dd{t}
+\end{align*}
+which maps the \emph{function} $L(q, \dot{q})$ to a scalar value.
+The Principle of Least Action, otherwise known as Hamilton's Principle, posits that if we fix the endpoints of the trajectory, then the actual path taken by a particle is the one which minimises the action. 
+For this, we need a definition for the \emph{variation}, a transformation under which 
+\begin{align*}
+  q^\prime(t) &= q(t) + \var{q}(t)
+\end{align*}
+such that we can ignore higher order terms. 
+
+It is thus a problem of the calculus of infinitesimals, such that
+\begin{align*}
+  \var{q}(t_1) &= 0 & \var{q}(t_2) &= 0 \\
+  \var{\dot{q}}(t_1) &= 0 & \var{\dot{q}}(t_2)
+\end{align*}
+and by the standard chain rule for infinitesimals, 
+\begin{align*}
+  \var{L} &= \pdv{L}{q}\var{q} + \pdv{L}{\dot{q}}\var{\dot{q}}\\
+  \var{S} &= \int_{t_1}^{t_2}\pdv{L}{q}\var{q} + \pdv{L}{\dot{q}}\var{\dot{q}} \dd{t}\\
+  &= 0.
+\end{align*}
+We note that due to our boundary conditions, we can use integration by parts to `flip' the time derivative
+\begin{equation*}
+  \pdv{L}{\dot{q}}\dv{t} \var{q} \mapsto - \dv{t}\qty[\pdv{L}{\dot{q}}] \var{q}
+\end{equation*}
+because the surface term, $\qty[\pdv{L}{\dot{q}}\var{q}]_{t_1}^{t_2}$, vanishes. 
+This gives us the Euler-Lagrange equation of variational calculus,
+\begin{equation}
+  \dv{t}(\pdv{L}{\dot{q}}) - \pdv{L}{q} = 0 \label{eqn1:euler-lagrange}
+\end{equation}
+which can itself be used to \emph{define} the functional derivative, which is important in \autoref{part:MQFT}, and is called the \emph{equation of motion}. 
+It is also easy to extend \autoref{eqn1:euler-lagrange} to many dimensions, with 
+\begin{equation*}
+  \dv{t}(\pdv{L}{\dot{q_i}}) - \pdv{L}{q_i} = 0
+\end{equation*}
+with $i \in \{1, 2, 3 \ldots\}$.
+
+We define generalized or \emph{canonical} momentum, \begin{equation*}
+  p_i \equiv \pdv{L}{\dot{q}_i}
+\end{equation*}
+which is the same as regular momentum if and only if the Lagrangian is quadratic in the velocities, but still defines constants of the motion. 
+This in turn leads us to the Hamiltonian using the Legendre transform such that
+\begin{align*}
+  H\qty(\qty{q_i}, \qty{p_i}) &= \sum p_i \dot{q_i} - L\qty(\qty{q_i}, \qty{\dot{q}_i})
+\end{align*}
+and we get Hamilton's equations of motion
+\begin{align*}
+  \vec{\dot{p}} &= -\grad_{\vec{q}} H & \vec{\dot{q}} &= \grad_{\vec{p}} H
+\end{align*}
+which defines the motion of the particle in phase space.
+
+\begin{example}
+  \textbf{Simple Harmonic Motion} of a single particle is defined through the Lagrangian
+  \begin{align*}
+    L(q, \dot{q}) &= \frac{1}{2} m \dot{q}^2 - \frac{1}{2} m \omega^2 q^2
+  \end{align*}
+  which gives the equation of motion and solutions which we expect when the Euler-Lagrange equation is applied
+  \begin{alignat*}{3}
+    \ddot{q} + \omega^2 q &= 0 & \quad\implies &\quad& q(t) &= q_0 e^{-i\omega_t} + q_0^\prime e^{i\omega t}.
+  \end{alignat*}
+  
+  The Hamiltonian is
+  \begin{align*}
+    H(p, q) &= p \dot{q} - \frac{1}{2} m \dot{q}^2 + \frac{1}{2} m \omega^2 q^2\\
+    &= \frac{p^2}{2m} + \frac{1}{2} m \omega^2 q^2
+  \end{align*}
+  where we've used that $p = \pdv{L}{\dot{q}} = m \dot{q}$ to eliminate all of the $\dot{q}$ terms.
+  Finally we use Hamilton's equations to derive that $\dot{p} = -m\omega^2 q$. 
+\end{example}
+
+\section{Classical Fields}
+We define a classical (real) scalar field as the map
+\begin{align*}
+  \phi : \mathbb{R}^4 \to \mathbb{R}
+\end{align*}
+such that
+\begin{align*}
+  L(x, \dot{x}) &= \int \mathcal{L}(\phi, \partial^\mu \phi) \dd[3]{\vec{x}}
+\end{align*}
+where $\mathcal{L}$ is the Lagrangian \emph{density} and our $x$ is now a Lorentz 4-vector. 
+
+\paragraph{What does this actually mean?} In the derivation in \autoref{sec:rqft_cft_point-particles}, we assumed a single particle with inertial mass $m$ which moves through a potential. It is trivial to add more particles so long as they do not interact, as we can add Lagrangians together and get the same results individually by linearity. The Lagrangian density is the infinite limit of this concept --- we now have a `particle' at every point in real space. The field represents the state of the system at a point $x$ in spacetime, such as the electromagnetic potential $A^\mu$ (which is a vector field, but let's not hold that against it) which we'll \textbf{come back to later}. The reality of the situation is that this interpretation doesn't hold for long, as it becomes a lot easier to think in terms of coupled oscillators and standing waves once quantum is introduced.
+
+
+
+\end{document}
+

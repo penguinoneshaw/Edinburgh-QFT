@@ -1,6 +1,5 @@
 \documentclass[bibliography=totoc]{notes}
 
-\addto\captionsUKenglish{\renewcommand{\chaptername}{Lecture}}
 \KOMAoptions{
   titlepage=firstiscover
 }
@@ -9,7 +8,9 @@
 \title{Quantum Field Theory}
 \coursecode{PHYS11065}
 \author{L.~Del Debbio}
-\version{@PROJECT_VERSION@}
+\makeatletter
+%\version{@PROJECT_VERSION@}
+\makeatother
 \school{
   School of Physics and Astronomy
   }
@@ -21,7 +22,6 @@
 %\include{Includes/titlepage}
 \pagenumbering{roman}
 \maketitle
-\clearpage
 \clearpage
 \tableofcontents
 
@@ -37,6 +37,14 @@ The Feynman diagrams are generated using \texttt{tikz-feynman} \parencite{ELLIS2
 \pagenumbering{arabic}
 
 \subfile{Sections/intro}
+
+\part{`Relativistic' Quantum Field Theory}
+\label{part:RQFT}
+\subfile{Lectures/RQFT.1.classical_fields.tex}
+
+\chapter{Going up, and going down}
+\part{`Modern' Quantum Field Theory}
+\label{part:MQFT}
 \subfile{Lectures/lecture0}
 \subfile{Lectures/lecture1}
 \subfile{Lectures/lecture2}

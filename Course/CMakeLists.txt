@@ -10,7 +10,8 @@ set(lecture_files
 "Lectures/lecture3.tex"
 "Lectures/lecture4.tex"
 "Lectures/lecture5.tex"
-"Lectures/lecture6.tex")
+"Lectures/lecture6.tex"
+"Lectures/RQFT.1.classical_fields.tex")
 
 add_latex_document(
   notes.tex
@@ -26,6 +27,7 @@ add_latex_document(
 foreach(lecture_file ${lecture_files})
 add_latex_document(
   ${lecture_file}
+  INPUTS notes.aux
   IMAGE_DIRS images
   BIBFILES QFT.bib
   USE_BIBLATEX
