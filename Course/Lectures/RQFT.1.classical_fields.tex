@@ -6,6 +6,7 @@
 \chapter{Classical Field Theory}
 \label{chap:rqft_cft}
 
+
 \section{Point Particles}
 \label{sec:rqft_cft_point-particles}
 To develop an idea of Quantum Field Theory, we can work from the classical equivalent. 
@@ -64,9 +65,9 @@ This in turn leads us to the Hamiltonian using the Legendre transform such that
   H\qty(\qty{q_i}, \qty{p_i}) &= \sum p_i \dot{q_i} - L\qty(\qty{q_i}, \qty{\dot{q}_i})
 \end{align*}
 and we get Hamilton's equations of motion
-\begin{align}
-  \vec{\dot{p}} &= -\grad_{\vec{q}} H & \vec{\dot{q}} &= \grad_{\vec{p}} H \label{eqn:rqft_cft_hamiltonian-eom}
-\end{align}
+\begin{align*}
+  \vec{\dot{p}} &= -\grad_{\vec{q}} H & \vec{\dot{q}} &= \grad_{\vec{p}} H
+\end{align*}
 which defines the motion of the particle in phase space.
 
 \begin{example}
@@ -97,234 +98,11 @@ such that
 \begin{align*}
   L(x, \dot{x}) &= \int \mathcal{L}(\phi, \partial^\mu \phi) \dd[3]{\vec{x}}
 \end{align*}
-where $\mathcal{L}$ is the Lagrangian \emph{density} and our $x$ is now a Lorentz 4-vector.
+where $\mathcal{L}$ is the Lagrangian \emph{density} and our $x$ is now a Lorentz 4-vector. 
 
-\begin{whatmeans}
-  In the derivation in \autoref{sec:rqft_cft_point-particles}, we assumed a single particle with inertial mass $m$ which moves through a potential. It is trivial to add more particles so long as they do not interact, as we can add Lagrangians together and get the same results individually by linearity. The Lagrangian density is the infinite limit of this concept --- we now have a generalised co-ordinate at every point in real space. The field represents the state of the system at a point $x$ in spacetime, such as in the most simple case here of the Klein-Gordon field $\phi$. The reality of the situation is that this interpretation doesn't hold for long, as it becomes a lot easier to think in terms of coupled oscillators and standing waves once quantum is introduced.
-\end{whatmeans}
-
-We can also define the action using this definition, giving a [non-obviously] Lorentz-scalar value
-\begin{align}
-  S[\mathcal{L}(\phi, \partial^\mu\phi)] &= \int \mathcal{L}(\phi, \partial^\mu\phi) \dd[4]{x}\label{eqn:rqft_cft_action_4}
-\end{align}
-with which the same process as the 1D case gives the Euler-Lagrange equation
-\begin{align*}
-  \pdv{\mathcal{L}}{\phi} - \partial^\mu\qty(\pdv{\mathcal{L}}{(\partial^\mu \phi)}) &= 0
-\end{align*}
-where we treat each derivative of the field as an independent co-ordinate. 
-
-The canonical momentum generalises via the density to canonical momentum field
-\begin{align*}
-  \pi(x) &= \pdv{\mathcal{L}}{\partial^0 \phi}\\
-  &= \pdv{\mathcal{L}}{\dot\phi}
-\end{align*}
-which leads naturally to the Hamiltonian
-\begin{align*}
-  H(x, p) &= \int\mathcal{H}(\phi, \pi) \dd[3]{\vec{x}}\\
-  \mathcal{H} &= \pi\dot\phi - \mathcal{L}(\phi, \partial^\mu \phi).
-\end{align*}
-
-  \subsection{The Klein-Gordon Field} Extending the definition of a free particle obeying the Schr\"odinger equation to relativistic quantum mechanics yields the Klein-Gordon Lagrangian
-  \begin{equation*}
-    \mathcal{L} = \frac{1}{2} (\partial_\mu \phi) (\partial^\mu \phi) - \frac{1}{2} m^2 \phi^2
-  \end{equation*} 
-  where the partial derivative terms are the `kinetic' terms and the second term is the `mass' term.
-  We can then derive the Klein-Gordon equation by using the Euler-Lagrange equation\footnote{The derivative with respect to the derivatives is somewhat weird to look at and awkward if you don't know what you're looking at. We have to use the product rule on each of the terms (as the $\partial^\mu \phi$ and $\partial_\mu \phi$) are clearly not independent, but because we can raise and lower the indices without penalty so long as it happens in pairs, it is approximately equivalent to doing $$\pdv{(\partial^\mu\phi)} (\partial^\mu \phi)^2$$ which \emph{does} yield the correct answer with the index in the wrong place in this case but once commutativity becomes a problem, we must be more careful.} such that
-  \begin{align*}
-    \pdv{\mathcal{L}}{(\partial^\mu \phi)} &= \partial^\mu \phi & \pdv{\mathcal{L}}{\phi} &= -m^2 \phi
-  \end{align*}
-  which yields
-  \begin{align}
-    (\partial^\mu\partial_\mu - m^2) \phi &= 0.
-  \end{align}
-
-  Handily, the canonical momentum is
-  \begin{align*}
-    \pi(x) &= \pdv{\mathcal{L}}{\dot\phi} \\
-    &= \dot{\phi}(x)
-  \end{align*}
-  which means that we can very easily derive the Hamiltonian
-  \begin{align*}
-    \mathcal{H} &= \pi(x) \dot\phi(x) - \mathcal{L}\\
-    &= \pi^2(x) - \frac{1}{2}(\pi^2(x) - (\grad\phi(x))^2 - m^2 \phi^2)\\
-    &= \frac{1}{2}(\pi^2(x) - (\grad\phi(x))^2 - m^2 \phi^2).
-  \end{align*}
-  
-  \subsection{Maxwell Fields} 
-  The Lagrangian for a free electromagnetic field is 
-  \begin{align*}
-    \mathcal{L} &= -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}\\
-    &= \frac{1}{2}\partial_\mu A_\nu \partial^\nu A^\mu - \frac{1}{2}\partial_\mu A_\nu \partial^\mu A^\nu
-    \intertext{where}
-    F^{\mu\nu} &= \partial^\mu A^\nu - \partial^\nu A^\mu\\
-    A &= (\phi(x), \vec{A}(x))
-  \end{align*}
- which has\footnote{$F^{\mu\nu}$ is totally anti-symmetric, which simplifies the derivatives process.} 
- \begin{align*}
-  \pdv{\mathcal{L}}{A^\mu} &= 0 & \pdv{\mathcal{L}}{(\partial_\mu A_\nu)} &= -F^{\mu\nu}
- \end{align*}
- such that the Euler-Lagrange equations give
- \begin{align*}
-   \partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu A_\nu)}) &= - \partial^2 A^\nu + \partial^\nu(\partial_\mu A^\mu)\\
-   &= - \partial_\mu F^{\mu\nu} = 0.
- \end{align*}
-
- The conjugate momenta,
- \begin{align*}
-   \pi^\mu &= \pdv{\mathcal{L}}{\dot{A}_\mu}\\&=-F^{0\mu}
- \end{align*}
-present a problem for us as physicists, as $\pi^0 = 0$ due to the antisymmetry of $F^{\mu\nu}$; this means $A^0$ is not actually a dynamical field.
-We need a `gauge fixing term' to correct this, which breaks the gauge invariance of $\mathcal{L}$ by adding a Lagrange multiplier to impose the Lorenz gauge constraint
-\begin{align*}
-  \mathcal{L} &= -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} - \frac{1}{2}\lambda(\partial_\mu A^\mu)^2
-\end{align*}
-which adjusts the Euler-Lagrange equation to
-\begin{align*}
-  - \partial_\mu F^{\mu\nu} - \lambda \partial_\mu (\partial^\nu A^\mu) &= 0.
-\end{align*}
-There is subsequently a term introduced into the canonical momentum which incorporates the fix with
-\begin{align*}
-  \pi^\mu &= -F^{0\mu} - \lambda \partial^\mu A^0\\
-  \pi^0 &= - \lambda \dot{A^0} \neq 0.
-\end{align*}
-
-This has just been the homogeneous Maxwell fields, however.
-If we account for the source term $j^\mu = (\rho, \vec{j})$, we get the Lagrangian
-\begin{align*}
-  \mathcal{L} &= -\frac{1}{2} F_{\mu\nu}F^{\mu\nu} - \frac{1}{2}\lambda(\partial_\mu A^\mu)^2 - \underbrace{j^\mu A_\mu}_{\text{\tiny source term}}
-\end{align*}
-
-\section{Discrete Symmetries}
-There are three discrete symmetries which we are interested in:
-\begin{itemize}
-  \item Symmetry under parity, in which we reverse the direction of the spatial basis. Given as the transformation $P: \vec{x} \mapsto -\vec{x}$.
-  \item Symmetry under time reversal. Given by the transformation $T: x^0 \mapsto -x^0$.
-  \item Symmetry under charge conjugation, which we will come back to later.
-\end{itemize}
+\paragraph{What does this actually mean?} In the derivation in \autoref{sec:rqft_cft_point-particles}, we assumed a single particle with inertial mass $m$ which moves through a potential. It is trivial to add more particles so long as they do not interact, as we can add Lagrangians together and get the same results individually by linearity. The Lagrangian density is the infinite limit of this concept --- we now have a `particle' at every point in real space. The field represents the state of the system at a point $x$ in spacetime, such as the electromagnetic potential $A^\mu$ (which is a vector field, but let's not hold that against it) which we'll \textbf{come back to later}. The reality of the situation is that this interpretation doesn't hold for long, as it becomes a lot easier to think in terms of coupled oscillators and standing waves once quantum is introduced.
 
 
-Under the parity transformation,
-\begin{align*}
- \phi &\mapsto \phi &\partial^\mu \phi &\mapsto \partial_\mu \phi & \implies \mathcal{L}_{\mathrm{KG}}\,& \textrm{is invariant}\\
- \pi &\mapsto \pi & \grad\phi &\mapsto -\grad\phi &\implies \mathcal{H}_{\mathrm{KG}}\,& \textrm{is invariant}
-\end{align*}
-which is good, as it means the Klein-Gordon equation is invariant reflecting physical reality.
-By definition, $\phi$ is invariant of the basis on the underlying co-ordinate system. For $\partial^\mu \phi$, we have a 4-vector quantity, so $\partial^\mu \phi = (\dot\phi, \grad\phi)$ maps to $(\dot\phi, -\grad\phi)$, which we have a convenient symbol for, $\partial_\mu \phi$. Finally, as the Lagrangian and Hamiltonian are quadratic in the field terms, they are invariant under $P$.
 
-For time reversal,
-\begin{align*}
-  \phi &\mapsto \phi &\partial^\mu \phi &\mapsto -\partial_\mu \phi & \implies \mathcal{L}_{\mathrm{KG}}\,& \textrm{is invariant}\\
-  \pi &\mapsto -\pi & \grad\phi &\mapsto \grad\phi &\implies \mathcal{H}_{\mathrm{KG}}\,& \textrm{is invariant}
-\end{align*}
-under the same arguments as for parity.
-
-With electromagnetic fields, we introduce charge conjugation, for which we swap positive charges with negative and vice versa.
-Under parity,
-\begin{align*}
-  A^\mu &\mapsto A_\mu & F^{\mu\nu} &\mapsto F_{\mu\nu} & j^\mu & \mapsto j_\mu\\
-  && \mathcal{L} & \mapsto \mathcal{L}
-\end{align*}
-as expected, and under time reversal we see that
-\begin{align*}
-  A^\mu &\mapsto -A_\mu & F^{\mu\nu} &\mapsto -F_{\mu\nu} & j^\mu & \mapsto j_\mu\\
-  && \mathcal{L} & \mapsto \mathcal{L}
-\end{align*}
-for which the only term which needs explaining is $j^\mu$.
-By definition, $j^\mu = (\rho, \vec{j})$ where $\vec{j}$ is the current, and is thus the rate of movement of charges in space. Thus, when we reverse time, the stationary distribution of charges, $\rho$, does not change, but $\vec{j}$ is reversed. Thus we say that $j^\mu \mapsto j_\mu$.
-Charge conjugation results in 
-\begin{align*}
-  A^\mu &\mapsto -A^\mu & F^{\mu\nu} &\mapsto -F^{\mu\nu} & j^\mu &\mapsto -j^\mu\\
-  && \mathcal{L} &\mapsto \mathcal{L}
-\end{align*}
-which is all to be expected. 
-
-Thus the Maxwell Lagrangian is invariant under parity, charge conjugation and time reversal, or as it is more commonly known, `under $PTC$'.
-
-\section{Continuous Symmetries and N\"other's Theorem}
-One of the useful results of the Lagrangian formulation is the application of N\"other's theorem. 
-This states that a infinitesimal variations in the action [or equation of motion, or Lagrangian] along invariants of the equation gives `conserved currents', which are invariant quantities of the system.
-
-\begin{whatmeans}
-  In the classical `things moving about quite slowly following the physics of big things' world, the main conserved quantities are energy, linear momentum and angular momentum. This is different from the canonical momentum in many cases, and this gets even worse in the field theory universe.
-
-  A conserved quantity is defined by the continuity equation
-  \begin{align*}
-    \partial_\mu j^\mu(x) = 0
-  \end{align*}
-  which requires that the value does not vary either over time, or spatially.
-
-  How to intuit the meaning of the canonical \emph{or} physical momentum of a field is more difficult problem.
-\end{whatmeans}
-
-In its simplest form, we look at a Lagrangian which is invariant under the field transformation
-\begin{align*}
-  \phi(x) \mapsto \phi^\prime(x) &= \phi(x) + \var{\phi}(x)
-\end{align*}
-which gives us the Lagrangian varying as
-\begin{align*}
-  \var{\mathcal{L}} &= \pdv{\mathcal{L}}{\phi}\var{\phi} + \pdv{\mathcal{L}}{(\partial_\mu\phi)}\var(\partial_\mu\phi)\\
-  &= \partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu\phi)}) \var\phi + \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var(\partial_\mu\phi) \\
-  &= \partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi)\\
-  &= 0
-\end{align*}
-where we've used the Euler-Lagrange equation to coerce into a total derivative. We can now compare this with the continuity equation to get a conserved current
-\begin{align*}
-  j^\mu &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi
-\end{align*}
-from which we can get values which work and act like `charges', but aren't. 
-We call these
-\begin{align*}
-  Q &= \int j^0 \dd[3]{x}\intertext{such that}
-  \dot{Q} &= \quad\!\int \pdv{j^0}{x^0}\dd[3]{x}\\
-    &=  -\int \pdv{j^i}{x^i}\dd[3]{x}\\
-    &= 0
-\end{align*}
-in analogy with charges in electromagnetism, and assuming the fields fall off sufficiently at infinity.
-
-Generalising, we can allow for an arbitrary divergence of the form 
-\begin{align}
-  \mathcal{L} \mapsto \mathcal{L}^\prime &= \mathcal{L} + \partial_\mu \Lambda^\mu \label{eqn:rqft_cft_lagrangian-variation}
-\end{align}
- in the Lagrangian, as they are provably always invariant under this transformation, such that the conserved current becomes
- \begin{align*}
-  j^\mu &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi + \Lambda^\mu.
- \end{align*}
-
-
-In a scalar field, the action is conserved under 
-\begin{enumerate}
-  \item Spacetime translations $x^\mu \mapsto (x^\prime)^\mu = x^\mu + a^\mu$
-  \item Lorentz transformation $x^\mu \mapsto (x^\prime)^\mu = \Lambda \indices{^\mu_\nu}x^\nu$
-\end{enumerate}
-which leads to energy-linear momentum conservation and angular momentum conservation respectively.
-
-Spacetime translations induce a variation in the field and Lagrangian of
-\begin{align*}
-  \phi(x) \mapsto \phi(x+a) &= \phi(x) + a^\mu \partial_\mu \phi(x)\\
-  \mathcal{L} \mapsto \mathcal{L}^\prime &= \mathcal{L} + a^\mu \partial_\mu \mathcal{L}
-\end{align*}
-using the first order Taylor series expansion.
-We need to be able to compare these with \autoref{eqn:rqft_cft_lagrangian-variation} so we reshuffle the Lagrangian variation such that
-\begin{align*}
-  \var\mathcal{L} &= a^\nu\partial_\mu \mathcal{L}\delta^\mu_\nu
-\end{align*}
-which if we scale out the arbitrary $a$ factor, gives the required variation to give the conserved tensor
-\begin{align*}
-  \tensor{T}{^\mu_\nu} &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi + \mathcal{L}\delta^\mu_\nu
-\end{align*}
-which we call the Stress-Energy Tensor.
-This gives us the conserved `charges'
-\begin{align*}
-  P_\nu &= \int \tensor{T}{^0_\nu} \dd[3]{\vec{x}}
-\end{align*}
-which gives us 
-\begin{align*}
-  P_0 &= \int \tensor{T}{^0_0} \dd[3]{\vec{x}} & P_i &= \int \tensor{T}{^0_i} \dd[3]{\vec{x}}\\
-  &= \int \pdv{\mathcal{L}}{\dot\phi} - \mathcal{L} \dd[3]{\vec{x}}& &=\int \pi \partial_i \phi \dd[3]{\vec{x}} \\
-  &= H
-\end{align*}
-which are the Hamiltonian and the \emph{actual} momentum respectively. 
-
-Following through this analysis with the Lorentz transformation gives the conservation of angular momentum, since a Lorentz transformation is simply a rotation in spacetime.
 \end{document}
 
