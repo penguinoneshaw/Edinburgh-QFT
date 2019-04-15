@@ -20,6 +20,7 @@
 \RequirePackage{makeidx}
 \RequirePackage{xstring}
 
+\RequirePackage[usenames,dvipsnames]{xcolor}
 % Maths Packages
 \RequirePackage[arrowdel]{physics}
 \RequirePackage{nicefrac}
@@ -88,6 +89,8 @@ captions=tableheading
 \RequirePackage[tikz]{mdframed}
 \newmdenv[frametitle=Example,roundcorner=5pt]{example}
 \newmdenv[frametitle=Note,roundcorner=5pt]{note}
+
+\newmdenv[frametitle={\textcolor{red}{What} \textcolor{orange}{does} \textcolor{PineGreen}{this} \textcolor{blue}{actually} \textcolor{violet}{mean?}}, linecolor=Goldenrod]{whatmeans}
 \renewcommand\hbar\hslash
 \newcommand{\DD}[1]{\ensuremath{\mathcal{D} #1\,}}
 
