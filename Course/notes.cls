@@ -39,13 +39,14 @@
 \RequirePackage{relsize}
 \RequirePackage{booktabs}
 \RequirePackage{framed}
+\RequirePackage{tensor}
 
 \KOMAoption{chapterprefix}{true}
 
 \KOMAoptions{
 paper=a4,
 fontsize=11pt,
-parskip=half-,
+parskip=half+,
 pagesize=auto,
 pagesize=pdftex,
 headinclude=false,
