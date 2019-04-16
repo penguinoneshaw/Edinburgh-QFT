@@ -218,5 +218,113 @@ For time reversal,
 \end{align*}
 under the same arguments as for parity.
 
+With electromagnetic fields, we introduce charge conjugation, for which we swap positive charges with negative and vice versa.
+Under parity,
+\begin{align*}
+  A^\mu &\mapsto A_\mu & F^{\mu\nu} &\mapsto F_{\mu\nu} & j^\mu & \mapsto j_\mu\\
+  && \mathcal{L} & \mapsto \mathcal{L}
+\end{align*}
+as expected, and under time reversal we see that
+\begin{align*}
+  A^\mu &\mapsto -A_\mu & F^{\mu\nu} &\mapsto -F_{\mu\nu} & j^\mu & \mapsto j_\mu\\
+  && \mathcal{L} & \mapsto \mathcal{L}
+\end{align*}
+for which the only term which needs explaining is $j^\mu$.
+By definition, $j^\mu = (\rho, \vec{j})$ where $\vec{j}$ is the current, and is thus the rate of movement of charges in space. Thus, when we reverse time, the stationary distribution of charges, $\rho$, does not change, but $\vec{j}$ is reversed. Thus we say that $j^\mu \mapsto j_\mu$.
+Charge conjugation results in 
+\begin{align*}
+  A^\mu &\mapsto -A^\mu & F^{\mu\nu} &\mapsto -F^{\mu\nu} & j^\mu &\mapsto -j^\mu\\
+  && \mathcal{L} &\mapsto \mathcal{L}
+\end{align*}
+which is all to be expected. 
+
+Thus the Maxwell Lagrangian is invariant under parity, charge conjugation and time reversal, or as it is more commonly known, `under $PTC$'.
+
+\section{Continuous Symmetries and N\"other's Theorem}
+One of the useful results of the Lagrangian formulation is the application of N\"other's theorem. 
+This states that a infinitesimal variations in the action [or equation of motion, or Lagrangian] along invariants of the equation gives `conserved currents', which are invariant quantities of the system.
+
+\begin{whatmeans}
+  In the classical `things moving about quite slowly following the physics of big things' world, the main conserved quantities are energy, linear momentum and angular momentum. This is different from the canonical momentum in many cases, and this gets even worse in the field theory universe.
+
+  A conserved quantity is defined by the continuity equation
+  \begin{align*}
+    \partial_\mu j^\mu(x) = 0
+  \end{align*}
+  which requires that the value does not vary either over time, or spatially.
+
+  How to intuit the meaning of the canonical \emph{or} physical momentum of a field is more difficult problem.
+\end{whatmeans}
+
+In its simplest form, we look at a Lagrangian which is invariant under the field transformation
+\begin{align*}
+  \phi(x) \mapsto \phi^\prime(x) &= \phi(x) + \var{\phi}(x)
+\end{align*}
+which gives us the Lagrangian varying as
+\begin{align*}
+  \var{\mathcal{L}} &= \pdv{\mathcal{L}}{\phi}\var{\phi} + \pdv{\mathcal{L}}{(\partial_\mu\phi)}\var(\partial_\mu\phi)\\
+  &= \partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu\phi)}) \var\phi + \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var(\partial_\mu\phi) \\
+  &= \partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi)\\
+  &= 0
+\end{align*}
+where we've used the Euler-Lagrange equation to coerce into a total derivative. We can now compare this with the continuity equation to get a conserved current
+\begin{align*}
+  j^\mu &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi
+\end{align*}
+from which we can get values which work and act like `charges', but aren't. 
+We call these
+\begin{align*}
+  Q &= \int j^0 \dd[3]{x}\intertext{such that}
+  \dot{Q} &= \quad\!\int \pdv{j^0}{x^0}\dd[3]{x}\\
+    &=  -\int \pdv{j^i}{x^i}\dd[3]{x}\\
+    &= 0
+\end{align*}
+in analogy with charges in electromagnetism, and assuming the fields fall off sufficiently at infinity.
+
+Generalising, we can allow for an arbitrary divergence of the form 
+\begin{align}
+  \mathcal{L} \mapsto \mathcal{L}^\prime &= \mathcal{L} + \partial_\mu \Lambda^\mu \label{eqn:rqft_cft_lagrangian-variation}
+\end{align}
+ in the Lagrangian, as they are provably always invariant under this transformation, such that the conserved current becomes
+ \begin{align*}
+  j^\mu &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi + \Lambda^\mu.
+ \end{align*}
+
+
+In a scalar field, the action is conserved under 
+\begin{enumerate}
+  \item Spacetime translations $x^\mu \mapsto (x^\prime)^\mu = x^\mu + a^\mu$
+  \item Lorentz transformation $x^\mu \mapsto (x^\prime)^\mu = \Lambda \indices{^\mu_\nu}x^\nu$
+\end{enumerate}
+which leads to energy-linear momentum conservation and angular momentum conservation respectively.
+
+Spacetime translations induce a variation in the field and Lagrangian of
+\begin{align*}
+  \phi(x) \mapsto \phi(x+a) &= \phi(x) + a^\mu \partial_\mu \phi(x)\\
+  \mathcal{L} \mapsto \mathcal{L}^\prime &= \mathcal{L} + a^\mu \partial_\mu \mathcal{L}
+\end{align*}
+using the first order Taylor series expansion.
+We need to be able to compare these with \autoref{eqn:rqft_cft_lagrangian-variation} so we reshuffle the Lagrangian variation such that
+\begin{align*}
+  \var\mathcal{L} &= a^\nu\partial_\mu \mathcal{L}\delta^\mu_\nu
+\end{align*}
+which if we scale out the arbitrary $a$ factor, gives the required variation to give the conserved tensor
+\begin{align*}
+  \tensor{T}{^\mu_\nu} &= \pdv{\mathcal{L}}{(\partial_\mu\phi)} \var\phi + \mathcal{L}\delta^\mu_\nu
+\end{align*}
+which we call the Stress-Energy Tensor.
+This gives us the conserved `charges'
+\begin{align*}
+  P_\nu &= \int \tensor{T}{^0_\nu} \dd[3]{\vec{x}}
+\end{align*}
+which gives us 
+\begin{align*}
+  P_0 &= \int \tensor{T}{^0_0} \dd[3]{\vec{x}} & P_i &= \int \tensor{T}{^0_i} \dd[3]{\vec{x}}\\
+  &= \int \pdv{\mathcal{L}}{\dot\phi} - \mathcal{L} \dd[3]{\vec{x}}& &=\int \pi \partial_i \phi \dd[3]{\vec{x}} \\
+  &= H
+\end{align*}
+which are the Hamiltonian and the \emph{actual} momentum respectively. 
+
+Following through this analysis with the Lorentz transformation gives the conservation of angular momentum, since a Lorentz transformation is simply a rotation in spacetime.
 \end{document}
 
