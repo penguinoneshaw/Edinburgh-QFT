@@ -1,3 +1,5 @@
+% !TeX root = ./notes.tex
+
 \documentclass[notes]{subfiles}
 \setcounter{chapter}{3}
 
@@ -259,7 +261,7 @@ The Feynman rules in momentum space can be summarised as follows
   the vertex.
 \item Four-momenta flow along the arrows, and the total momentum is
   conserved at each vertex. For a diagram without loops, this fixes
-  the momentum of {\em all} internal lines. 
+  the momentum of \emph{all} internal lines. 
 \item The value of the diagram is given by the product of a factor of
   $i/(p^2-m^2+i\epsilon)$ for each line with momentum $p$, a factor of
   $1/i$ for the external end of a line, and a factor $ig (1/i)^\#$ for
@@ -269,7 +271,7 @@ The Feynman rules in momentum space can be summarised as follows
   not fixed by momentum conservation. We integrate over those momenta,
   with measure $d^p/(2\pi)^D$. 
 \item Determine the symmetry factor associated to permutations of
-  {\em internal} propagators and vertices. 
+  \emph{internal} propagators and vertices. 
 \end{enumerate}
 
 \begin{Ex}
@@ -284,7 +286,7 @@ The Feynman rules in momentum space can be summarised as follows
 The eigenstates of the Hamiltonian form a complete set of states. They
 can be classified in three categories.
 \begin{enumerate}
-\item The vacuum state $|0\rangle$ is the lowest energy state, and
+\item The vacuum state $\ket{0}$ is the lowest energy state, and
   corresponds to a state with no particles.
 \item The one-particle states $|\mathbf{p},\sigma\rangle$ are
   classified by their spatial momentum. Their energy is given by the
@@ -294,7 +296,7 @@ can be classified in three categories.
     E_p = \sqrt{\mathbf{p}^2 + \mphys^2}\, ,
   \end{equation}
   where $\mphys$ denotes the physical mass of the state. Note that the
-  physical mass {\em does not} need to coincide with the mass that
+  physical mass \emph{does not} need to coincide with the mass that
   appears in the Lagrangian. We will discuss this point in detail
   later. Any other quantum number necessary to identify the particle
   is denoted here by $\sigma$.  The states are normalised by imposing
@@ -314,7 +316,7 @@ can be classified in three categories.
 \end{enumerate}
 The completeness relation can be written as
 \begin{align}
-  |0\rangle \langle 0| 
+  \ketbra{0}{0}
   &+ \sum_\sigma \int d\Omega_p 
     |\mathbf{p},\sigma\rangle \langle \mathbf{p},\sigma| + \nonumber
   \\
@@ -374,8 +376,8 @@ we can write
 \end{align}
 and hence
 \begin{align}
-  \langle 0| T \phi(x_1) \ldots \phi(x_r) | p,\sigma\rangle = 
-  e^{-i p \cdot x_1}  \langle 0| T \phi(0) \ldots \phi(y_r) |
+  \bra{0} T \phi(x_1) \ldots \phi(x_r) | p,\sigma\rangle = 
+  e^{-i p \cdot x_1}  \bra{0} T \phi(0) \ldots \phi(y_r) |
   p,\sigma\rangle\, .
 \end{align}
 A similar shift of the integration variables can be done using
@@ -407,9 +409,9 @@ and performing the integrals over $x_1$ and $x_{r+1}$, yields
     \right]
     \right\} \nonumber \\
   & \times \sum_\sigma \int d\Omega_p
-    \langle 0 |  T \phi(0) \ldots \phi(y_r) |
+    \bra{0}  T \phi(0) \ldots \phi(y_r) |
     p,\sigma\rangle \langle p, \sigma | T \phi(0) \ldots \phi(y_n)
-    |0\rangle \nonumber \\
+    \ket{0} \nonumber \\
   & \times (2\pi)^D \delta(\mathbf{p} - \mathbf{p}_1 - \ldots -
     \mathbf{p}_r) \, 
     \delta(E_p + \omega - p_1^0 - \ldots - p_{r}^0) \nonumber \\
@@ -445,18 +447,16 @@ In the equation above we have defined
   M_{0|q\sigma}(p_2,\ldots,p_r) 
   &= \int d^Dy_2 \ldots d^Dy_r\, 
     e^{-ip_2\cdot y_2} \ldots e^{-ip_r\cdot y_r}
-    \langle 0 |  T \phi(0) \ldots \phi(y_r) |
-    q,\sigma\rangle \, , \\
+    \mel{0}{T \phi(0) \ldots \phi(y_r)}{q,\sigma}, \\
  M_{q\sigma|0}(p_{r+2},\ldots, p_n) 
   &= \int d^Dy_{r+2} \ldots d^Dy_n\, 
     e^{-ip_{r+2}\cdot y_{r+2}} \ldots e^{-ip_n\cdot y_n}
-    \langle q,\sigma |  T \phi(0) \ldots \phi(y_n) |
-    0\rangle \, ,
+    \mel{q,\sigma}{  T \phi(0) \ldots \phi(y_n)}{0},
 \end{align}
 and we notice that this contribution appears multiplied by a Dirac
 delta that enforces the conservation of total momentum. The important
 result here is that the correlators in momentum space have a pole
-singularity whenever $q=p_1+\ldots+p_r$ {\em goes on-shell}, \ie
+singularity whenever $q=p_1+\ldots+p_r$ \emph{goes on-shell}, \ie
 $q^2=\mphys^2$.
 
 Note that these results are completely general, and in particular do
@@ -470,15 +470,15 @@ that allows us to extract some physical information about the scalar
 field. We define the full propagator as
 \begin{equation}
   \label{eq:FullProp}
-  \Delta_F(x-y) = i \langle 0| T \phi(x) \phi(y) |0\rangle \, ,
+  \Delta_F(x-y) = i \bra{0} T \phi(x) \phi(y) \ket{0} \, ,
 \end{equation}
 and define the field so that
 \begin{equation}
   \label{eq:FieldNorm}
-  \langle 0 | \phi(x) | 0\rangle = 0\, ,\ \mathrm{and}\
-  \langle \mathbf{p}| \phi(0) | 0\rangle = 1\, ,
+  \bra{0} \phi(x) \ket{0} = 0\, ,\ \mathrm{and}\
+  \langle \mathbf{p}| \phi(0) \ket{0} = 1\, ,
 \end{equation}
-where $|\mathbf{p}\rangle$ represents the physical one-particle state,
+where $\ket{\mathbf{p}}$ represents the physical one-particle state,
 and we have dropped the dependence on $\sigma$. As usual the full
 propagator in momentum space is defined by taking the Fourier
 transform:
@@ -505,53 +505,53 @@ For the interacting theory, we can derive a general expression, which
 again does not rely on the perturbative definition of the two-point
 function. Let us first consider the case where $x^0>y^0$:
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
-  =& \langle 0| \phi(x) \phi(y) |0\rangle \nonumber \\
-  =& \langle 0| \phi(x) |0\rangle \langle 0 | \phi(y) |0\rangle +
+  \bra{0} T \phi(x) \phi(y) \ket{0}
+  =& \bra{0} \phi(x) \phi(y) \ket{0} \nonumber \\
+  =& \bra{0} \phi(x) \ket{0} \bra{0} \phi(y) \ket{0} +
      \nonumber \\
-  &+ \int d\Omega_p\, \langle 0| \phi(x)| \mathbf{p}\rangle
-    \langle \mathbf{p} | \phi(y) |0\rangle + \nonumber \\
-  &+ \sum_n \int d\Omega_P\, \langle 0| \phi(x) |\mathbf{P}, n\rangle
-    \langle \mathbf{P}, n |\phi(y) |0\rangle\, .
+  &+ \int d\Omega_p\, \bra{0} \phi(x)| \mathbf{p}\rangle
+    \langle \mathbf{p} | \phi(y) \ket{0} + \nonumber \\
+  &+ \sum_n \int d\Omega_P\, \bra{0} \phi(x) |\mathbf{P}, n\rangle
+    \langle \mathbf{P}, n |\phi(y) \ket{0}\, .
 \end{align}
 The conventions in Eq.~(\ref{eq:FieldNorm}) allow us to simplify the
 expression above.
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
+  \bra{0} T \phi(x) \phi(y) \ket{0}
   =& \int d\Omega_p\, e^{-ip\cdot (x-y)} + \nonumber \\
    &+ \sum_n \int d\Omega_p\, e^{-ip\cdot (x-y)}\, \left|
-    \langle \mathbf{p}, n |\phi(0) |0\rangle \right|^2 \, .
+    \langle \mathbf{p}, n |\phi(0) \ket{0} \right|^2 \, .
 \end{align}
 Because we are working with a scalar field, the matrix element
-$\langle \mathbf{p}, n |\phi(0) |0\rangle$ is invariant under Lorentz
+$\langle \mathbf{p}, n |\phi(0) \ket{0}$ is invariant under Lorentz
 transformations, and therefore can only depend on $p$ via the
-invariant mass $M^2$. We can therefore introduce the {\em spectral
+invariant mass $M^2$. We can therefore introduce the \emph{spectral
   density}
 \begin{align}
   \label{eq:SpecDen}
   \rho(s) = \sum_n \left|
-    \langle \mathbf{p}, n |\phi(0) |0\rangle \right|^2 \, 
+    \langle \mathbf{p}, n |\phi(0) \ket{0} \right|^2 \, 
   \delta(s-M^2)\, ,
 \end{align}
 and write the two-point correlator as
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
+  \bra{0} T \phi(x) \phi(y) \ket{0}
   =& \int d\Omega_p\, e^{-ip\cdot (x-y)} + \nonumber \\
    &+ \int_{4m^2}^\infty ds\, \rho(s) \int d\Omega_p\,  e^{-ip\cdot
      (x-y)}\, .
 \end{align}
 Similar manipulations for the case $y^0>x^0$ yield
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
+  \bra{0} T \phi(x) \phi(y) \ket{0}
   =& \int d\Omega_p\, e^{ip\cdot (x-y)} + \nonumber \\
    &+ \int_{4m^2}^\infty ds\, \rho(s) \int d\Omega_p\,  e^{ip\cdot
      (x-y)}\, .
 \end{align}
 Collecting both contributions to the $T$-ordered product 
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
-  = \theta(x^0-y^0)  \langle 0| \phi(x) \phi(y) |0\rangle
-  + \theta(y^0-x^0)  \langle 0| \phi(y) \phi(x) |0\rangle\, ,
+  \bra{0} T \phi(x) \phi(y) \ket{0}
+  = \theta(x^0-y^0)  \bra{0} \phi(x) \phi(y) \ket{0}
+  + \theta(y^0-x^0)  \bra{0} \phi(y) \phi(x) \ket{0}\, ,
 \end{align}
 and using 
 \begin{align}
@@ -562,7 +562,7 @@ and using
 \end{align}
 we finally obtain
 \begin{align}
-  \langle 0| T \phi(x) \phi(y) |0\rangle
+  \bra{0} T \phi(x) \phi(y) \ket{0}
   =& \int \frac{d^Dp}{(2\pi)^D}\,
      e^{-ip\cdot(x-y)} \Big[
      \frac{1}{p^2-\mphys^2+i\epsilon} + \nonumber \\
@@ -591,8 +591,8 @@ Eq.~(\ref{eq:KLusual}).
 In order to compute the quantum amplitude for a physical process
 involving arbitrary numbers of particles in the initial and final
 state, we need to compute the overlap of a state prepared in the
-distant past (the so-called {\em in} state), with the resulting final
-state in the distant future (the so-called {\em out} state). If
+distant past (the so-called \emph{in} state), with the resulting final
+state in the distant future (the so-called \emph{out} state). If
 we want to describe a $2\to n$ process -- like a $pp$ collision at
 the LHC -- we need to compute
 \begin{equation}
@@ -630,10 +630,10 @@ least) $n$ poles, each corresponding to one of the momenta
 $p_i\to \mphys^2$. The residue at this multiple pole yields the $S$-matrix
 for a scattering process involving $n$-particles:
 \begin{align}
-   \langle p_{1}' \ldots p_{m'}'; \mathrm{out} | p_{1} \ldots p_{m};
-  \mathrm{in} \rangle 
+   \braket{ p_{1}' \ldots p_{m'}'; \mathrm{out} }{ p_{1} \ldots p_{m};
+  \mathrm{in}}
   =& 
-  \langle p_{1}' \ldots p_{m'}' | S | p_{1} \ldots p_{m} \rangle \\
+  \mel{p_{1}' \ldots p_{m'}'}{S}{p_{1} \ldots p_{m}} \\
   =& 
   \lim_{p_j^2,p_k'^2 \to \mphys^2} \prod_{k=1}^{m'}
   (p_k'^2-\mphys^2+i\epsilon)
@@ -644,7 +644,7 @@ for a scattering process involving $n$-particles:
 \end{align}
 where $n=m+m'$, and the fields are normalised so that
 \begin{align}
-  \langle \mathbf{p} | \phi(0) | 0\rangle = 1\,.
+  \langle \mathbf{p} | \phi(0) \ket{0} = 1\,.
 \end{align}
 We will return to the question of the normalisation of the field
 later. The LSZ reduction formula provides an elegant way to represent
@@ -655,7 +655,7 @@ the same rules discussed above, with the following modifications.
   correspond to particles in the final state. 
 \item We multiply each external line by a factor of
   $-i(p^2-\mphys^2+i\epsilon)$ -- the correlators multiplied by these
-  factors are called {\em truncated} (or {\em amputated}) correlators.
+  factors are called \emph{truncated} (or \emph{amputated}) correlators.
 \end{enumerate}
 
 A heuristic derivation of the LSZ reduction formula is discussed in
@@ -693,7 +693,7 @@ initial state $a$ and a final state $b$, and let us factor out a Dirac
 delta that corresponds to total momentum conservation, 
 \begin{equation}
   \label{eq:MAmplitude}
-  \langle b | T | a\rangle = (2\pi)^D \delta(P_a - P_b)\, \mathcal{M}(a
+  \bra{b} T \ket{a} = (2\pi)^D \delta(P_a - P_b)\, \mathcal{M}(a
   \to b)\, .
 \end{equation}
 Some simple algebra yields on the LHS
@@ -719,15 +719,15 @@ The unitarity condition simplifies for $a=b$,
     \mathcal{M}(a\to f)
   \right|^2\, .
 \end{equation}
-This is the so-called {\em optical theorem}, which relates the
+This is the so-called \emph{optical theorem}, which relates the
 imaginary part of the forward $a\to a$ amplitude (LHS) to the total cross
-section $a\to f$ (RHS), summed over {\em all} final states $f$.
+section $a\to f$ (RHS), summed over \emph{all} final states $f$.
 
 \section{Ward identities}
 \label{sec:ward-identities}
 
 The final example of relations between correlators that we are going
-to discuss are the so-called {\em Ward identities}. Ward identities
+to discuss are the so-called \emph{Ward identities}. Ward identities
 are equalities between field correlators that are obtained as a
 consequence of symmetries of the system. In classical mechanics,
 symmetries of the action translate into conserved currents according
@@ -794,7 +794,7 @@ that makes its physical content more obvious:
 \end{align}
 Eq.~(\ref{eq:IntWardId}) is sometimes referred to as an {\em
   integrated Ward identity}. Since it has to be satisfied for every
-function $\epsilon(x)$, we can derive the {\em Ward identity}:
+function $\epsilon(x)$, we can derive the \emph{Ward identity}:
 \begin{align}
   \label{eq:WardId}
    -i \langle \partial_\mu j^\mu(x)
@@ -812,13 +812,13 @@ There are two important physical results encoded in Eq.~(\ref{eq:WardId}).
   the terms that come from the variation of $O$. If $O$ is a product
   of local fields, this variations is localised in space-time, \ie the
   contributions are all proportional to Dirac deltas. These terms are
-  called {\em contact terms}.  
+  called \emph{contact terms}.  
 \end{enumerate}
 
 Note that in deriving the Ward identity above we have assumed that the
 integration measure $\mathcal{D}\phi$ is invariant, \ie
 $\mathcal{D}\phi=\mathcal{D}\phi'$. There are examples where the
-measure is {\em not} invariant, which lead to extra terms in the Ward
+measure is \emph{not} invariant, which lead to extra terms in the Ward
 identities. In these cases the Ward identities are called {\em
   anomalous}. 
 \end{document}

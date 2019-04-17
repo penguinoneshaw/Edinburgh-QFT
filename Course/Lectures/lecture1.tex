@@ -1,3 +1,5 @@
+% !TeX root = ./notes.tex
+
 \documentclass[notes]{subfiles}
    
 \setcounter{chapter}{1}
@@ -31,7 +33,7 @@ amplitude $\braket{q't'}{qt}$ for a system in state $\ket{q}$ at time
 $t$ to evolve in state $\ket{q'}$ at time $t'$,
 \begin{equation}
   \label{eq:AmplitudeDef}
-  \braket{q't'}{qt} = \langle q' | e^{-i \hat{H} (t'-t)}|q\rangle\, ,
+  \braket{q't'}{qt} = \bra{ q'} e^{-i \hat{H} (t'-t)}\ket{q}\, ,
 \end{equation}
 where $\hat{H}$ is the Hamiltonian of the system. 
 
@@ -47,9 +49,9 @@ integer. Then
   t_n &= t + n \epsilon = t'\, .
 \end{align}
 \begin{align}
-  \langle q' | e^{-i \hat{H} (t'-t)}|q\rangle &= 
-                 \langle q' | e^{-i \hat{H} T} | q\rangle \\
-               &= \langle q' | \left(e^{-i \hat{H} \epsilon}\right)
+  \bra{ q'} e^{-i \hat{H} (t'-t)}\ket{q} &= 
+                 \bra{ q'} e^{-i \hat{H} T} \ket{q} \\
+               &= \bra{ q'} \left(e^{-i \hat{H} \epsilon}\right)
                  \ldots \left(e^{-i \hat{H} \epsilon}\right) |
                  q\rangle\, ,
 \end{align}
@@ -59,10 +61,10 @@ Inserting the completeness relation $n-1$ times,
 \begin{align}
   \label{eq:AmplitudeStepOne}
   \braket{q't'}{qt} = \int \prod_{k=1}^{n-1}dq_k\,
-  \langle q' | \left(e^{-i \hat{H} \epsilon}\right) |q_{n-1}\rangle
-  \langle q_{n-1} | \left(e^{-i \hat{H} \epsilon}\right) |
-  q_{n-2}\rangle \ldots \langle q_1 | \left(e^{-i \hat{H}
-  \epsilon}\right) | q\rangle\, .
+  \bra{ q'} \left(e^{-i \hat{H} \epsilon}\right) |q_{n-1}\rangle
+  \bra{ q_{n-1}} \left(e^{-i \hat{H} \epsilon}\right) |
+  q_{n-2}\rangle \ldots \bra{ q_1} \left(e^{-i \hat{H}
+  \epsilon}\right) \ket{q}\, .
 \end{align}
 For small $\epsilon$ we can expand the exponential to first order and
 evaluate the matrix elements:
@@ -72,8 +74,8 @@ evaluate the matrix elements:
 \end{align}
 From the potential energy we get
 \begin{align}
-  \langle q_k | V(\hat{Q}) | q_{k-1}\rangle &= V(q_{k-1}) \langle q_k
-                                              | q_{k-1} \rangle \\
+  \bra{ q_k} V(\hat{Q}) | q_{k-1}\rangle &= V(q_{k-1}) \bra{ q_k
+                                             } q_{k-1} \rangle \\
                                             &= V\left(\frac{q_k +
                                               q_{k-1}}{2}\right)
                                               \delta(q_k-q_{k-1}) \\
@@ -89,12 +91,12 @@ introduce eigenstates of the momentum operator $\ket{p}$
 \end{align}
 and use the completeness of the states $\ket{p}$:
 \begin{align}
-  \langle q_k | \hat{P}^2 | q_{k-1}\rangle = 
+  \bra{ q_k} \hat{P}^2 | q_{k-1}\rangle = 
   \int \frac{dp}{2\pi}\, p^2 e^{ip(q_k-q_{k-1})}\, .
 \end{align}
 Hence
 \begin{align}
-  \langle q_k | e^{-i\hat{H}\epsilon} | q_{k-1}\rangle = 
+  \bra{ q_k} e^{-i\hat{H}\epsilon} | q_{k-1}\rangle = 
   \int \frac{dp}{2\pi}\, \exp\left\{i\epsilon \left[
   p \frac{q_k-q_{k-1}}{\epsilon} - H\left(p,\tilde{q}\right)
   \right]
@@ -134,7 +136,7 @@ simplified by performing the integral over the momenta $p_j$:
   i\epsilon\left[
   p \left(\frac{q_k-q_{k-1}}{\epsilon}\right) - \frac12 p^2
   \right]
-  \right\} = \left(2\pi i \epsilon\right)^{-1/2}\,
+  \right\} = \left(2\pi i \epsilon\right)^{-\nicefrac{1}{2}}\,
   \exp\left\{i\epsilon
   \frac12\left(\frac{q_k-q_{k-1}}{\epsilon}\right)^2\right\}\, .
 \end{align}
@@ -143,7 +145,7 @@ Using this result, we can rewrite the path integral in
 \begin{align}
   \label{eq:PathIntDefOne}
   \braket{q't'}{qt} = \lim_{n\to\infty}
-  \left(2\pi i \epsilon\right)^{-n/2}\,
+  \left(2\pi i \epsilon\right)^{-\nicefrac{n}{2}}\,
   \int \prod_{k=1}^{n-1}dq_k\, 
   \exp \left\{
   i \epsilon \sum_{m=1}^{n}
@@ -179,9 +181,9 @@ above.
 The first example that we are going to consider is the matrix element
 \begin{align}
   \label{eq:OnePtDef}
-  \langle q't' | \hat{Q}(\bar{t}) | q t\rangle = 
-  \langle q' | e^{-i \hat{H}(t'-t)} \hat{Q} e^{-i \hat{H}(\bar{t}-t)}
-  | q\rangle\, ,
+  \bra{ q't'} \hat{Q}(\bar{t}) | q t\rangle = 
+  \bra{ q'} e^{-i \hat{H}(t'-t)} \hat{Q} e^{-i \hat{H}(\bar{t}-t)}
+  \ket{q}\, ,
 \end{align}
 where we assume $t<\bar{t}<t'$, and we have used
 \begin{equation}
@@ -191,7 +193,7 @@ where we assume $t<\bar{t}<t'$, and we have used
 Proceeding as we did in the previous section, we can write
 \begin{align}
   \label{eq:CorrOne}
-  \langle q't' | \hat{Q}(\bar{t}) | q t\rangle = 
+  \bra{ q't'} \hat{Q}(\bar{t}) | q t\rangle = 
   \bra{q'} \epsstep \ldots \epsstep \hat{Q} \epsstep \ldots
   \epsstep \ket{q}\, ,
 \end{align}
@@ -199,7 +201,7 @@ where we assumed that $\bar{t}=t_k$, and the first and second ellipses
 denote respectively $(n-k)$, and $k$ factors of $\epsstep$. Performing
 the same manipulations as before we obtain
 \begin{align}
-  \langle q't' | \hat{Q}(\bar{t}) | q t\rangle =& 
+  \bra{ q't'} \hat{Q}(\bar{t}) | q t\rangle =& 
   \lim_{n\to\infty} \int \prod_{k=1}^{n-1}dq_k\, 
   \prod_{j=1}^{n} \frac{dp_j}{2\pi}\, q_k \times \\
   &\times \exp \left\{
@@ -213,7 +215,7 @@ Note that now there is an extra factor of $q_k$ in the integrand,
 corresponding to the insertion of the operator $\hat{Q}(\bar{t})$. The
 limit above  is denoted
 \begin{align}
-  \langle q't' | \hat{Q}(\bar{t}) | q t\rangle &= 
+  \bra{ q't'} \hat{Q}(\bar{t}) | q t\rangle &= 
   \int \mathcal{D}q \mathcal{D}p \, q(\bar{t}) 
   \exp \left\{
   i \int_t^{t'} \dd{\tau} \left[

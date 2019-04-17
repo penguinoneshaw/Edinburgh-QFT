@@ -1,3 +1,5 @@
+% !TeX root = ./notes.tex
+
 \documentclass[notes]{subfiles}
 
 \renewcommand{\tphi}{\tilde{\phi}}
@@ -94,7 +96,7 @@ Note that, just like in the case of the scalar field, the propagator
 is the inverse of the quadratic term in the action. The propagator is
 a $4\times 4$ matrix in spin space, which we can write explicitely:
 \begin{align}
-  \langle 0|& T \psi_\alpha(x) \psibar_\beta(y) |0 \rangle 
+  \bra{0} & T \psi_\alpha(x) \psibar_\beta(y) |0 \rangle 
   = \nonumber \\ 
   \label{eq:DiracFeynPropAllIndices}
   &= S_{\alpha\beta}(x-y) = 
@@ -125,7 +127,7 @@ an arrow pointing from one end to the other:
 Correlators of fermion fields are computed by taking derivatives with
 respect to the source fields
 \begin{align}
-  \langle 0 |& T \psi_{\alpha_1}(x_1) \ldots \psibar_{\beta_1}(y_1)
+  \bra{ 0}& T \psi_{\alpha_1}(x_1) \ldots \psibar_{\beta_1}(y_1)
   \ldots |0\rangle_0  = \nonumber \\
    &=\frac{1}{i} \frac{\delta}{\delta\etabar_{\alpha_1}(x_1)} \ldots
   i \frac{\delta}{\delta\eta_{\beta_1}(y_1)}\, 
@@ -252,9 +254,9 @@ then
 \label{sec:integr-grassm-vari}
 
 To a given differential operator $D$ we associate an integral
-operator $I$. The idea is to generalise the concept of {\em definite}
+operator $I$. The idea is to generalise the concept of \emph{definite}
 integral to the case of Grassmann variables. $I$ is defined by
-requiring a number of properties that are {\em expected} to hold for
+requiring a number of properties that are \emph{expected} to hold for
 an integral. 
 \begin{enumerate}
 \item $I$ is linear

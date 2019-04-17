@@ -13,9 +13,9 @@
 \RequirePackage{csquotes,xpatch}
 \RequirePackage{graphicx}
 \RequirePackage{subfiles}
-\RequirePackage[hidelinks, pdfusetitle]{hyperref}
+\RequirePackage[hidelinks, pdfusetitle, plainpages=false]{hyperref}
 \urlstyle{same}
-\RequirePackage[sorting=ynt,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
+\RequirePackage[sorting=ynt,style=authoryear,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
 \RequirePackage{appendix}
 \RequirePackage{makeidx}
 
@@ -50,7 +50,8 @@ pagesize=auto,
 pagesize=pdftex,
 headinclude=false,
 footinclude=false,
-DIV=12
+DIV=12,
+captions=tableheading
 }
 
 
@@ -96,7 +97,7 @@ DIV=12
 \setcounter{tocdepth}{2}
 
 %\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10]{microtype}
-\RequirePackage[activate={true,nocompatibility},kerning=true,spacing=true,final]{microtype}
+\RequirePackage[activate={true,nocompatibility},kerning=true,spacing=true,final,babel=true]{microtype}
 \microtypecontext{spacing=nonfrench}
 
 \RequirePackage[headsepline]{scrlayer-scrpage}
@@ -132,35 +133,35 @@ DIV=12
 \def\matF{\mathcal F}
 \def\matE{\mathcal E}
 \def\GL{\mathrm{GL}}
-\def\kpsi{|\psi\rangle}
-\def\kpsione{|\psi_1\rangle}
-\def\kpsitwo{|\psi_2\rangle}
-\def\kpsionep{|\psi_1^\prime\rangle}
-\def\kpsitwop{|\psi_2^\prime\rangle}
-\def\kpsii{|\psi_i\rangle}
-\def\kpsin{|\psi_n\rangle}
-\def\kpsip{|\psi^\prime\rangle}
-\def\bpsi{\langle\psi |}
-\def\bpsione{\langle\psi_1 |}
-\def\bpsitwo{\langle\psi_2 |}
-\def\bpsii{\langle\psi_i |}
-\def\bpsip{\langle\psi^\prime |}
-\def\kphi{|\phi\rangle}
-\def\kphione{|\phi_1\rangle}
-\def\kphitwo{|\phi_2\rangle}
-\def\kphii{|\phi_i\rangle}
-\def\kphip{|\phi^\prime\rangle}
-\def\bphi{\langle\phi |}
-\def\bphione{\langle\phi_1 |}
-\def\bphitwo{\langle\phi_2 |}
-\def\bphii{\langle\phi_i |}
-\def\bphip{\langle\phi^\prime |}
-\def\bchi{\langle\chi |}
-\def\bchione{\langle\chi_1 |}
-\def\bchitwo{\langle\chi_2 |}
-\def\bchii{\langle\chi_i |}
-\def\bchip{\langle\chi^\prime |}
-\def\kjm{|j,m\rangle}
+\def\kpsi{\ket{\psi}}
+\def\kpsione{\ket{\psi_1}}
+\def\kpsitwo{\ket{\psi_2}}
+\def\kpsionep{\ket{\psi_1^\prime}}
+\def\kpsitwop{\ket{\psi_2^\prime}}
+\def\kpsii{\ket{\psi_i}}
+\def\kpsin{\ket{\psi_n}}
+\def\kpsip{\ket{\psi^\prime}}
+\def\bpsi{\bra{\psi}}
+\def\bpsione{\bra{\psi_1}}
+\def\bpsitwo{\bra{\psi_2}}
+\def\bpsii{\bra{\psi_i}}
+\def\bpsip{\bra{\psi^\prime}}
+\def\kphi{\ket{\phi}}
+\def\kphione{\ket{\phi_1}}
+\def\kphitwo{\ket{\phi_2}}
+\def\kphii{\ket{\phi_i}}
+\def\kphip{\ket{\phi^\prime}}
+\def\bphi{\bra{\phi}}
+\def\bphione{\bra{\phi_1}}
+\def\bphitwo{\bra{\phi_2}}
+\def\bphii{\bra{\phi_i}}
+\def\bphip{\bra{\phi^\prime}}
+\def\bchi{\bra{\chi}}
+\def\bchione{\bra{\chi_1}}
+\def\bchitwo{\bra{\chi_2}}
+\def\bchii{\bra{\chi_i}}
+\def\bchip{\bra{\chi^\prime}}
+\def\kjm{\ket{j,m}}
 \def\tr{\mathrm{Tr}}
 \def\id{\mathds{1}}
 
@@ -177,10 +178,10 @@ DIV=12
 \newcommand{\pu}{\underline{p}}
 \newcommand{\Lu}{\underline{L}}
 \newcommand{\Ju}{\underline{J}}
-\newcommand{\lap}{\nabla^2}
+\newcommand{\lap}{\laplacian}
 \newcommand{\ad}{\hat{a}}
 \newcommand{\ac}{\hat{a}^\dagger}
-\newcommand{\re}{\mathrm{Re}}
+\newcommand{\re}{\Re}
 \newcommand{\pref}[1]{(\ref{#1})}
 \newcommand{\Eqref}[1]{Eq.~(\ref{#1})}
 \newcommand{\del}{\v{\nabla}}				% Underlined del
@@ -204,10 +205,10 @@ DIV=12
             \end{flushleft}
             \end{minipage}\hfill
             \begin{minipage}{0.3\textwidth}
-                    \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}
+                    \includegraphics[width=40mm,height=40mm]{images/crest.eps}
             \end{minipage}
     \else
-    {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+    {\centering \includegraphics[width=40mm,height=40mm]{images/crest.eps}\\}
     \fi
     \vspace*{\fill}
     
@@ -282,11 +283,11 @@ DIV=12
         \end{flushleft}
         \end{minipage}\hfill
         \begin{minipage}{0.3\textwidth}
-                \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\par
+                \includegraphics[width=40mm,height=40mm]{images/crest}\par
         \end{minipage}\par
         \else
         \begin{minipage}{1\textwidth}
-          {\centering \includegraphics[width=40mm,height=40mm]{Includes/crest.eps}\\}
+          {\centering \includegraphics[width=40mm,height=40mm]{images/crest}\\}
         \end{minipage}
         \fi
         \vspace{\fill}

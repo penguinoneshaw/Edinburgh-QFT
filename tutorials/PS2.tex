@@ -9,8 +9,7 @@
 \begin{document}
 \maketitle
 
-\begin{enumerate}
-  \item \emph{ Path Integral for free motion}\\
+  \section {Path Integral for free motion}
 
     The Hamiltonian for the free particle is 
     \[
@@ -23,29 +22,29 @@
     with boundary conditions $q_c(t')=q', q_c(t'')=q''$, and imposing
     that $q_c$ satisfies the classical equations of motion, show that
     \[
-      \braket{q'',t''}{q',t'}=N \exp\left[i \frac{m}{2}
+      \braket{q'',t''}{\,q',t'}=N \exp\left[i \frac{m}{2}
         \frac{(q''-q')^2}{t''-t'}\right]\, .
     \]
     Write an expression for the normalization factor $N$. 
 
-    \bigskip
+     
 
-  \item \emph{ Path Integral for the harmonic oscillator} \\
+  \section {Path Integral for the harmonic oscillator}
 
     Same question for the harmonic oscillator, with 
     \[
       H = \frac12 P^2 + \frac12 m \omega^2 Q^2\, .
     \]
 
-    \bigskip
+     
 
-  \item \emph{ Weyl ordering}\\
+  \section {Weyl ordering}
 
-    Find the Weyl ordered product $[A^2 B]$.
+    Find the Weyl ordered product $[A^2\, B]$.
 
-    \bigskip
+     
 
-  \item \emph{ Schr\"odinger equation from path integrals}\\
+  \section {Schr\"odinger equation from path integrals}
     
     The quantum mechanical amplitude $\braket{q'',t''}{q',t'}$ for a
     system described by the lagrangian
@@ -73,11 +72,10 @@
     RHS in powers of $\delta$, derive the Schr\"odinger equation for
     the transition amplitude: 
     \[
-      i \frac{\partial}{\partial t''} \braket{q'',t''}{q',t'} = 
+      i \pdv{t''} \braket{q''\!, t''}{\,q'\!, t'} = 
       \left[-\frac12 \frac{\partial^2}{\partial q''^2} + V(q'') \right]
-      \braket{q'',t''}{q',t'}\, .
+      \braket{q''\!, t''}{\, q'\!, t'}\, .
     \]
     
     
-\end{enumerate}
 \end{document}

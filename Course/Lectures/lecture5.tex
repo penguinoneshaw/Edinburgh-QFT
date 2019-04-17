@@ -1,3 +1,5 @@
+% !TeX root = ./notes.tex
+
 \documentclass[notes]{subfiles}
 
 \renewcommand{\tphi}{\tilde{\phi}}
@@ -30,7 +32,7 @@ of motion, \ie Maxwell's equations in vacuum:
   \partial_\mu F^{\mu\nu}(x) = 0\, .
 \end{equation}
 Note that the action only depends on the field strength $F_\munu$,
-and therefore is invariant under local {\em gauge transformations},
+and therefore is invariant under local \emph{gauge transformations},
 \begin{equation}
   \label{eq:GaugeTransf}
   A_\mu(x) \mapsto A^\Lambda_\mu(x) = A_\mu(x) + \partial_\mu \Lambda(x)\, .
@@ -88,12 +90,12 @@ They are 'projected out' of the action, leaving a divergent integral
 over a non compact domain. This is a direct consequence of the
 redundancy in the usage of a four-vector to describe photons. There
 are indeed four degrees of freedom in a real vector field, which is
-used to represent photon with only {\em two} physical, transverse
+used to represent photon with only \emph{two} physical, transverse
 polarizations. Using a four-vector allows an elegant implementation of
 Lorentz covariance, but the price we pay is that we have unphysical
 degrees of freedom in the action. The redundancy is at the origin of
 the gauge symmetry of the action. Going back to position space, it is
-easy to see that the longitudinal modes are {\em pure gauge} ones, \ie
+easy to see that the longitudinal modes are \emph{pure gauge} ones, \ie
 $A_\mu(x)=\partial_\mu \Lambda(x)$. The solution to this problem is to
 identify the redundant degrees of freedom, and factor out the
 integration over these modes. 
@@ -101,7 +103,7 @@ integration over these modes.
 \section{Faddeev-Popov procedure}
 \label{sec:fadd-popov-proc}
 
-A gauge {\em orbit} is a set of gauge configurations that are related
+A gauge \emph{orbit} is a set of gauge configurations that are related
 by gauge transformations: 
 \begin{equation}
   \label{eq:GaugeOrbit}
@@ -113,7 +115,7 @@ As discussed above, for a given $A_\mu(x)$, all the field
 configurations in $\Omega_A$ represent the same physical state, and
 therefore a single representative should be included in the path
 integral for each gauge orbit. We can select such representative by
-requiring it to be the solution of a {\em gauge fixing} condition: 
+requiring it to be the solution of a \emph{gauge fixing} condition: 
 \begin{equation}
   \label{eq:GaugeFixing}
   G\left(A_\mu(x)\right) = 0\, .

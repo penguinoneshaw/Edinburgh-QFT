@@ -2,15 +2,16 @@
 
 \addto\captionsUKenglish{\renewcommand{\chaptername}{Lecture}}
 \KOMAoptions{
-  titlepage=firstiscover,
-  twoside
+  titlepage=firstiscover
 }
 \addbibresource{QFT.bib}
 
 \title{Quantum Field Theory}
 \coursecode{PHYS11065}
 \author{L.~Del Debbio}
-\version{0.2}
+\makeatletter
+\version{@PROJECT_VERSION@}
+\makeatother
 \school{
   School of Physics and Astronomy
   }
@@ -20,8 +21,8 @@
 
 \begin{document}
 %\include{Includes/titlepage}
-\maketitle
 \pagenumbering{roman}
+\maketitle
 \clearpage
 \clearpage
 \tableofcontents
@@ -31,22 +32,22 @@
 This document and its source code are licensed under a \href{https://www.gnu.org/licenses/gpl-3.0.en.html}{GNU GPLv3} License.
 
 % The maker of Tikz-Feynman asks that you reference his paper when you use it.
-The Feynman diagrams are generated using \texttt{tikz-feynman}\supercite{ELLIS2017103}.
+The Feynman diagrams are generated using \texttt{tikz-feynman} \parencite{ELLIS2017103}.
 
 \nocite{*}
 \printbibliography[keyword=recommended,title={Recommended Textbooks},omitnumbers=true]
 \pagenumbering{arabic}
 
-\subfile{intro}
-\subfile{lecture0}
-\subfile{lecture1}
-\subfile{lecture2}
+\subfile{Sections/intro}
+\subfile{Lectures/lecture0}
+\subfile{Lectures/lecture1}
+\subfile{Lectures/lecture2}
 %\input{Sections/ScalarPI}
 
-\subfile{lecture3}
-\subfile{lecture4}
-\subfile{lecture5}
-\subfile{lecture6}
+\subfile{Lectures/lecture3}
+\subfile{Lectures/lecture4}
+\subfile{Lectures/lecture5}
+\subfile{Lectures/lecture6}
 
 \chapter{Divergences II --- the Vertex Function}
 \label{cha:diverg-ii-vert}

@@ -33,9 +33,7 @@ parskip=half-,
 BCOR=.5cm,
 pagesize=auto,
 pagesize=pdftex,
-headinclude=false,
-footinclude=false,
-DIV=12
+DIV=14
 }
 
 \RequirePackage[hidelinks, pdfusetitle]{hyperref}

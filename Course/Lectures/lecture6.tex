@@ -1,11 +1,7 @@
+
+% !TeX root = ./notes.tex
 \documentclass[notes]{subfiles}
 
-\renewcommand{\tphi}{\tilde{\phi}}
-\renewcommand{\tj}{\tilde{J}}
-\renewcommand{\tchi}{\tilde{\chi}}
-\renewcommand{\psibar}{\bar{\psi}}
-\renewcommand{\etabar}{\bar{\eta}}
-\renewcommand{\munu}{{\mu\nu}}
 \setcounter{chapter}{6}
 
 
@@ -91,7 +87,7 @@ using Feynman parameters. The general formula
       \Gamma(\alpha_n)}\, \int_0^1 dx_1\, x_1^{\alpha_1 -1} \ldots
       \int_0^1 dx_n\, x_n^{\alpha_n -1} \nonumber \\
     & \quad \times \delta\left(1-x_1-\ldots -x_n\right)\,
-      \frac{1}{\left(\alpha_1 A_1 + \ldots + \alpha_n
+      \frac{1}{\left(x_1 A_1 + \ldots + x_n
       A_n\right)^{\alpha_1 + \ldots + \alpha_n}}\, , 
 \end{align}
 can be applied to the integrand above, yielding
@@ -110,7 +106,7 @@ where $q=\ell-xp$, and $M^2(x,p)=m^2-x(1-x)p^2$. Hence, we have
 
 It is useful to introduce Euclidean momenta in order to perform the
 integration. Because of the location of the poles, we can rotate the
-integration contour clockwise by $\pi/2$ to run along the purely
+integration contour clockwise by $\nicefrac{\pi}{2}$ to run along the purely
 imaginary axis. Introducing
 \begin{equation}
   \label{eq:EuclideanMom}
@@ -153,7 +149,7 @@ integrating its second derivative twice,
 Eq.~(\ref{eq:IntTwicePi}) shows clearly that $\Pi(p^2)$ in $D=6$ is well
 defined for all values of $p^2$ provided we fix the values of
 $\Pi(\mu_1^2)$, and $\Pi'(\mu_2^2)$, \ie the values of the function
-and its derivative at two {\em arbitrary} values of the scale.
+and its derivative at two \emph{arbitrary} values of the scale.
 
 \section{Regularization}
 \label{sec:regularization}
@@ -361,7 +357,7 @@ we note that the divergent terms look like the contribution to the
 propagator that one would obtain from interaction vertices in the
 lagrangian that contain only two fields, \ie vertices like
 $\partial_\mu \phi \partial^\mu\phi$ and $\phi^2$. These vertices are
-usually called {\em counter terms}.
+usually called \emph{counter terms}.
 
 \paragraph{A geometric series}
 
@@ -469,11 +465,11 @@ residue being equal to one. Two observations are in order.
   K-L representation.
 \end{enumerate}
 These two observations suggest a general line of thinking: the fields
-and couplings that appear in the Lagrangian, the so-called {\em bare
-  fields} and {\em bare coupings} are not physical. The physical
+and couplings that appear in the Lagrangian, the so-called \emph{bare
+  fields} and \emph{bare coupings} are not physical. The physical
 variables need to be defined according to some well-specified
 prescription. The process of specifying these quantities is known as
-{\em renormalization} of the theory.
+\emph{renormalization} of the theory.
 
 \section{Renormalization}
 \label{sec:renormalization}
@@ -487,13 +483,13 @@ As suggested by the comparison with K-L, we define a {\em
   renormalized field}
 \begin{equation}
   \label{eq:RenormField}
-  \phi(x) = Z^{1/2} \phi_R(x)\, ,
+  \phi(x) = Z^{\nicefrac{1}{2}} \phi_R(x)\, ,
 \end{equation}
 where $Z$ is the renormalization constant of the field.  In terms of
 the new field the Lagrangian is
 \begin{align}
   \mathcal{L}= \frac12 \partial_\mu \phi_R \partial^\mu \phi_R -
-  \frac12 m^2 Z \phi_R^2 + \frac{g}{3!} Z^{3/2} \phi_R^3 +
+  \frac12 m^2 Z \phi_R^2 + \frac{g}{3!} Z^{\nicefrac{3}{2}} \phi_R^3 +
   \frac12 \delta_Z \partial_\mu \phi_R \partial^\mu \phi_R\, ,
 \end{align}
 where we have introduced $\delta_Z=Z-1$.
@@ -503,7 +499,7 @@ where we have introduced $\delta_Z=Z-1$.
 We can also introduce a renormalized mass and a renormalized coupling
 \begin{equation}
   \label{eq:RenormMass}
-  m^2 Z = Z_m m_R^2\, ,\quad g Z^{3/2}= Z_g g_R
+  m^2 Z = Z_m m_R^2\, ,\quad g Z^{\nicefrac{3}{2}}= Z_g g_R
 \end{equation}
 where we have introduced two new renormalization constants $Z_m$ and
 $Z_g$.
@@ -523,7 +519,7 @@ identical to the bare one, except that fields and couplings are now
 renormalized, and there two counter terms proportional to $\delta_Z$
 and $\delta_m$ respectively. We can therefore define the path integral
 in terms of renormalized quantities; this will lead to 
-{\em renormalized perturbation theory}. 
+\emph{renormalized perturbation theory}. 
 
 We can now compute $\Pi(p^2)$ in renormalized perturbation theory, the
 result is identical to the one obtained before, plus the contribution
@@ -566,7 +562,7 @@ independent of the arbitrary scale $\mu$.
 \paragraph{Renormalization conditions}
 
 In order to fully determine the renormalization constants, we need to
-specify a so-called {\em renormalization scheme}. The renormalization
+specify a so-called \emph{renormalization scheme}. The renormalization
 scheme is defined by imposing a number of conditions that are
 sufficient to determine all the renormalization constants. Clearly these
 conditions are necessary in order to have a predictive framework.
