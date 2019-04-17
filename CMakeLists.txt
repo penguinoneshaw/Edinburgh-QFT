@@ -7,3 +7,4 @@ include(UseLATEX.cmake)
 
 add_subdirectory(Course)
 add_subdirectory(tutorials)
+add_subdirectory(OPE)

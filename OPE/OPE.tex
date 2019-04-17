@@ -1,19 +1,22 @@
-\documentclass{article}
+\documentclass{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage{geometry}
- \geometry{
- a4paper,
- total={170mm,257mm},
- left=20mm,
- top=20mm,
- }
-
+\KOMAoptions{
+paper=a4,
+fontsize=11pt,
+parskip=half-,
+pagesize=auto,
+pagesize=pdftex,
+headinclude=false,
+footinclude=false,
+DIV=12,
+captions=tableheading
+}
 
 \title{Operator Product Expansion}
 \author{Luigi Del Debbio, Joseph Lee, Andrew Yong}
 \date{January 2019}
 
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -21,7 +24,7 @@
 \usepackage{empheq}
 \usepackage{physics}
 \usepackage{tikz-feynman}
-\setcitestyle{square}
+%\setcitestyle{square}
 
 \begin{document}
 
@@ -284,7 +287,7 @@ d -- [photon] c,
 b:
 \feynmandiagram [small, horizontal=a to b] {
 i1 -- [fermion, very thick] a -- [fermion] c -- [fermion, very thick] i3,
-i2 -- [plfermionain] b -- [fermion, very thick] d -- [fermion] i4,
+i2 -- [fermion] b -- [fermion, very thick] d -- [fermion] i4,
 a -- [photon, very thick] b,
 d -- [photon, very thick] c,
 };
@@ -447,15 +450,15 @@ where in the final line, we identify the first term as the term to be renormalis
 
 \section{Miscellaneous Feynman diagrams}
 \textbf{to be incorporated into the above}
-\includegraphics[scale=0.3]{OPE/1.jpg}\\
-\includegraphics[scale=0.3]{OPE/2.jpg}\\
-\includegraphics[scale=0.3]{OPE/3.jpg}\\
-\includegraphics[scale=0.3]{OPE/4.jpg}\\
-\includegraphics[scale=0.3]{OPE/5.jpg}\\
-\includegraphics[scale=0.3]{OPE/6.jpg}\\
-\includegraphics[scale=0.3]{OPE/7.jpg}\\
-\includegraphics[scale=0.3]{OPE/openfish.jpg}\\
-\includegraphics[scale=0.3]{OPE/closedfish.jpg}\\
+\includegraphics[scale=0.3]{images/1.jpg}\\
+\includegraphics[scale=0.3]{images/2.jpg}\\
+\includegraphics[scale=0.3]{images/3.jpg}\\
+\includegraphics[scale=0.3]{images/4.jpg}\\
+\includegraphics[scale=0.3]{images/5.jpg}\\
+\includegraphics[scale=0.3]{images/6.jpg}\\
+\includegraphics[scale=0.3]{images/7.jpg}\\
+\includegraphics[scale=0.3]{images/openfish.jpg}\\
+\includegraphics[scale=0.3]{images/closedfish.jpg}\\
 
 \newpage
 

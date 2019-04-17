@@ -1,13 +1,17 @@
 language: generic
 dist: xenial
 script:
-- cd Course && latexmk -f -interaction=batchmode -pdf main && latexmk -f -interaction=batchmode -pdf lecture*.tex && cd ..
-- cd tutorials && latexmk -f -interaction=batchmode -pdf main && latexmk -f -interaction=batchmode -pdf PS*.tex
+- mkdir build && cd build
+- cmake .. 
+- cmake --build .
+- cd ..
 before_deploy:
-- find build -path '**/images/*' -prune -o -path '**/Course/*.pdf' -print | tar czf
-  notes.tar.gz -T -
+- find build -path '**/images/*' -prune -o -path '**/Course/*.pdf' -print | tar czf 
+  notes.tar.gz --transform 's/build\///' -T -
 - find build -path '**/images/*' -prune -o -path '**/tutorials/*.pdf' -print | tar
-  czf tutorials.tar.gz -T -
+  czf tutorials.tar.gz --transform 's/build\///' -T -
+- find build -path '**/images/*' -prune -o -path '**/OPE/*.pdf' -print | tar czf OPE.tar.gz --transform 's/build\///' -T -
+    
 addons:
   apt:
     update: true
@@ -18,6 +22,7 @@ addons:
     - texlive-fonts-extra
     - texlive-lang-english
     - texlive-pstricks
+    - ghostscript
     - latexmk
 deploy:
   provider: releases
@@ -27,6 +32,7 @@ deploy:
   file: 
     - notes.tar.gz
     - tutorials.tar.gz
+    - OPE.tar.gz
   on:
     tags: true
     repo: penguinoneshaw/Edinburgh-QFT
