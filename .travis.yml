@@ -1,0 +1,35 @@
+language: generic
+dist: xenial
+script:
+- cd Course && latexmk -f -interaction=batchmode -pdf main && latexmk -f -interaction=batchmode -pdf lecture*.tex && cd ..
+- cd tutorials && latexmk -f -interaction=batchmode -pdf main && latexmk -f -interaction=batchmode -pdf PS*.tex
+before_deploy:
+- find build -path '**/images/*' -prune -o -path '**/Course/*.pdf' -print | tar czf
+  notes.tar.gz -T -
+- find build -path '**/images/*' -prune -o -path '**/tutorials/*.pdf' -print | tar
+  czf tutorials.tar.gz -T -
+addons:
+  apt:
+    update: true
+    packages:
+    - texlive
+    - biber
+    - texlive-science
+    - texlive-fonts-extra
+    - texlive-lang-english
+    - texlive-pstricks
+    - latexmk
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: SIuob6X8t+jmusUDh3RAr5AMSSYNWLI6kGvW0ThG5k7i6upHByfrxpvWKNdQgwNnSiRvBmNFpJhA0Gqso1ztOKVepgMaZg9WE/3kuZo8pOim+QRUP5IscQzxGiUe0HakYMF0JfNubGfTV5xVW+kjai3BMfKy68y13j7Xmq8atIV30WWniA9inAlErj9OeKWMF3kSgQmdVKVPBMOBIWldayx8Qvn5H8zxC5X6g5WJTpoCbFLwqEocfJ63zWgf0qWNYqxgFWr/SJMGhnZ6eaOp/ORgFLgamwcmPfbQA8/wxzccG5RzTOQtythaGkFE172nhbgoNJ/Vu5puRj1h+M7kfuHdRDiH6N3khPC1TQjvJ8xCxegeswN3oe90BO514p+ZBEmGIUtdWt6yj+iJiwDvjHPSWbjZtdmjAcDLA1icUxPhORnqt/iAyXUakc73QGjvgK52xMiwo+EApb9DRbap14Pw/hxszIJ5zN9HWEPW4efqipr9dfDc99M0wOrPF3lvesX9S6qtnX3ry3pmzEGJfaZDFcuWwv53AyinGjwtpNyK/ThOf9OFvcc6xB/KrapLqzRMgzhHoKtPUpN1Rrw++i4EhBVK/oRtonJUExxorAECP7YIKDlmvO8e6RzwtxYMQm4J9/AU3akErcE8G6d4Y/5Xc9KMDPo86NgeQu2Azgo=
+  file: 
+    - notes.tar.gz
+    - tutorials.tar.gz
+  on:
+    tags: true
+    repo: penguinoneshaw/Edinburgh-QFT
+    branch: 
+      - Relativistic-Quantum-Field-Theory
+      - master
