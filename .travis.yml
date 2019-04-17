@@ -17,12 +17,17 @@ addons:
     update: true
     packages:
     - texlive
-    - biber
     - texlive-latex-extra
-    - texlive-science
+    - texlive-fonts-recommended
+    - tex-gyre
+    - fonts-texgyre
     - texlive-fonts-extra
+    - texlive-bibtex-extra
+    - texlive-science
     - texlive-lang-english
     - texlive-pstricks
+    - poppler-utils
+    - biber
     - ghostscript
     - latexmk
 deploy:

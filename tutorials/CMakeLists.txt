@@ -12,6 +12,6 @@ set(problem_sheets
 foreach(problem_sheet ${problem_sheets})
   add_latex_document(
     ${problem_sheet}
-    INPUTS "Tutorial.cls"
+    INPUTS "tutorial.cls"
   )
 endforeach(problem_sheet ${problem_sheets})
