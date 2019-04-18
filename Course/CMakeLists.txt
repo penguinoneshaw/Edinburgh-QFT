@@ -28,7 +28,6 @@ add_latex_document(
 foreach(lecture_file ${lecture_files})
 add_latex_document(
   ${lecture_file}
-  INPUTS notes.aux
   IMAGE_DIRS images
   BIBFILES QFT.bib
   USE_BIBLATEX
