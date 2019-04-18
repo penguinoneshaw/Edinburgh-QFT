@@ -2,18 +2,22 @@ language: generic
 dist: xenial
 script:
 - mkdir build && cd build
-- cmake ..
+- cmake .. 
 - cmake --build .
+- cd ..
 before_deploy:
-- find build -path '**/images/*' -prune -o -path '**/Course/*.pdf' -print | tar czf
-  notes.tar.gz -s /build/notes/ -T -
+- find build -path '**/images/*' -prune -o -path '**/Course/*.pdf' -print | tar czf 
+  notes.tar.gz --transform 's/build\///' -T -
 - find build -path '**/images/*' -prune -o -path '**/tutorials/*.pdf' -print | tar
-  czf tutorials.tar.gz -s /build/tutorials/ -T -
+  czf tutorials.tar.gz --transform 's/build\///' -T -
+- find build -path '**/images/*' -prune -o -path '**/OPE/*.pdf' -print | tar czf OPE.tar.gz --transform 's/build\///' -T -
+    
 addons:
   apt:
     update: true
     packages:
     - texlive-full
+    - xzdec
     - tex-gyre
     - fonts-texgyre
     - poppler-utils
@@ -27,6 +31,7 @@ deploy:
   file: 
     - notes.tar.gz
     - tutorials.tar.gz
+    - OPE.tar.gz
   on:
     tags: true
     repo: penguinoneshaw/Edinburgh-QFT
