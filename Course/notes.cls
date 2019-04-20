@@ -96,7 +96,6 @@ captions=tableheading
 
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
-%\renewcommand{\vec}{\vb*}
 \setcounter{tocdepth}{2}
 
 %\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10]{microtype}
@@ -121,15 +120,31 @@ captions=tableheading
 \newcommand{\tick}{\ding{52}}
 \newcommand{\notick}{\ding{56}}
 \newcommand{\D}{\displaystyle}
+% \renewcommand{\vec}{\vb*}
 
-\def\bfx{{\mathbf x}}
-\def\bfxp{{\mathbf x^\prime}}
-\def\bfy{{\mathbf y}}
-\def\bfyp{{\mathbf y^\prime}}
-\def\bfp{{\mathbf p}}
-\def\bfpp{{\mathbf p^\prime}}
-\def\ddt{\frac{\mathrm{d}}{\mathrm{d}t}}
-\def\ddtt{\frac{d^2}{dt^2}}
+\newcommand{\hslashslash}{%
+\kern0.25em\raisebox{.9ex}{%
+    \scalebox{.7}{%
+      \rotatebox[origin=c]{18}{$-$}%
+    }%
+  }%
+}
+\newcommand{\dslash}{%
+  \ensuremath{\mathrlap{\hslashslash}\mathrm{d}}
+}
+\newcommand{\deltaslash}{%
+   \ensuremath{\mathrlap{\kern-0.15em\hslashslash}\mathrm{\delta}}
+}
+\newcommand{\dds}[1]{\ensuremath{\mathrm{\dslash}}#1}
+
+\def\bfx{\vec{x}}
+\def\bfxp{\vec{x}^\prime}
+\def\bfy{\vec{y}}
+\def\bfyp{\vec{y}^\prime}
+\def\bfp{\vec{p}}
+\def\bfpp{\vec{p}^\prime}
+\def\ddt{\dv{t}}
+\def\ddtt{\dv[2]{t}}
 \def\ie{\emph{i.e.~}\ }
 \def\eg{\emph{e.g.~}\ }
 \def\viz{\emph{viz.~}\ }

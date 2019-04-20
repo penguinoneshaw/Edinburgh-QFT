@@ -78,7 +78,7 @@ which also comes from the Poisson Bracket definition of a symplectic transform f
 \section{Quantum Fields}
 Having done all of the work with quantum mechanics, we can now interpret $\phi(x)$ and the conjugate momentum $\pi(x)$ as Heisenberg operators, with some adjustments for the continuous nature of the fields. 
 The main correction for continuity is that we have to adjust the canonical commutation relation. 
-This has a complication that our previous commutation relations were always at \emph{equal time}, which is explicitly not Lorentz invariant, since it treats time differently to the spatial dimensions. However, we plough on regardless and assert that
+This has a complication that our previous commutation relations were always at \emph{equal time}, which is explicitly not Lorentz covariant, since it treats time differently to the spatial dimensions. However, we plough on regardless and assert that
 \begin{align*}
     \commutator{\phi(t, \vec{x})}{\pi(t, \vec{x}^\prime)} &= i \delta^3(\vec{x} - \vec{x}^\prime)\\
     \commutator{\phi(t, \vec{x})}{\phi(t, \vec{x}^\prime)} &= 0\\
@@ -104,5 +104,177 @@ Thus
     \dot{\phi}(t, \vec{x}) &= \int \pi(t, \vec{x}^\prime)\, \delta^3(\vec{x} - \vec{x}^\prime) \dd[3]\vec{x} \\
     &= \pi(t, \vec{x})
 \end{align*}
+and similarly for the conjugate momentum
+\begin{align*}
+    \commutator{\mathcal{H}(t, \vec{x}^\prime)}{\pi(t, \vec{x})} &= \commutator{\cancel{\frac{1}{2}\pi^2(x^\prime)}+\frac{1}{2}(\grad^\prime\phi(x^\prime))^2 + \frac{1}{2}m^2\phi^2(x^\prime)}{\pi(x)}\\
+    &= \frac{1}{2}\qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime\commutator{\phi(x^\prime)}{\pi(x)} + \grad^\prime\commutator{\phi(x^\prime)}{\pi(x)}\vdot \grad^\prime\phi(x^\prime))\\
+    &\qquad + im^2\phi(x^\prime)\delta^3(\vec{x} - \vec{x}^\prime)\\
+    &= i\qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime + m^2 \phi)\delta^3(\vec{x} - \vec{x}^\prime)
+\end{align*}
+where we have used $\pi(x)$ indpendence from $x^\prime$ to take the derivative out of the commutator. 
+We then use integration by parts\footnote{\begin{align*}
+    \int \grad^\prime\phi(x^\prime)\vdot\grad^\prime \delta^3(\vec{x} - \vec{x}^\prime) \dd[3]{\vec{x}^\prime} &= \qty[\grad^\prime\phi(x^\prime) \delta^3(\vec{x} - \vec{x}^\prime)]_{-\infty}^\infty - \int (\laplacian)^\prime \phi(x^\prime) \delta^3(\vec{x} - \vec{x}^\prime) \dd[3]{\vec{x}}
+\end{align*}} to do
+\begin{align*}
+    \dot{\pi}(t, \vec{x}) &= i\commutator{H}{\pi(t, \vec{x})}\\
+    &= i \int \commutator{\mathcal{H}(t, \vec{x}^\prime)}{\pi(t, \vec{x})}\dd[3]{\vec{x}^\prime}\\
+    &= - \int \qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime + m^2 \phi)\delta^3(\vec{x} - \vec{x}^\prime)  \dd[3]{\vec{x}^\prime}\\
+    \ddot{\phi} = \dot{\pi} &= (\laplacian-m^2)\phi(t, \vec{x})
+\end{align*}
+and we notice that though the equal time commutation relations are not covariant, we still get the covariant equations of motion.
+
+\section{Quantum Harmonic Oscillator}
+A quantum oscillator is defined by the Hamiltonian
+\begin{align*}
+    \hat{H} &= \frac{\hat{p}^2}{2m} + \frac{1}{2} m \omega^2 \hat{q}^2
+\end{align*}
+and we can, from this definition, define two extra operators, $\hat{a}$ and $\hat{a}^\dagger$, such that
+\begin{align*}
+    \hat{q} &= \frac{1}{\sqrt{2m\omega}}(\hat{a} + \hat{a}^\dagger) & \hat{p} &= -\sqrt{\frac{m\omega}{2}} (\hat{a} - \hat{a}^\dagger)
+\end{align*}
+and which are consistent with the canonical commutation relations in that
+    $\commutator{\hat{a}}{\hat{a}^\dagger} = 1$
+and
+\begin{align*}
+    H &= \omega\qty(\hat{a}^\dagger\hat{a} + \frac{1}{2}).
+\end{align*}
+We can thus define the (hermitian) number operator which defines the spectrum of $H$, $\hat{N} = \hat{a}^\dagger\hat{a}$, for which the eigenvalues are the energy of the system.
+We can thus define eigenvectors for this operator as 
+\begin{align*}
+    \hat{N}\ket{n} &= n\ket{n} & \braket{n}{n} &= 1
+\end{align*}
+for which $n>0$ for all $n$.
+
+We can show relatively easily that $\hat{a}$ and $\hat{a}^\dagger$ are the ladder operators such that (for $n\geq 0$)
+\begin{align*}
+    \hat{a}^\dagger \ket{n} &= \sqrt{n+1}\ket{n+1} & \hat{a}\ket{n} &= \sqrt{n}\ket{n-1}
+\end{align*}
+and thus that all states of the oscillator with energy eigenvalue $(n+\frac{1}{2})\omega$ can be written as 
+\begin{align*}
+    \ket{n} &= \frac{(\hat{a}^\dagger)^n}{\sqrt{n}}\ket{0}
+\end{align*}
+where $\ket{0}$ is the ground of \emph{vaccuum} state.
+
+\section{Two Interpretations}
+When formulating quantum mechanics, there are two competing interpretations known as the first and second quantisations.
+
+The first quantisation is the Schr\"odinger equation based wavefunction interpretation. This interprets the harmonic oscillator in terms of its classical equivalent, just with discrete energy levels which are evenly spaced. 
+This has ``ground states'' 
+\begin{align*}
+    \psi_0(x) &= \sqrt{\frac{m\omega}{2\pi}} e^{-\frac{1}{2}m\omega^2x^2}
+\end{align*}
+which are then excited to
+\begin{align*}
+    \psi_n(x) &= \frac{1}{\sqrt{n!}} \qty(\frac{-i}{\sqrt{2m\omega}} + i\sqrt{\frac{m\omega}{2}}x)^n \psi_n(x).
+\end{align*}
+This is inherently a single particle interpretation.
+
+Heisenberg based the second quantisation on the idea that a state $\ket{n}$ consists of $n$ \emph{identical} quanta, each with energy $\omega$.
+We then interpret $\ket{0}$ as the vaccuum state with no quanta at all, and interpret the oscillator as a black box, forgetting $\hat{x}$ and $\hat{p}$.
+
+Transitions which can then happen inside the box are 
+\begin{align*}
+    \ket{n}&\overbrace{\to\ket{n+1}}^{\text{absorb a quantum}}&\ket{n}&\overbrace{\to\ket{n-1}}^\text{emit a quantum}
+\end{align*}
+which correspond to the $\hat{a}^\dagger$ (creation) and $\hat{a}$ (annihilation) operators. This is fundamentally a multiparticle interpretation.
+
+\subsection{Heisenberg Picture Ladder Operators}
+The ladder operators developed thus far were in the Schr\"odinger picture; we now find them in the Heisenberg (\ie the time dependent equivalent). 
+
+Using the Heisenberg equation, we know that $a(t)$ and $a^\dagger(t)$ should satisfy
+\begin{align*}
+    \dot{a}(t) &= i\commutator{H}{a(t)} & \dot{a}^\dagger(t) &= i\commutator{H}{a^\dagger(t)}\\
+    &= i\commutator{\omega(a^\dagger(t)a(t)) + \frac{1}{2}}{a(t)} &&= i\commutator{\omega(a^\dagger(t)a(t)) + \frac{1}{2}}{a^\dagger(t)}\\
+    &= \omega i\commutator{a^\dagger(t)a(t)}{a(t)} &&= \omega i\commutator{a^\dagger(t)a(t)}{a^\dagger(t)}\\
+    &= \omega i (a^\dagger(t) \commutator{a(t)}{a(t)} + \commutator{a^\dagger(t)}{a(t)}a(t))&&=\omega i (a^\dagger(t) \commutator{a(t)}{a^\dagger(t)} + \commutator{a^\dagger(t)}{a^\dagger(t)}a(t))\\
+    &= -i\omega a(t) &&= i\omega a^\dagger(t)
+\end{align*}
+thus
+\begin{align*}
+    a(t) &= e^{-\omega t} \hat{a} & a^\dagger(t) &= e^{i\omega t} \hat{a}^\dagger
+\end{align*}
+which we should've expected, since this is also the result we get from the Schr\"odinger equation.
+
+\section{Mode Expansion of (Quantum) Fields}
+Since $\phi(x)$ satisfies the Klein-Gordon equation, it has plane wave solutions $e^{-ipx}$ where $p^2 = m^2$ (i.e.~requiring that the momentum is `on-shell'). 
+By Fourier's theorem, we can expand any field in terms of plane waves. 
+We do the Fourier expansion in its four-vector basis, and add corrections to require the on-shell condition and positive energy; the coefficients are suggestively labelled but need to be confirmed to be the ladder operators, but nevertheless we see that
+\begin{align*}
+    \phi(x) &= \int \frac{\dd[4]{p}}{(2\pi)^4} 2\pi\delta(p^2 - m^2)\qty(a(\vec{p})e^{-ip\vdot x} + a^\dagger(\vec{p})e^{ip\vdot x})\Theta(p^0)\\
+    &= \int \frac{\dd[3]{\vec{p}}}{(2\pi)^3} \int \dd{p^0}\frac{1}{2p^0}\delta(p^0 - \omega(\vec{p}))\qty(a(\vec{p})e^{-ip\vdot x} + a^\dagger(\vec{p})e^{ip\vdot x})\\
+    &= \eval{\int \frac{\dd[3]{\vec{p}}}{(2\pi)^3 2\omega(\vec{p})} \qty(a(\vec{p})e^{-ip\vdot x} + a^\dagger(\vec{p})e^{ip\vdot x}) }_{p_0 = \omega(\vec{p})}
+\end{align*}
+which has a few interesting features:
+\begin{enumerate}
+    \item This expansion is \emph{manifestly} covariant;
+    \item $p^0 = \omega(\vec{p}) = \sqrt{\vec{p}^2 + m^2}$ is always positive (by design);
+    \item Implicitly, we have decided that $e^{-ip\vdot x} = e^{-i\omega(\vec{p})t + i \vec{p}\vdot\vec{p}}$ as $p$ is on-shell;
+    \item Since $\phi(x)$ is a Heisenberg operator, $a(\vec{p})$ and $a^\dagger (\vec{p})$ are (time independent) operators;
+    \item We need both $a(\vec{p})$ and $a^\dagger(\vec{p})$ to ensure that $\phi(x)$ is hermitian;
+    \item The integration measure $\int\dds{p} = \int\frac{\dd[3]{\vec{p}}}{(2\pi)^3 2\omega(\vec{p})}$ which is helpfully Lorentz invariant.
+\end{enumerate}
+
+The conjugate field is
+\begin{align*}
+    \pi(x) = \dot\phi(x) = -i\int\dds{p}\omega(\vec{p})\qty(a(\vec{p})e^{-ip\vdot x} - a^\dagger(\vec{p})e^{ip\vdot x}).
+\end{align*}
+
+In order to find expressions for $a(\vec{p})$ and $a^\dagger(\vec{p})$, we invert the representations above
+\begin{align*}
+    \int e^{ip^\prime\vdot x}\phi(x)\dd[3]{\vec{x}} &= \int \dds{p}\int \dd[3]{\vec{x}}\qty(a(\vec{p})e^{-i(p^\prime-p)\vdot x} + a^\dagger(\vec{p})e^{i(p^\prime+p)\vdot x})\\
+    &= \int \frac{\dd[3]{\vec{p}}}{2\omega(\vec{p})}\qty[a(\vec{p}) \delta^3(\vec{p} - \vec{p}^\prime) e^{i(\omega(\vec{p}^\prime) - \omega(\vec{p}))t} + a^\dagger(\vec{p}) \delta^3(\vec{p} + \vec{p}^\prime) e^{i(\omega(\vec{p}^\prime) + \omega(\vec{p}))t}]\\
+    &= \frac{1}{2\omega(\vec{p}^\prime)}\qty[a(\vec{p}^\prime) + a^\dagger(-\vec{p})e^{2i\omega(\vec{p}^\prime)t}]
+\end{align*} 
+and similarly
+\begin{align*}
+    \int e^{ip^\prime\vdot{x}}\pi(x)\dd[3]\vec{x} &= -\frac{i}{2}\qty[a(\vec{p}^\prime) - a^\dagger(-\vec{p}^\prime)e^{i\omega(\vec{p})t}]
+\end{align*}
+where it should be noted that these are not the full fourier transform representations, as the time coordinate has not been transformed and that $\omega(\vec{p}) = \omega(-\vec{p})$.
+Therefore we find that
+\begin{align*}
+a(\vec{p}) &= \int\dd[3]{\vec{x}} e^{ip\vdot{x}} (\omega(\vec{p})\phi(t, \vec{x}) + i \pi(t, \vec{x}))\\
+a^\dagger(\vec{p}) &= \int\dd[3]{\vec{x}} e^{-ip\vdot{x}} (\omega(\vec{p})\phi(t, \vec{x}) - i \pi(t, \vec{x})) 
+\end{align*}
+and it is trivial to show that
+\begin{align*}
+    \commutator{a(\vec{p})}{a^\dagger(\vec{p}^\prime)} &= 2\omega(\vec{p})(2\pi)^3 \delta^3(\vec{p}-\vec{p}^\prime)\\
+    &= \deltaslash^3(\vec{p} - \vec{p}^\prime)
+\end{align*}
+where we've invented a notation for the normalised Dirac delta for the covariant measure. 
+Similarly, we can show that \begin{align*}
+    \commutator{a(\vec{p})}{a(\vec{p}^\prime)} &= \commutator{a^\dagger(\vec{p})}{a^\dagger(\vec{p}^\prime)}=0
+\end{align*}
+which confirms that these operators conform to the same commutation relations as the regular quantum harmonic oscillator.
+
+Using a few tricks, including that it must be time independent and that we can split the density linearly, we can derive that 
+\begin{align*}
+    H &= \frac{1}{2}\int\!\! \omega(\vec{p})[a(\vec{p})a^\dagger(\vec{p}) + a^\dagger(\vec{p})a(\vec{p})]\,\dds{p}
+\end{align*}
+which makes $ \omega(\vec{p})$ the energy of the normal mode $p$ to the field.
+We can also deduce commutators (\ie the time dependence) as
+\begin{align*}
+    \commutator{H}{a^\dagger(\vec{p})} &= \omega(\vec{p}) a^\dagger(\vec{p})\\
+    \commutator{H}{a(\vec{p})} &= -\omega(\vec{p}) a(\vec{p})
+\end{align*}
+so we have a quantum mechanical simple harmonic oscillator with energy $\omega(\vec{p}) = \sqrt{\vec{p}^2 + m^2}$ for every Fourier mode $p$.
+
+\section{Particle Interpretation}
+Consider some energy eigenstate $\ket{E}$. 
+
+The state $a^\dagger(\vec{p})\ket{E}$ has energy $E+ \omega(\vec{p})$ which we get from the application of the commutator
+\begin{align*}
+    H a^\dagger(\vec{p}) \ket{E} &= \commutator{H}{a^\dagger(\vec{p})}\ket{E} + a^\dagger(\vec{p})H \ket{E}\\
+    &= ( \omega(\vec{p}) + E)\, a^\dagger(\vec{p}) \ket{E}
+\end{align*}
+and similarly $a(\vec{p})\ket{E}$ has energy $E- \omega(\vec{p})$ so as with the single-particle version, we have `creation' and `annihilation' operators for quanta with $\omega(\vec{p}) = \sqrt{m^2 + \vec{p}^2}$. 
+
+Continuing on that line of reasoning, we also know that the Hamiltonian is positive definite, so there must be a state of lowest energy, the vaccuum state $\ket{0}$ for which $$a(\vec{p})\ket{0} = 0 \quad\forall\vec{p}.$$
+There is then the Fock space --- the full space of states which may be constructed through applying $a^\dagger(\vec{p})$ to $\ket{0}$ with the necessary $\vec{p}$ states. This creates a state space in which all states have the form 
+\begin{align*}
+    a^\dagger(\vec{p}_1)\cdots a^\dagger(\vec{p}_n)\ket{0}
+\end{align*}
+which are all energy eigenstates with eigenvalues $\omega(\vec{p}_1) + \cdots + \omega(\vec{p}_n)$. We choose to normalize such that $\braket{0}{0} = 1$ and \[\braket{\vec{p}}{\vec{p}^\prime} = \mel{0}{a(\vec{p})\,a^\dagger(\vec{p})}{0} = \mel{0}{\commutator{a(\vec{p})}{a^\dagger(\vec{p})}}{0} = \deltaslash^3(\vec{p} - \vec{p}^\prime)\]
+
+This has the side-effect of ensuring the particles follow Bose-Einstein statistics: all $a^\dagger(\vec{p})$ commute with each other, so particles (quanta) can be arbitrarily swapped.
 \end{document}
 
