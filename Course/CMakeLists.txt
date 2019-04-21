@@ -12,7 +12,9 @@ set(lecture_files
 "Lectures/lecture5.tex"
 "Lectures/lecture6.tex"
 "Lectures/RQFT.1.classical_fields.tex"
-"Lectures/RQFT.2.canonical_quantisation.tex")
+"Lectures/RQFT.2.canonical_quantisation.tex"
+"Lectures/RQFT.3.interactions.tex"
+)
 
 add_latex_document(
   notes.tex
