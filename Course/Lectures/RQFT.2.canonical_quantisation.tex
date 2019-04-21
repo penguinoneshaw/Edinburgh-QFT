@@ -56,7 +56,7 @@ which also comes from the Poisson Bracket definition of a symplectic transform f
 \begin{example}
     Consider a quantum particle moving in a potential $V(q)$ such that
     \begin{align*}
-        \hat{L} &= \frac{1}{2}m\dot{\hat{q}}^2 - V(\hat{q})\\
+        \hat{L} &= \half{}m\dot{\hat{q}}^2 - V(\hat{q})\\
         \hat{H} &= \frac{\hat{p}^2}{2m} + V(\hat{q}).
     \end{align*}
     We can derive that
@@ -106,8 +106,8 @@ Thus
 \end{align*}
 and similarly for the conjugate momentum
 \begin{align*}
-    \commutator{\mathcal{H}(t, \vec{x}^\prime)}{\pi(t, \vec{x})} &= \commutator{\cancel{\frac{1}{2}\pi^2(x^\prime)}+\frac{1}{2}(\grad^\prime\phi(x^\prime))^2 + \frac{1}{2}m^2\phi^2(x^\prime)}{\pi(x)}\\
-    &= \frac{1}{2}\qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime\commutator{\phi(x^\prime)}{\pi(x)} + \grad^\prime\commutator{\phi(x^\prime)}{\pi(x)}\vdot \grad^\prime\phi(x^\prime))\\
+    \commutator{\mathcal{H}(t, \vec{x}^\prime)}{\pi(t, \vec{x})} &= \commutator{\cancel{\half{}\pi^2(x^\prime)}+\half{}(\grad^\prime\phi(x^\prime))^2 + \half{}m^2\phi^2(x^\prime)}{\pi(x)}\\
+    &= \half{}\qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime\commutator{\phi(x^\prime)}{\pi(x)} + \grad^\prime\commutator{\phi(x^\prime)}{\pi(x)}\vdot \grad^\prime\phi(x^\prime))\\
     &\qquad + im^2\phi(x^\prime)\delta^3(\vec{x} - \vec{x}^\prime)\\
     &= i\qty(\grad^\prime\phi(x^\prime)\vdot\grad^\prime + m^2 \phi)\delta^3(\vec{x} - \vec{x}^\prime)
 \end{align*}
@@ -126,7 +126,7 @@ and we notice that though the equal time commutation relations are not covariant
 \section{Quantum Harmonic Oscillator}
 A quantum oscillator is defined by the Hamiltonian
 \begin{align*}
-    \hat{H} &= \frac{\hat{p}^2}{2m} + \frac{1}{2} m \omega^2 \hat{q}^2
+    \hat{H} &= \frac{\hat{p}^2}{2m} + \half{} m \omega^2 \hat{q}^2
 \end{align*}
 and we can, from this definition, define two extra operators, $\hat{a}$ and $\hat{a}^\dagger$, such that
 \begin{align*}
@@ -136,7 +136,7 @@ and which are consistent with the canonical commutation relations in that
     $\commutator{\hat{a}}{\hat{a}^\dagger} = 1$
 and
 \begin{align*}
-    H &= \omega\qty(\hat{a}^\dagger\hat{a} + \frac{1}{2}).
+    H &= \omega\qty(\hat{a}^\dagger\hat{a} + \half{}).
 \end{align*}
 We can thus define the (hermitian) number operator which defines the spectrum of $H$, $\hat{N} = \hat{a}^\dagger\hat{a}$, for which the eigenvalues are the energy of the system.
 We can thus define eigenvectors for this operator as 
@@ -149,7 +149,7 @@ We can show relatively easily that $\hat{a}$ and $\hat{a}^\dagger$ are the ladde
 \begin{align*}
     \hat{a}^\dagger \ket{n} &= \sqrt{n+1}\ket{n+1} & \hat{a}\ket{n} &= \sqrt{n}\ket{n-1}
 \end{align*}
-and thus that all states of the oscillator with energy eigenvalue $(n+\frac{1}{2})\omega$ can be written as 
+and thus that all states of the oscillator with energy eigenvalue $(n+\half{})\omega$ can be written as 
 \begin{align*}
     \ket{n} &= \frac{(\hat{a}^\dagger)^n}{\sqrt{n}}\ket{0}
 \end{align*}
@@ -161,7 +161,7 @@ When formulating quantum mechanics, there are two competing interpretations know
 The first quantisation is the Schr\"odinger equation based wavefunction interpretation. This interprets the harmonic oscillator in terms of its classical equivalent, just with discrete energy levels which are evenly spaced. 
 This has ``ground states'' 
 \begin{align*}
-    \psi_0(x) &= \sqrt{\frac{m\omega}{2\pi}} e^{-\frac{1}{2}m\omega^2x^2}
+    \psi_0(x) &= \sqrt{\frac{m\omega}{2\pi}} e^{-\half{}m\omega^2x^2}
 \end{align*}
 which are then excited to
 \begin{align*}
@@ -184,7 +184,7 @@ The ladder operators developed thus far were in the Schr\"odinger picture; we no
 Using the Heisenberg equation, we know that $a(t)$ and $a^\dagger(t)$ should satisfy
 \begin{align*}
     \dot{a}(t) &= i\commutator{H}{a(t)} & \dot{a}^\dagger(t) &= i\commutator{H}{a^\dagger(t)}\\
-    &= i\commutator{\omega(a^\dagger(t)a(t)) + \frac{1}{2}}{a(t)} &&= i\commutator{\omega(a^\dagger(t)a(t)) + \frac{1}{2}}{a^\dagger(t)}\\
+    &= i\commutator{\omega(a^\dagger(t)a(t)) + \half{}}{a(t)} &&= i\commutator{\omega(a^\dagger(t)a(t)) + \half{}}{a^\dagger(t)}\\
     &= \omega i\commutator{a^\dagger(t)a(t)}{a(t)} &&= \omega i\commutator{a^\dagger(t)a(t)}{a^\dagger(t)}\\
     &= \omega i (a^\dagger(t) \commutator{a(t)}{a(t)} + \commutator{a^\dagger(t)}{a(t)}a(t))&&=\omega i (a^\dagger(t) \commutator{a(t)}{a^\dagger(t)} + \commutator{a^\dagger(t)}{a^\dagger(t)}a(t))\\
     &= -i\omega a(t) &&= i\omega a^\dagger(t)
@@ -248,7 +248,7 @@ which confirms that these operators conform to the same commutation relations as
 
 Using a few tricks, including that it must be time independent and that we can split the density linearly, we can derive that 
 \begin{align*}
-    H &= \frac{1}{2}\int\!\! \omega(\vec{p})[a(\vec{p})a^\dagger(\vec{p}) + a^\dagger(\vec{p})a(\vec{p})]\,\dds{p}
+    H &= \half{}\int\!\! \omega(\vec{p})[a(\vec{p})a^\dagger(\vec{p}) + a^\dagger(\vec{p})a(\vec{p})]\,\dds{p}
 \end{align*}
 which makes $ \omega(\vec{p})$ the energy of the normal mode $p$ to the field.
 We can also deduce commutators (\ie the time dependence) as
@@ -275,6 +275,140 @@ There is then the Fock space --- the full space of states which may be construct
 \end{align*}
 which are all energy eigenstates with eigenvalues $\omega(\vec{p}_1) + \cdots + \omega(\vec{p}_n)$. We choose to normalize such that $\braket{0}{0} = 1$ and \[\braket{\vec{p}}{\vec{p}^\prime} = \mel{0}{a(\vec{p})\,a^\dagger(\vec{p})}{0} = \mel{0}{\commutator{a(\vec{p})}{a^\dagger(\vec{p})}}{0} = \deltaslash^3(\vec{p} - \vec{p}^\prime)\]
 
-This has the side-effect of ensuring the particles follow Bose-Einstein statistics: all $a^\dagger(\vec{p})$ commute with each other, so particles (quanta) can be arbitrarily swapped.
+This has the side-effect of ensuring the particles follow Bose-Einstein statistics: all $a^\dagger(\vec{p})$ commute with each other, so particles (quanta) can be arbitrarily swapped, such as in the two particle state 
+\begin{align*}
+    \ket{\vec{p}; \vec{p}^\prime} &= \ket{\vec{p}}\ket{\vec{p}^\prime}\\
+    &= a^\dagger(\vec{p}) a^\dagger(\vec{p}^\prime)\ket{0}.
+\end{align*}
+
+\section{Ground State Energy}
+What is the energy of the vaccuum state? We start from
+\begin{align*}
+    H &= \int\dds{p} \omega(\vec{p})\qty(a^\dagger(\vec{p}) a(\vec{p}) + \half{}\commutator{a(\vec{p})}{a^\dagger(\vec{p})})\\
+    &= \int \dds{p}\omega(\vec{p})\qty(N(\vec{p}) + \omega(\vec{p})(2\pi)^3 \delta^3(0))
+\end{align*}
+where $N(\vec{p})=a^\dagger(\vec{p}) a(\vec{p})$ is the number density operator. 
+Clearly by the way it's defined, $\mel{0}{N(\vec{p})}{0} = 0$, so 
+\begin{align*}
+    \mel{0}{H}{0} &= \half{}\int\dd[3]\vec{p} \omega(\vec{p}) \delta^3(0)
+\end{align*}
+which is infinite because of the $\delta^3(0)$.
+
+Each point oscillates at the field's zero point energy on the infinite lattice. We ignore this and hope for the best, since infinite energy is usually a bit of a problem. Generally, we \emph{measure} the energy differences, so the zero point energy issue is academic.
+
+\subsection{Normal Ordering}
+The formal system for eliminating the zero point energy is to use `normal ordering', in which we reorder the operators such that all $a(\vec{p})$ are to the right of all $a^\dagger(\vec{p})$. 
+
+For example, if we write 
+\begin{align*}
+    \phi(x) &= \phi^+(x) + \phi(x)
+\end{align*}
+where
+\begin{align*}
+    \phi^+(x) &= \int \dds{p} a(\vec{p})e^{-ip\vdot{x}}&
+    \phi^-(x) &= \int \dds{p} a(\vec{p}^\dagger)e^{ip\vdot{x}}&
+    \phi^-(x) &= \qty(\phi^+)^\dagger
+\end{align*}
+we can consider
+\begin{align*}
+    \phi(x)\phi(y) &= \phi^+(x)\phi^+(y) + \phi^+(x)\phi^-(y) + \phi^-(x)\phi^+(y) + \phi^-(x)\phi^-(y).
+\end{align*}
+We then define that
+\begin{align*}
+    \normalorder{\phi(x)\phi(y)} &= \phi^+(x)\phi^+(y) + \underline{\phi^-(y)\phi^+(x)} + \phi^-(x)\phi^+(y) + \phi^-(x)\phi^-(y)
+\end{align*}
+so clearly
+\begin{align*}
+    \phi^+\ket{0} &= 0 & \phi^-\ket{0} &= 0 & \mel{0}{\normalorder{\phi(x)\phi(y)}}{0} &= 0
+\end{align*} 
+which is true for any natural monomial.
+This means that subtracting the zero point energy is equivalent to normally ordering the Hamiltonian
+\begin{align*}
+    H \to \normalorder{H} = H - \mel{0}{H}{0}.
+\end{align*}
+
+\subsection{Ground State Momentum}
+The classical momentum operator is defined as
+\begin{align*}
+    \vec{P} &= \int \dd[3]\vec{x} \pi(x)\grad{\phi}(x)\\
+    &= \half\int\dds{p} \vec{p} \qty[a(\vec{p})a^\dagger(\vec{p}) + a^\dagger(\vec{p}) a(\vec{p})]\\
+    &= \int \vec{p}\qty[N(\vec{p}) + \omega(\vec{p})(2\pi)^3 \delta^3(0)] \,\dds{p} 
+\end{align*}
+for which the infinite term is formally zero, as the integrand is symmetric under parity. 
+Thus
+\begin{align*}
+    \mel{0}{\vec{p}}{0} &= \mel{0}{\normalorder{\vec{p}}}{0} = 0
+\end{align*}
+\ie{}the vaccuum has no momentum and the state $a^\dagger(\vec{p}_1)\cdots a^\dagger(\vec{p}_n)\ket{0}$ has momentum $p = \sum\qty(\omega(\vec{p}_i), \vec{p}_i)$.
+
+\section{Covariant Commutators}
+So far, we have considered the Equal Time Commutation Relations. What we need to know is whether these give Lorentz invariant quantum fields, which it transpires they do.
+
+The \emph{un}equal time commutators,
+\begin{align*}
+    \commutator{\phi(x)}{\phi(y)} &= \commutator{\phi^+(x)}{\phi^-(y)} + \commutator{\phi^-(x)}{\phi^+(y)}
+\end{align*}
+where
+\begin{align*}
+    \commutator{\phi^+(x)}{\phi^-(y)} &= \int \dds{p} \int \dds{p^\prime} \commutator{a(p)}{a^\dagger(p)}e^{-ip\vdot x + i p^\prime \vdot y}\\
+    &= \int\dds{p}e^{-ip\vdot(x - y)}\\
+    \commutator{\phi^-(x)}{\phi^+(y)} &= \int \dds{p} \int \dds{p^\prime} \commutator{a^\dagger(p)}{a(p)}e^{+ip\vdot x - i p^\prime \vdot y}\\
+    &= -\int\dds{p}e^{ip\vdot(x - y)}
+\end{align*}
+lead us to define a new set of symbols $\Delta^\pm(x)$ and $\Delta(x)$ such that
+\begin{align}
+    i\Delta^+(x)&\equiv\int\dds{p}e^{-ipx} & i\Delta^-(x)&\equiv -\int\dds{p}e^{ipx} & \Delta(x) &\equiv \Delta^+(x) + \Delta^-(x).\label{eqn:rqft_canonical-quantisation_feynprops}
+\end{align}
+This gives us
+\begin{align*}
+    \commutator{\phi^+(x)}{\phi^-(y)} &= i\Delta^+(x-y) & \commutator{\phi^-(x)}{\phi^+(y)} &= i\Delta^-(x-y)
+\end{align*}
+so 
+\begin{align*}
+    \commutator{\phi(x)}{\phi(y)} &= i\Delta(x-y)\\
+    &= 2\int\sin(p\vdot{x})\dds{p}
+\end{align*}
+which means it is odd under parity and real! 
+Alternatively, 
+\begin{align*}
+    i\Delta(x) &= \int \frac{\dd[4]{p}}{(2\pi)^4} 2\pi\delta(p^2 - m^2)\epsilon(p^0) e^{-ip\vdot x}
+\end{align*}
+where $\epsilon(p^0) = \Theta(p^0) - \Theta(-p^0)$\footnote{Where $\Theta(x)$ is the Heaviside Theta function, which is such that $\dv{x}\Theta(x) = \delta(x)$.} means that all of the $\Delta^{(\pm)}(x)$ objects are invariant under proper Lorentz transformations.
+
+\section{Microcausality}
+Assume $x$ is spacelike separated from the origin (\ie{$x^2<0$}) such that
+\begin{align*}
+    \commutator{\phi(x)}{\phi(0)} &= i\Delta(x)
+\end{align*}
+which allows us to use a proper Lorentz transformation to do $x\mapsto-x$.
+However, $\Delta^\pm$ are independently Lorentz covariant such that
+\begin{align*}
+    \Delta(x) &= \Delta^+(x) + \Delta^-(x)\\
+    &= \Delta^+(x) + \Delta^-(-x)\\
+    &= \Delta^+(x) - \Delta^-(x)\\
+    &= 0
+\end{align*}
+meaning $\commutator{\phi(x)}{\phi(y)} = 0$ for all spacelike separated points.
+If the points commute, this means the fields commute. On the other hand, timelike or lightlike separated points (where $(x-y)^2 \geq 0$) \emph{do not commute}.
+
+The Equal Time commutation relation is a particular example of this, with
+\begin{align*}
+    \eval{\pdv{x^0}\Delta(x-y)}_{x_0 = y_0} &= i\int \frac{\dd[3]{\vec{p}}}{(2\pi)^3 2 \cancel{\omega(\vec{p})}} i \cancel{\omega(\vec{p})} \qty[e^{ip\vdot(x-y)} - e^{-ip\vdot(x-y)}]\\
+    &= -\delta^3(\vec{x} - \vec{y})
+\end{align*}
+so\begin{align*}
+    \commutator{\pi(t, \vec{x})}{\phi(t, \vec{y})} &= -i\delta^3(\vec{x} - \vec{y})
+\end{align*}
+
+\subsection{Contour Representation}
+It is useful for us to write 
+\begin{align*}
+    \Delta^\pm &= - \oint_{C_\pm} \frac{\dd[4]{p}}{(2\pi)^4}\frac{e^{-ip\vdot{}x}}{p^2 - m^2}
+\end{align*}
+where $C_\pm$ are positively oriented circular contours at $p^0=\pm \omega(\vec{p})$ which are the poles of the integrand. This gives the same expressions as were given in \autoref{eqn:rqft_canonical-quantisation_feynprops}, and makes obvious that $\Delta^{(\pm)}(x)$ are Green's functions for the Klein Gordon equation such that
+\begin{align*}
+    (\partial^2 + m^2)\Delta^{(\pm)}(x) &= \delta^4(x)
+\end{align*}
+which is amazingly useful, and called the Feynman propagator.
 \end{document}
 

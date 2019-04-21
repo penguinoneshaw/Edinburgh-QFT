@@ -186,6 +186,10 @@ captions=tableheading
 \def\kjm{\ket{j,m}}
 \def\tr{\mathrm{Tr}}
 \def\id{\mathds{1}}
+\def\half{\ensuremath{\frac{1}{2}}}
+
+\DeclarePairedDelimiter{\normalorder}{\mathbf{:}}{\mathbf{:}}
+
 
 {\theoremstyle{plain} \theorembodyfont{\rmfamily} \newframedtheorem{Ex}{Exercise}[section]}
 {\theoremstyle{plain} \theorembodyfont{\rmfamily} \newtheorem{Def}{Definition}[section]}
