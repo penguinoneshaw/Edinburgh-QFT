@@ -12,15 +12,191 @@ This isn't very interesting.
 
 To make it interesting, we add interactions. For scalar fields, the simplest interactions are in what is referred to as $\phi^3$ theory, which is simply where we add \[\mathcal{L}_I = -\frac{1}{6} g \phi^3\] to the free Lagrangian $\mathcal{L}_0$ to get
 \begin{align*}
-    \mathcal{L} &\equiv \mathcal{L}_0 + \mathcal{L}_I\\
-    &= \half(\partial^\mu\phi)(\partial_\mu\phi) - \half m^2\phi^2 - \frac{1}{6}g\phi^3
+	\mathcal{L} & \equiv \mathcal{L}_0 + \mathcal{L}_I                                               \\
+	            & = \half(\partial^\mu\phi)(\partial_\mu\phi) - \half m^2\phi^2 - \frac{1}{6}g\phi^3
 \end{align*}
 where $g$ is referred to as the `coupling constant'.
 The Euler-Lagrange equation gives, predictably, that
 \begin{align*}
-    (\partial^2 - m^2)\phi &= -\half{}g\phi^2
+	(\partial^2 - m^2)\phi & = -\half{}g\phi^2
 \end{align*}
 which is notably non-linear, which is always true for interesting fields.
-Non-linear of course also means more difficult to solve, which is a problem, but we try our best by working in perturbation theory using that $g\ll m$ so the interaction is small.
+Non-linear of course also means more difficult to solve, which is a problem, but we try our best by working in perturbation theory and requiring $g\ll m$ so the interaction is small.
+
+\section{Refining the Green's Function}
+Classically, we use a Green's function
+\begin{align*}
+	(\partial^2 + m^2)G(x) & = \delta^4(x)
+\end{align*}
+which we can find using the Fourier representation
+\begin{align*}
+	G(x) & = -\int\frac{\dd[4]{p}}{(2\pi)^4} \frac{e^{-p\vdot{x}}}{p^2 - m^2}
+\end{align*}
+to get the integral version.
+However, a Green's function is only well defined in conjunction with boundary conditions, which we must choose to suit the system being solved.
+Classically we use the `retarded' boundary condition,
+\begin{align*}
+	G_R(x) & = \Theta(t)\Delta(x)
+\end{align*}
+then if
+\begin{align*}
+	(\partial^2 + m^2)\phi & = j,                                                           \\
+	\phi(x)                & = \phi_0(x) + \int \dd[4]{x^\prime} G_R(x-x^\prime)j(x^\prime) \\
+	                       & = \phi_0 - \half g\int\phi^2(x^\prime)G_R(x-x^\prime)
+\end{align*}
+which leads us to expand $\phi$ as a Taylor series to get
+\begin{align*}
+	\phi & \approx \phi_0 -\half g \int\dd[4]{x} G_R(x-x^\prime) \phi_0(x) + \mathcal{O}(g^2)
+\end{align*}
+which is a perturbative solution for the classical field.
+
+\section{Interaction or `Dirac' Picture}
+For perturbation purposes, it helps to have the `interaction' picture, which for the free Hamiltonian is the same as the Heisenberg.
+The difference is that the Dirac picture always approximates the Hamiltonian for the time evolution operator with the free Hamiltonian.
+
+That is to say, if we write
+\begin{align*}
+	H & = H_0 + H_I
+\end{align*}
+then in the interaction picture
+\begin{align*}
+	\ket{\psi, t}_D & = e^{iH_0 t}\ket{\psi, t}_S      & A_D(t) & = e^{iH_0t}A_Se^{-iH_0t} \\
+	                & = e^{iH_0t} e^{-iHt}\ket{\psi}_H
+\end{align*}
+which allows us to rewrite the time evolution as
+\begin{align*}
+	i\pdv{t}\ket{\psi, t}_D & = -H_0e^{iH_0t}\ket{\psi, t}_S + e^{iH_0t}\pdv{t}\ket{\psi, t}_S \\
+	                        & = e^{iH_0t}H_I^S\ket{\psi, t}_S                                  \\
+	                        & = H_I^D\ket{\psi,t}_D
+\end{align*}
+so states evolve in time due to the interaction, but not any other factors, in the same framework as in the Heisenberg picture with
+\begin{align*}
+	\pdv{T}A_D(t) & = i\commutator{H_0}{A_D(t)}.
+\end{align*}
+
+Note that \(H_0^D = H_0^S\) by design and $H^H = H^S$, but $H^D_I \neq H^S_I$ because $\commutator{H_0}{H_I}\neq 0$. In the limit of no interaction, the Dirac picture obviously returns to the Heisenberg.
+
+\section{The S Matrix}
+A scattering process is defined as a process having some initial state of `free' particles with a definite set of good quantum numbers (momentum, energy, spin, etc.) at $t=-\infty$ (`the past').
+We can then describe the scatter with the simple trasition
+\begin{align*}
+	\ket{\Psi, \infty} & = S\ket{\Psi, -\infty}
+\end{align*}
+where $S$ contains and represents all the interesting physics and is called the S-matrix or scattering operator.
+
+Consider scattering with an initial state $\ket{\Psi, -\infty} = \ket{i}$ and a complete basis $\{\ket{f}\}$ of possible final states such that
+\begin{align*}
+	\ket{\Psi, \infty} & = \sum_f \ket{f}\braket{f}{\Psi, \infty} \\
+	                   & = \sum_f \ket{f} \mel{f}{S}{i}
+\end{align*}
+which means that \(
+\abs{\braket{f}{\Psi, \infty}}^2 = \abs{\mel{f}{S}{i}}^2
+\)
+is the probability of finding the system in the final state $\ket{f}$.
+This means that the S-matrix elements $S_{fi}$ are the probability amplitudes for transitions from $i$ to $f$. We can also show that $S$ is unitary, which is good, as that implies conservation of probability.
+
+Scattering in QFT is more general than in non-relativistic quantum mechanics as it is able to be inelastic --- particles can be created and destroyed, not just interact with each other.
+
+\section{Dyson Series}
+To find a formal solution to
+\begin{align*}
+	i\pdv{t}\ket{\psi, t} & = H_I \ket{\psi, t}
+\end{align*}
+we must iterate on the integral solution, which gives
+\begin{align*}
+	\ket{\psi, t} & = \ket{\psi, -\infty} - i\int^t_{-\infty}\kern-0.5em \dd{t_1} H_I(t_1)\ket{\psi, t}                                                                                                                                \\
+	              & = \ket{\psi, -\infty} - i\int^t_{-\infty}\kern-0.5em \dd{t_1} H_I(t_1)\qty[\ket{\psi, -\infty} - i\int^{t_1}_{-\infty}\kern-0.5em \dd{t_2} H_I(t_2)\ket{\psi, t}]                                                  \\
+	              & = \qty[\sum_{n=0}^\infty (-i)^n \int_{-\infty}^\infty\kern-0.5em \dd{t_1}\int^{t_1}_{-\infty}\kern-0.5em \dd{t_2} \cdots \int^{t_{n-1}}_{-\infty}\kern-0.5em \dd{t_n}H_I(t_1)\cdots H_I(t_n)]\ket{\psi, -\infty} .
+\end{align*}
+The format of this can be simplified somewhat by using the time ordered product symbol
+\begin{align*}
+	T\qty(A(t_1)B(t_2)) & = A(t_1)B(t_2) \Theta(t_1-t_2) +B(t_2) A(t_1) \Theta(t_2 - t_1)
+\end{align*}
+which means that we can make all of the integrals over all time to get
+\begin{align*}
+	S & = \sum_{n=0}^\infty \frac{(-i)^n}{n!} \int^{\infty}_{-\infty}\kern-0.5em \dd{t_1}\int^{\infty}_{-\infty}\kern-0.5em \dd{t_2} \cdots \int^{\infty}_{-\infty}\kern-0.5em \dd{t_n}T\qty(H_I(t_1)\cdots H_I(t_n)) \\
+	  & = \sum_{n=0}^\infty \frac{(-i)^n}{n!} \int \dd[4]{x_1}\int \dd[4]{x_2} \cdots \int \dd[4]{x_n}T\qty(\mathcal{H}_I(x_1)\cdots \mathcal{H}_I(x_n))
+\end{align*}
+which is good, as it at least on the surface looks Lorentz invariant.
+
+Note that for non-derivative interaction Lagrangians,
+\begin{align*}
+	\mathcal{H}_I & = -\mathcal{L}_I                      &
+	S             & = T\exp[i\int\dd[4]{x} \mathcal{L}_I]
+\end{align*}
+
+For a given initial and final state, we need to find terms in $\mathcal{L}_I$ which contribute to $\ket{i}\to\ket{f}$:
+\begin{itemize}
+	\item Annihilation and creation operators to destroy initial and create final on-shell particles;
+	\item Additional operators to create and destroy intermediate `virtual' particles, which are generally not on-shell.
+\end{itemize}
+In the interaction picture, fields satisfy the free-field equations, i.e. \(a\) and \(a^\dagger\) are all the same.
+If we use normal ordering, we always destroy the incoming and create the outgoing.
+
+\begin{example}
+	In $\phi^3$ theory, $\mathcal{H}_I = -\mathcal{L}_I = \frac{1}{6}g_i\phi^3$.
+	We remember that $\phi(x) = \phi^+(x) + \phi^-(x)$, so we have an object $\phi^3$ which is the sum of the combinations of products of $\phi^\pm$. We need an equal number of incoming and outgoing particles in order to conserve momentum, but this is not possible to first order in $g$ because of the structure of the Dyson series.
+	We need \emph{at least} two $\mathcal{L}_I$ and thus have
+	\begin{align*}
+		g^2 \phi^-\phi^-\phi^+\phi^-\phi^+\phi^+ & = \begin{tikzpicture}[baseline={(current bounding box.center)}]
+			\begin{feynman}
+				\vertex (v1);
+				\vertex [right=of v1](v2);
+				\vertex [above left=of v1] (i1);
+                \vertex [below left=of v1](i2);
+				\vertex [below right=of v2](f2);
+				\vertex [above right=of v2](f1);
+				\diagram {
+                    (i1) -- (v1),
+                    (i2) -- (v1),
+                    (v1) -- (v2),
+                    (v2) -- (f1),
+                    (v2) -- (f2)
+				};
+				\vertex [below=0.2em of v1] {\(_{t_1}\)};
+				\vertex [below=0.2em of v2] {\(_{t_2}\)};
+			\end{feynman}
+		\end{tikzpicture}
+	\end{align*}
+\end{example}
+
+We also want normal ordering, but in the Dyson expansion, we have time ordering.
+Consider
+\begin{align*}
+	A&=A^+ + A^- & B = B^+ + B^-
+\end{align*}
+which means
+\begin{align*}
+	A(x)B(x^\prime) - \normalorder{A(x)B(x^\prime)} &= \commutator{A^+(x)}{B^-(x^\prime)}
+\end{align*}
+but 
+\begin{align*}
+	\commutator{A^+(x)}{B^-(x^\prime)} &= \mel{0}{\commutator{A^+(x)}{B^-(x^\prime)}}{0}\\
+	&= \mel{0}{A(x) B(x^\prime)}{0}
+\end{align*}
+because the commutator is just a complex number, so 
+\begin{align*}
+	A(x) B(x^\prime) &= \normalorder{A(x)B(x^\prime)} + \mel{0}{A(x) B(x^\prime)}{0}.
+\end{align*}
+
+Now we try the same thing with time ordered products such that
+\begin{align*}
+	T\qty[A(x)B(x^\prime)] &= \Theta\qty(x^0 - (x^\prime)^0) A(x)B(x^\prime) + \Theta\qty((x^\prime)^0 - x^0)B(x^\prime)A(x)
+\end{align*}
+and since
+\begin{align*}
+	\normalorder{A(x)B(x^\prime)}&= \normalorder{B(x^\prime)A(x)}\intertext{we see that}
+	\normalorder{T[A(x)B(x^\prime)]}&=\normalorder{A(x)B(x^\prime)}
+\end{align*}
+which allows us to finally write
+\begin{align*}
+	\underbrace{T\qty[A(x)B(x^\prime)]}_\text{Appears in Dyson expansion} &= \normalorder{A(x)B(x^\prime)} + \underbrace{\mel{0}{T\qty[A(x)B(x^\prime)]}{0}}_{(*)}
+\end{align*}
+The expression $(*)$ is the interesting bit. It is denoted $\contraction{}{A}{(x)}{B}A(x)B(x^\prime)$ and called the contraction. This gives us a canonical solution to the Dyson expansion but needs to be generalised to $n$ operators, which we extend in the logical way, such that
+\begin{align*}
+	\normalorder{\contraction{A}{B}{}{C}\contraction{ABCD}{E}{\cdots{}K}{L}\contraction[2ex]{}{A}{BCDE\cdots{}}{K}ABCDE\cdots{}KLM\cdots} &= \contraction{}{A}{}{K}AK + \contraction{}{B}{}{C}BC + \contraction{}{E}{}{L}EL + \cdots.
+\end{align*}
+
+\subsection{Wick's Theorem}
 \end{document}
 
