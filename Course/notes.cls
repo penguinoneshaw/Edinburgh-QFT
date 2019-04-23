@@ -18,7 +18,7 @@
 \RequirePackage[sorting=ynt,style=authoryear,bibencoding=utf8,giveninits,uniquename=init,backend=biber,defernumbers=true]{biblatex}
 \RequirePackage{appendix}
 \RequirePackage{makeidx}
-
+\RequirePackage{xstring}
 
 % Maths Packages
 \RequirePackage[arrowdel]{physics}
@@ -39,7 +39,7 @@
 \RequirePackage{relsize}
 \RequirePackage{booktabs}
 \RequirePackage{framed}
-
+\RequirePackage{underscore}
 \KOMAoption{chapterprefix}{true}
 
 \KOMAoptions{
@@ -110,8 +110,11 @@ captions=tableheading
 \ihead{\@title}
 
 \newcommand{\school}[1]{\def\@school{#1}}
-\newcommand{\version}[1]{\def\@version{#1}}
-\newcommand{\coursecode}[1]{\def\@coursecode{#1}}
+\newcommand{\version}[1]{
+  \gdef\@version{\detokenize{#1}}
+}
+
+\newcommand{\coursecode}[1]{\def\@coursecode {#1}}
 
 \tikzfeynmanset{warn luatex=false}
 
@@ -218,7 +221,7 @@ captions=tableheading
     \fi
     {\Huge\usekomafont{title} \@title\\}
     \vspace{\fill}
-    {\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version \\[2ex] \large Version \@version\fi\\}
+    {\Large \@author \\[1ex] \LARGE\bfseries \@date \ifdefined\@version\\[2ex] \large Version \@version{}\fi\\}\\
     }
 }
 
@@ -389,6 +392,8 @@ captions=tableheading
     \global\let\@uppertitleback\@empty
     \global\let\@lowertitleback\@empty
     \global\let\@dedication\@empty
+    \global\let\@version\@empty
+    \global\let\version\relax
     \global\let\author\relax
     \global\let\title\relax
     \global\let\extratitle\relax
