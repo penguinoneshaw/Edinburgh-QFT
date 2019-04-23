@@ -30,6 +30,7 @@ add_latex_document(
 foreach(lecture_file ${lecture_files})
 add_latex_document(
   ${lecture_file}
+  DEPENDS notes.pdf
   IMAGE_DIRS images
   BIBFILES QFT.bib
   USE_BIBLATEX
