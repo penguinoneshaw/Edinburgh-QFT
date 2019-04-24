@@ -1,7 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
 cmake_minimum_required(VERSION 3.5)
 project(EdinburghQFT 
-        VERSION 1.0.1
+        VERSION 2.0.0
         LANGUAGES NONE)
 include(UseLATEX.cmake)
 
