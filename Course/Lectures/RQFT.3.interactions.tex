@@ -194,9 +194,64 @@ which allows us to finally write
 \end{align*}
 The expression $(*)$ is the interesting bit. It is denoted $\contraction{}{A}{(x)}{B}A(x)B(x^\prime)$ and called the contraction. This gives us a canonical solution to the Dyson expansion but needs to be generalised to $n$ operators, which we extend in the logical way, such that
 \begin{align*}
-	\normalorder{\contraction{A}{B}{}{C}\contraction{ABCD}{E}{\cdots{}K}{L}\contraction[2ex]{}{A}{BCDE\cdots{}}{K}ABCDE\cdots{}KLM\cdots} &= \contraction{}{A}{}{K}AK + \contraction{}{B}{}{C}BC + \contraction{}{E}{}{L}EL + \cdots.
+	\normalorder{\contraction{A}{B}{}{C}\contraction{ABCD}{E}{\cdots{}K}{L}\contraction[2ex]{}{A}{BCDE\cdots{}}{K}ABCDE\cdots{}KLM\cdots} &= \contraction{}{A}{}{K}AK\contraction{}{B}{}{C}BC\contraction{}{E}{}{L}EL\normalorder{DFGHIJM\ldots}.
 \end{align*}
 
 \subsection{Wick's Theorem}
+Wick's theorem gives us a a formula for the time ordered product of operators at unequal times in terms of normal ordered products and contractions, which is
+\begin{align*}
+	T\qty[ABCD\ldots] &= \normalorder{ABCD\ldots}\\
+	&\quad + \normalorder{\contraction{}{A}{}{B}ABCD\ldots} + \normalorder{\contraction{}{A}{B}{C}ABCD\ldots} + \cdots + \normalorder{\ldots\contraction{WX}{Y}{}{Z}WXYZ}\\
+	&\quad + \normalorder{\contraction{}{A}{}{B}AB\contraction{}{C}{}{D}CD\ldots} + \cdots
+\end{align*}
+where the right hand side is the sum of the normal ordered products of all combinations of increasing numbers of contractions.
+
+In the S-matrix expansion, we have `mixed' time ordered products with operators at equal and unequal times such that
+\begin{align*}
+	T\qty[\mathcal{H}_I(x_1) \cdots \mathcal{H}_I(x_n)] &= T\qty[\normalorder{A(x_1)B(x_1)}\cdots\normalorder{A(x_n)B(x_n)}]
+\end{align*}
+which Wick's theorem can be extended to cover by utilising that 
+\begin{align*}
+	T\qty[\normalorder{ABC}] &= \normalorder{ABC}
+\end{align*}
+So the only non-zero contractions are from fields at different times.
+
+\section{The Feynman Propagator}\label{sec:rqft_interactions_feynman-prop}
+Wick's Theorem on the right hand side has two ingredients
+\begin{itemize}
+	\item Normal ordered products
+	\item Contractions
+\end{itemize}
+which means that for a scalar field, the contractions are
+\begin{align*}
+	\contraction{}{\phi}{(x)}{\phi}\phi(x)\phi(x^\prime) &= \mel{0}{T\qty[\phi(x)\phi(x^\prime)]}{0}\\
+	&= \Theta(t-t^\prime)\expval{\phi(x)\phi(x^\prime)}{0} + \Theta(t^\prime-t)\expval{\phi(x^\prime)\phi(x)}{0}\\
+	&= i\Theta(t-t^\prime)\Delta^+(x-x^\prime) - i\Theta(t-t^\prime)\Delta^-(x-x^\prime)
+\end{align*}
+which we assign the new symbol $\Delta_F(x-x^\prime)$ and call the Feynman Propagator.
+This handily automatically captures the time ordering in the Dyson series, but it also means that negative energy modes are necessary for the system to be consistent.
+
+A useful representation of $i\Delta_F(x)$ is 
+\begin{align*}
+	\Delta_F(x) &= \int_{C_F} \frac{\dd[4]{p}}{(2\pi)^4}\qty[\frac{e^{-ip\vdot{x}}}{p^2 - m^2}]
+\end{align*}
+where $C_F$ is a contour in the $p_0$ plane which passes along the real axis, below the $p^0 = -\omega(p)$ and above the $p^0=\omega(p)$ poles which we then complete at infinity such that 
+\begin{itemize}
+	\item $x_0>0$ we include the lower half-plane, which means that we select the positive energy pole.
+	The residue at $p_0 = \omega(\vec{p})$ is $-\Delta^+(x)$.
+	\item $x_0 < 0$ means that we need to close on the positive half-plane in $p^0$ space (in order to exponentially suppress the real part of the integral). This gives us the pole at the negative energy solution with residue $\Delta^-(x)$.
+\end{itemize}
+
+The so-called $i\epsilon$ prescription makes this easier to deal with in a mechanical integration sense, as it pushes the contour to being entirely on the real axis.
+This gives the adjusted integral
+\begin{align*}
+	\Delta_F &= \int\frac{\dd[4]{p}}{(2\pi)^4} \qty[\frac{e^{-ip\vdot{x}}}{p^2 - m^2 + i\epsilon}]
+\end{align*}
+for some infinitesimal $\epsilon$ which we can then take the zero limit of. 
+The poles of the new integrand are at the roots of $p_0^2 - (\omega(p) - i\nicefrac{\epsilon}{2\omega})^2$.
+
+We note that $\Delta_F(x)$ is a Green's function for the Klein-Gordon equation (as all of its components also are), but for the Dirichlet boundary conditions which define quantum mechanics, for which we know the initial and final states of $\varphi$, but by definition cannot know $\dot\varphi$ to precise accuracy.
+
 \end{document}
+
 
