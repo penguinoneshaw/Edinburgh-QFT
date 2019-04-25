@@ -35,6 +35,7 @@
 \RequirePackage[framed]{ntheorem}
 \RequirePackage{simplewick}
 \RequirePackage[compat=1.1.0]{tikz-feynman}
+\RequirePackage{subcaption}
 
 % Formatting Packages
 \RequirePackage{relsize}
