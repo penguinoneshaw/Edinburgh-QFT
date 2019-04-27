@@ -245,7 +245,7 @@ where $C_F$ is a contour in the $p_0$ plane which passes along the real axis, be
 The so-called $i\epsilon$ prescription makes this easier to deal with in a mechanical integration sense, as it pushes the contour to being entirely on the real axis.
 This gives the adjusted integral
 \begin{align*}
-	\Delta_F &= \int\frac{\dd[4]{p}}{(2\pi)^4} \qty[\frac{e^{-ip\vdot{x}}}{p^2 - m^2 + i\epsilon}]
+	\Delta_F(x) &= \int\frac{\dd[4]{p}}{(2\pi)^4} \qty[\frac{e^{-ip\vdot{x}}}{p^2 - m^2 + i\epsilon}]
 \end{align*}
 for some infinitesimal $\epsilon$ which we can then take the zero limit of. 
 The poles of the new integrand are at the roots of $p_0^2 - (\omega(p) - i\nicefrac{\epsilon}{2\omega})^2$.
@@ -258,6 +258,7 @@ We revist the Dyson expansion and define that
 	S&=\sum_{n=0}^\infty S^{(n)} & S^{(n)} &= \frac{(-i)^n}{n!} \int\dd[4]{x_1}\cdots\dd[4]{x_n} T\qty[\mathcal{H}_I(x_1)\cdots \mathcal{H}_I(x_n)]
 \end{align*}
 which means that $n$ labels the number of vertices in the interaction diagrams.
+In Feynman diagrams, we usually have a `time axis', which in these cases runs from left to right.
 For example, in scalar $\phi^3$ theory with interaction Hamiltonian
 \begin{align*}
 	\mathcal{H}_I (x) &= \frac{g}{3!} \normalorder{\phi^3(x)}\\
@@ -440,6 +441,117 @@ which we then split into terms with zero, one, two and three contractions. Going
 \end{figure}
 \end{itemize}
 
+\section{S-matrix Elements in Momentum Space}
+In reality, we are usually only interested in $S_{fi} = \mel{f}{S}{i}$ rather than $S$ itself.
+
+As we have seen, $\ket{i}$ and $\ket{f}$ are expressed in the Fock space (in terms of $a^\dagger(\vec{p})$), which means from an \emph{uncertainty principle} perspective, we know every quantum's definite momentum $\vec{p}$, so we should represent the field transitions in momentum space.
+
+Starting from
+\begin{align*}
+	\ket{\vec{p}} &= a^\dagger(\vec{p}) \ket{0}
+\end{align*}
+and equations \ref{eqn:rqft_canonical-quantisation_creation-annihilation-fields} defining $\phi^\pm$, we find that
+\begin{align*}
+	\phi^+(x)\ket{\vec{p}} &= \int \dds{p^\prime} e^{-ip^\prime \vdot x}a(\vec{p}^\prime) a^\dagger(\vec{p}) \ket{0}\\
+	&= \int \dds{p^\prime} e^{-ip^\prime \vdot x} \deltaslash^3(\vec{p}^\prime - \vec{p}) \ket{0}\\
+	&= e^{-ip\vdot x}\ket{0}
+\end{align*}
+and
+\begin{align*}
+	\bra{\vec{p}} \phi^-(x) &= \bra{0} \int \dds{p^\prime} e^{-ip^\prime \vdot x} a(\vec{p}) a^\dagger(\vec{p}^\prime) \ket{0}\\
+	&= \bra{0} e^{ip\vdot{}x}.
+\end{align*}
+
+The momentum space propagator is therefore
+\begin{align*}
+	\contraction{}{\phi}{(x)}{\phi}\phi(x)\phi(y) &= i\Delta_F(x-y)\\
+	&= \frac{i}{(2\phi)^4} \int \dd[4]{k} \frac{e^{-k\vdot{}(x-y)}}{k^2 - m^2 + i\epsilon}. 
+\end{align*}
+
+\subsection{$\phi^3$ in Momentum Space}
+At $\mathcal{O}(g)$ for the process where we have
+\begin{align*}
+	\ket{i} &= \ket{p}\\
+	\ket{f} &= \ket{q, q^\prime}\\
+	&= \ket{q}\ket{q^\prime}
+\end{align*}
+we see that
+\begin{align*}
+	\mel{f}{S_1}{i} &= -\frac{ig}{\cancel{3}\times 2}\mel**{q, q^\prime}{\,\cancel{3}\!\int \dd[4]{x} (\phi^-(x))^2 \phi^+(x)}{p}\\
+	&= -ig \int \dd[4]{x} e^{i(q+q^\prime) \vdot x} e^{ip\vdot{}x}\braket{0}{0}\\
+	&= -ig(2\pi)^4 \delta^4(q+q^\prime - p).
+\end{align*}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[baseline={(current bounding box.center)}]
+		\begin{feynman}
+			\vertex [label=below:\(x\)] (v1);
+			\vertex [above right= of v1,label=right:\(q^\prime\)] (f1);
+			\vertex [below right= of v1,label=right:\(q\)] (f2);
+			\vertex [left= of v1,label=left:\(p\)] (i);
+			\diagram {
+				(i) --  (v1);
+				(v1) --  (f1);
+				(v1) --  (f2);
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	\caption{Momentum representation of the $\phi^3$ branch process}
+	\label{fig:rqft_interactions_momentum-of-phi-cubed-branch}
+\end{figure}
+
+We see that conservation of momentum is enforced by the delta function ($p = q + q^\prime$), but we also know that the particles are all necessarily on shell such that
+\begin{align*}
+	p^2 = q^2 &= (q^\prime)^2 = m^2&
+	(p-q)^2 &= m^2&
+	2p\vdot q &= m^2.
+\end{align*}
+Doing the standard trick with rest frames,
+\begin{align*}
+	p &= (m, \vec{0}) & \vec{q} &= (E, \vec{q}) & \implies \quad 2mE&= m^2
+\end{align*}
+but
+\begin{align*}
+	E^2 &= m^2 + \vec{q}^2 \geq m^2
+\end{align*}
+so for consistency this process \emph{must} vanish.
+
+At $\mathcal{O}(g^2)$, we gain another incoming particle, such that $\ket{i} = \ket{p, p^\prime}$, and a virtual propagating particle with momentum $k$.
+The S-channel transition is the matrix element
+\begin{align*}
+	\mel{f}{S_1^{(2)}}{i} &= -\frac{g^2}{(3!)^2} \int \dd[4]{x} \int \dd[4]{y} \mel{q, q^\prime}{\phi^-(y)^2[3^2\contraction{}{\phi}{(y)}{\phi}\phi(y)\phi(x)]\phi(x)^2}{p, p^\prime}\\
+	&= -g^2 \int \dd[4]{x} \int \dd[4]{y} e^{i(q+q^\prime)\vdot{y}}e^{i(p+p^\prime)\vdot{x}} \frac{i}{(2\pi)^4}\int\dd[4]{k} e^{-k\vdot(y-x)}\frac{1}{k^2 + m^2 + i\epsilon}\\
+	&= -ig^2\int \frac{\dd[4]{k}}{(2\pi)^4} (2\pi)^8 \delta^4(q + q^\prime - k) \delta^4(k-p-p^\prime)\frac{1}{k^2 + m^2 + i\epsilon}\\
+	&= -ig^2 (2\pi)^4 \frac{1}{(p+p^\prime)^2 - m^2 \cancel{+i\epsilon}} \delta^4(q+q^\prime - p - p^\prime)
+\end{align*}
+in which we can drop the $i\epsilon$ correction, and we can name
+\begin{align*}
+	\mathcal{M}_s &= -ig^2 (2\pi)^4 \frac{1}{(p+p^\prime)^2 - m^2}
+\end{align*}
+the Feynman Amplitude for the S-channel.
+The delta function in this case enforces that the two incoming particles' momentum is maintained by the two outgoing, and the propagator has momentum $k = p+ p^\prime = q + q^\prime$.
+
+Likewise, the T-channel has matrix element
+\begin{align*}
+	\mel{f}{S_t}{i} &= -ig^2(2\pi)^4\frac{1}{(p-q)^2 - m^2} \delta^4(q+q^\prime - p - p^\prime)
+\end{align*}
+and the U-channel has
+\begin{align*}
+	\mel{f}{S_u}{i} &= -ig^2(2\pi)^4\frac{1}{(p-q^\prime)^2 - m^2} \delta^4(q+q^\prime - p - p^\prime).
+\end{align*}
+It is clear that these amplitudes vary by how the momentum flows within the diagram. 
+We can thus define three invariant quantities, known as the Mandelstam invariants:
+\begin{align*}
+	s &= (p+p^\prime)^2 = (q+q^\prime)^2\\
+	t &= (p-q)^2 = (p^\prime - q^\prime)^2\\
+	u &= (p-q^\prime)^2 = (p^\prime-q) 
+\end{align*}
+which are such that $s+t+u=4m^2$.
+In total,
+\begin{align*}
+	\mel{f}{S_1^{(2)}}{i} &= \mel{q, q^\prime}{S_s + S_t + S_u}{p, p^\prime}\\
+	&= -ig^2(2\pi)^4\qty[\frac{1}{s - m^2} + \frac{1}{t - m^2} + \frac{1}{u - m^2}] \delta^4(q + q^\prime - p - p^\prime).
+\end{align*}
 \end{document}
 
 
