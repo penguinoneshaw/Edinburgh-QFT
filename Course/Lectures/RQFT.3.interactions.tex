@@ -516,7 +516,8 @@ but
 \end{align*}
 so for consistency this process \emph{must} vanish.
 
-At $\mathcal{O}(g^2)$, we gain another incoming particle, such that $\ket{i} = \ket{p, p^\prime}$, and a virtual propagating particle with momentum $k$.
+\subsection{Tree Level}
+At $\mathcal{O}(g^2)$ in the tree level, we gain another incoming particle, such that $\ket{i} = \ket{p, p^\prime}$, and a virtual propagating particle with momentum $k$.
 The S-channel transition is the matrix element
 \begin{align*}
 	\mel{f}{S_1^{(2)}}{i} &= -\frac{g^2}{(3!)^2} \int \dd[4]{x} \int \dd[4]{y} \mel{q, q^\prime}{\phi^-(y)^2[3^2\contraction{}{\phi}{(y)}{\phi}\phi(y)\phi(x)]\phi(x)^2}{p, p^\prime}\\
@@ -552,6 +553,24 @@ In total,
 	\mel{f}{S_1^{(2)}}{i} &= \mel{q, q^\prime}{S_s + S_t + S_u}{p, p^\prime}\\
 	&= -ig^2(2\pi)^4\qty[\frac{1}{s - m^2} + \frac{1}{t - m^2} + \frac{1}{u - m^2}] \delta^4(q + q^\prime - p - p^\prime).
 \end{align*}
+\subsection{One Loop Diagram}
+At $\mathcal{O}(g^2)$ with two contractions, things become very non-trivial; we have $\ket{i}=\ket{p}$ and $\ket{f}=\ket{q}$ and two internally propagating particles between $x$ and $y$.
+The transition element is
+\begin{align*}
+	\mel{f}{S^{(0)}_{2}}{i} &= - \frac{g^2}{\cancel{(3!)^2}}\int\dd[4]{x} \int\dd[4]{y} \mel{q}{\phi^-(y)\cancel{(3!)^2} \qty[\contraction{}{\phi}{(y)}{\phi}\phi(y)\phi(x)]^2\phi^+(x)}{p}\\
+	&= -g^2 \int\dd[4]{x} \int\dd[4]{y} e^{iq\vdot{}y} \qty[\frac{i}{(2\pi)^4}]^2\int \dd[4]{k} \frac{e^{ik\vdot{}(x-y)}}{k^2-m^2+i\epsilon} \int \dd[4]{k^\prime} \frac{e^{ik^\prime\vdot{}(x-y)}}{(k^\prime)^2-m^2+i\epsilon} e^{ip\vdot{x}}\\
+	&= g^2 \int \frac{\dd[4]{k}}{(2\pi)^4}\int \frac{\dd[4]{k^\prime}}{(2\pi)^4} (2\pi)^8 \delta^4(q-k-k^\prime)\delta^4(k+k^\prime - p) \frac{1}{k^2-m^2+i\epsilon} \frac{1}{(k^\prime)^2-m^2+i\epsilon}\\
+	&= (2\pi)^4 \delta^4(q-p) g^2 \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{1}{k^2-m^2+i\epsilon} \frac{1}{(p-k)^2-m^2+i\epsilon}
+\end{align*}
+which means there's \emph{unbounded} momentum going around in the loop, since all we require is that $p=q$. 
+The divergence is clear if $k^2 \gg m^2$ as this means
+\begin{align*}
+	\mathcal{M}_\text{loop} &\sim g^2 \int \frac{k^2}{k^4}\dd{k^2}
+\end{align*}
+which (though strange looking) is \emph{logarithmically divergent}.
+This is explored further in \autoref{cha:divergences-i-scalar}, in which the divergence is absorbed into renormalisation of the field.
+
+
 \end{document}
 
 
